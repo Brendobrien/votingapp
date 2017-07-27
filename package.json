@@ -1,0 +1,43 @@
+{
+  "name": "expo-v2",
+  "version": "2.0.0",
+  "description": "SDK 18",
+  "author": "Brendobrien",
+  "private": true,
+  "main": "node_modules/expo/AppEntry.js",
+  "scripts": {
+    "precommit": "lint-staged",
+    "format": "prettier --single-quote --trailing-comma all --write --print-width 80 '{.,assets,components,helpers,navigation,state}/**/*.js'"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --single-quote --trailing-comma all --write --print-width 80",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^5.0.0",
+    "expo": "^19.0.0",
+    "firebase": "^3.9.0",
+    "lodash": "^4.17.4",
+    "moment-timezone": "^0.5.13",
+    "randomcolor": "^0.5.0",
+    "react": "16.0.0-alpha.12",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-19.0.0.tar.gz",
+    "react-native-circular-slider": "^1.0.1",
+    "react-native-datepicker": "^1.5.1",
+    "react-native-swiper": "^1.5.4",
+    "react-navigation": "^1.0.0-beta.11",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
+    "redux-persist": "^4.8.0",
+    "redux-thunk": "^2.2.0",
+    "rrule": "^2.2.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "husky": "^0.13.3",
+    "lint-staged": "^3.5.0",
+    "prettier": "^1.5.2"
+  }
+}
