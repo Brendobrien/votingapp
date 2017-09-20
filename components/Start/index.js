@@ -1,42 +1,31 @@
 import React from 'react';
-import { StatusBar, StyleSheet, View } from 'react-native';
-import { connect } from 'react-redux';
-import { values } from 'lodash';
+import { StatusBar } from 'react-native';
+import Expo from 'expo';
 
-import Spinner from '../Common/Spinner';
-import Icon from './Icon';
+// helpers
+import colors from '../../helpers/colors';
 
-class Start extends React.Component {
+import Card from './Card';
+
+class Login extends React.Component {
   static navigationOptions = {
     gesturesEnabled: false,
     header: null,
   };
 
-  componentWillMount() {
-    setTimeout(() => this.props.navigation.navigate('Login'), 2000);
-  }
-
   render() {
     return (
-      <View style={containerStyle}>
-        <Icon />
-        <Spinner />
-        <StatusBar barStyle="dark-content" />
-      </View>
+      <Expo.LinearGradient
+        colors={[colors.red, colors.lightBlue]}
+        start={[0, 0]}
+        end={[0, 1]}
+        style={{ flex: 1 }}
+      >
+        <Card />
+        <StatusBar barStyle="light-content" hidden={false} />
+      </Expo.LinearGradient>
     );
   }
 }
 
-const { containerStyle } = StyleSheet.create({
-  containerStyle: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-  },
-});
-
-const mapStateToProps = state => ({
-  loading: values(state.loading).includes(true),
-});
-
-export default connect(mapStateToProps)(Start);
+export default Login;
