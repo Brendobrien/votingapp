@@ -1,21 +1,20 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { Dimensions, Image, StyleSheet, View } from 'react-native';
 
-export default () =>
+export default ({ uri }) =>
   <View style={containerStyle}>
-    <Text style={textStyle}>Lisboa</Text>
+    <Image source={{ uri }} style={imgStyle} />
   </View>;
 
-const { containerStyle, textStyle } = StyleSheet.create({
+const { containerStyle, imgStyle } = StyleSheet.create({
   containerStyle: {
     alignItems: 'center',
     backgroundColor: 'transparent',
     flex: 1,
     justifyContent: 'center',
   },
-  textStyle: {
-    color: 'white',
-    fontFamily: 'open-sans-bold',
-    fontSize: 18,
+  imgStyle: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').width,
   },
 });

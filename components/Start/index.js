@@ -1,11 +1,13 @@
+import Expo from 'expo';
 import React from 'react';
 import { StatusBar } from 'react-native';
-import Expo from 'expo';
+import Card from './Card';
+import Deck from './Deck';
+import getData from './getData';
+import Nao from './Nao';
 
 // helpers
 import colors from '../../helpers/colors';
-
-import Card from './Card';
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -21,7 +23,11 @@ class Login extends React.Component {
         end={[0, 1]}
         style={{ flex: 1 }}
       >
-        <Card />
+        <Deck
+          data={getData()}
+          renderCard={({ uri }) => <Card uri={uri} />}
+          renderNoMoreCards={() => <Nao />}
+        />
         <StatusBar barStyle="light-content" hidden={false} />
       </Expo.LinearGradient>
     );
