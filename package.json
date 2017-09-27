@@ -6,6 +6,7 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
+    "offline": "exp start -i --offline",
     "precommit": "lint-staged",
     "format": "prettier --single-quote --trailing-comma all --write --print-width 80 '{.,assets,components,helpers,navigation,state}/**/*.js'"
   },
