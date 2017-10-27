@@ -25,6 +25,8 @@ class Login extends React.Component {
       >
         <Deck
           data={getData()}
+          onSwipeLeft={() => console.log('over')}
+          onSwipeRight={() => console.log('under')}
           renderCard={({ uri }) => <Card uri={uri} />}
           renderNoMoreCards={() => <Nao />}
         />
