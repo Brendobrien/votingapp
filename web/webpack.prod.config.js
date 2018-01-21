@@ -10,7 +10,7 @@ const {
 module.exports = {
   // ...the rest of your config
 
-  entry: [path.resolve(__dirname, '../index.web.js')],
+  entry: [path.resolve(__dirname, '../AppWeb.js')],
   module: {
     rules: [babelLoaderConfiguration, imageLoaderConfiguration],
   },

@@ -4,8 +4,8 @@ const babelLoaderConfiguration = {
   test: /\.js$/,
   // Add every directory that needs to be compiled by Babel during the build
   include: [
-    path.resolve(__dirname, '../index.web.js'),
-    path.resolve(__dirname, '../src'),
+    path.resolve(__dirname, '../AppWeb.js'),
+    path.resolve(__dirname, '../components'),
   ],
   use: {
     loader: 'babel-loader',

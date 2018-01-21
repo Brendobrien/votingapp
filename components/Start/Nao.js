@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-export default () =>
+export default () => (
   <View style={containerStyle}>
     <Text style={textStyle}>Dallas</Text>
-  </View>;
+  </View>
+);
 
 const { containerStyle, textStyle } = StyleSheet.create({
   containerStyle: {
@@ -14,7 +15,7 @@ const { containerStyle, textStyle } = StyleSheet.create({
     justifyContent: 'center',
   },
   textStyle: {
-    color: 'white',
+    color: 'black',
     fontFamily: 'open-sans-bold',
     fontSize: 18,
   },
