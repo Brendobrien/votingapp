@@ -1,18 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-
-import Banner from './components/Banner';
-import Chart from './components/Chart';
-import Menu from './components/Menu';
+import Root from './components';
 
 class App extends React.Component {
   render() {
-    return (
-      <View style={{ flex: 1 }}>
-        <Banner />
-        <Menu />
-      </View>
-    );
+    return <Root />;
   }
 }
 

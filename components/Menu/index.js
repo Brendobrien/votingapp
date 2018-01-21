@@ -1,25 +1,42 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-export default ({ percentFace = 0.2, percentRest = 0.4 }) => (
+const auth = false;
+const percentFace = 0.25;
+
+export default () => (
   <View style={{ flex: 1 }}>
-    <View style={[restStyle, { flex: percentRest }]} />
-    <TouchableOpacity style={[faceStyle, { flex: percentFace }]}>
-      <Text style={textStyle}>Sign in to Facebook</Text>
-    </TouchableOpacity>
-    <View style={[restStyle, { flex: percentRest }]} />
+    {renderRow('orange', percentFace, 'All Polls')}
+    {auth
+      ? [
+          ['green', percentFace, 'My Polls'],
+          ['red', percentFace, 'New Poll'],
+          ['blue', percentFace, 'Sign Out'],
+        ].map(x => renderRow(...x))
+      : renderRow('blue', percentFace, 'Sign In')}
+    <View
+      style={[buttonStyle, { backgroundColor: 'white', flex: auth ? 0 : 0.5 }]}
+    />
   </View>
 );
 
-const { faceStyle, restStyle, textStyle } = StyleSheet.create({
-  faceStyle: {
+const renderRow = (backgroundColor, flex, text) => (
+  <View style={[buttonStyle, { backgroundColor, flex }]} key={text}>
+    <TouchableOpacity onPress={() => console.log(text)}>
+      <Text style={textStyle}>{text}</Text>
+    </TouchableOpacity>
+  </View>
+);
+
+const { buttonStyle, textStyle } = StyleSheet.create({
+  buttonStyle: {
     alignItems: 'center',
-    backgroundColor: 'blue',
-    justifyContent: 'center',
-  },
-  restStyle: {
-    alignItems: 'center',
-    backgroundColor: 'white',
     justifyContent: 'center',
   },
   textStyle: {

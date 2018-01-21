@@ -2,11 +2,19 @@
 
 import React from 'react';
 
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 const Banner = () => (
   <View style={styles.banner}>
-    <Text style={styles.title}>Gustar</Text>
+    <TouchableOpacity onPress={() => console.log('home')}>
+      <Text style={styles.title}>Gustar</Text>
+    </TouchableOpacity>
   </View>
 );
 
@@ -20,7 +28,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 18,
+    fontSize: 30,
     fontWeight: '200',
     color: '#fff',
     margin: 8,
