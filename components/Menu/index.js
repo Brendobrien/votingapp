@@ -1,46 +1,48 @@
 import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import Row from '../Row';
 
 const auth = false;
-const percentFace = 0.25;
+const buttonFlex = 0.25;
+const rows = [
+  {
+    backgroundColor: 'green',
+    flex: buttonFlex,
+    text: 'My Polls',
+    auth: true,
+    onPress: () => console.log('my polls'),
+  },
+  {
+    backgroundColor: 'red',
+    flex: buttonFlex,
+    text: 'New Poll',
+    auth: true,
+    onPress: () => console.log('new poll'),
+  },
+  {
+    backgroundColor: 'blue',
+    flex: buttonFlex,
+    text: 'Sign Out',
+    auth: true,
+    onPress: () => console.log('sign out'),
+  },
+  {
+    backgroundColor: 'blue',
+    flex: buttonFlex,
+    text: 'Sign In',
+    auth: false,
+    onPress: () => console.log('sign in'),
+  },
+];
 
 export default () => (
   <View style={{ flex: 1 }}>
-    {renderRow('orange', percentFace, 'All Polls')}
-    {auth
-      ? [
-          ['green', percentFace, 'My Polls'],
-          ['red', percentFace, 'New Poll'],
-          ['blue', percentFace, 'Sign Out'],
-        ].map(x => renderRow(...x))
-      : renderRow('blue', percentFace, 'Sign In')}
-    <View
-      style={[buttonStyle, { backgroundColor: 'white', flex: auth ? 0 : 0.5 }]}
+    <Row
+      backgroundColor="orange"
+      flex={buttonFlex}
+      onPress={() => console.log('all polls')}
+      text="All Polls"
     />
+    {rows.map(x => auth == x.auth && <Row {...x} key={x.text} />)}
   </View>
 );
-
-const renderRow = (backgroundColor, flex, text) => (
-  <View style={[buttonStyle, { backgroundColor, flex }]} key={text}>
-    <TouchableOpacity onPress={() => console.log(text)}>
-      <Text style={textStyle}>{text}</Text>
-    </TouchableOpacity>
-  </View>
-);
-
-const { buttonStyle, textStyle } = StyleSheet.create({
-  buttonStyle: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textStyle: {
-    fontSize: 30,
-    textAlign: 'center',
-  },
-});
