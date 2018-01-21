@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Row from '../Row';
 
-const auth = false;
+const auth = true;
 const buttonFlex = 0.25;
 const rows = [
   {

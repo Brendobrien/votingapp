@@ -2,35 +2,51 @@
 
 import React from 'react';
 
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const Banner = () => (
-  <View style={styles.banner}>
-    <TouchableOpacity onPress={() => console.log('home')}>
-      <Text style={styles.title}>Gustar</Text>
-    </TouchableOpacity>
+// TODO: screenText/background in Redux State
+const Banner = ({ screenText = 'Menu', color = 'red' }) => (
+  <View>
+    <View style={headerStyle}>
+      <TouchableOpacity onPress={() => console.log('Gustar')}>
+        <Text style={headerTextStyle}>Gustar</Text>
+      </TouchableOpacity>
+    </View>
+    <View style={subHeaderStyle}>
+      <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
+    </View>
   </View>
 );
 
 export default Banner;
 
-const styles = StyleSheet.create({
-  banner: {
+const {
+  headerStyle,
+  headerTextStyle,
+  subHeaderStyle,
+  subHeaderTextStyle,
+} = StyleSheet.create({
+  headerStyle: {
     backgroundColor: '#673ab7',
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 16,
   },
-  title: {
+  headerTextStyle: {
     fontSize: 30,
     fontWeight: '200',
     color: '#fff',
     margin: 8,
+  },
+  subHeaderStyle: {
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  subHeaderTextStyle: {
+    fontSize: 20,
+    fontWeight: '900',
+    color: 'white',
+    margin: 2,
   },
 });

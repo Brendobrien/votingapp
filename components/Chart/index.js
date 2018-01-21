@@ -1,32 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
+import Row from '../Row';
 
 export default ({ percentNo = 0.5, percentSi = 0.5 }) => (
   <View style={{ flex: 1 }}>
-    <TouchableOpacity style={[siStyle, { flex: percentSi }]}>
-      <Text style={textStyle}>Si{`\n${percentNo * 100}`}%</Text>
-    </TouchableOpacity>
-    <TouchableOpacity style={[noStyle, { flex: percentNo }]}>
-      <Text style={textStyle}>No{`\n${percentNo * 100}`}% </Text>
-    </TouchableOpacity>
+    <Row
+      backgroundColor="green"
+      flex={percentSi}
+      text={`Si\n${percentSi * 100}%`}
+      onPress={() => console.log('Si')}
+    />
+    <Row
+      backgroundColor="red"
+      flex={percentNo}
+      text={`No\n${percentNo * 100}%`}
+      onPress={() => console.log('No')}
+    />
   </View>
 );
-
-const { noStyle, siStyle, textStyle } = StyleSheet.create({
-  noStyle: {
-    alignItems: 'center',
-    backgroundColor: 'red',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  siStyle: {
-    alignItems: 'center',
-    backgroundColor: 'green',
-    flex: 1,
-    justifyContent: 'center',
-  },
-  textStyle: {
-    fontSize: 30,
-    textAlign: 'center',
-  },
-});
