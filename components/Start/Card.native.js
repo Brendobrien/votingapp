@@ -1,10 +1,11 @@
 import React from 'react';
 import { Dimensions, Image, StyleSheet, View } from 'react-native';
 
-export default ({ uri }) =>
+export default ({ uri }) => (
   <View style={containerStyle}>
     <Image source={{ uri }} style={imgStyle} />
-  </View>;
+  </View>
+);
 
 const { containerStyle, imgStyle } = StyleSheet.create({
   containerStyle: {

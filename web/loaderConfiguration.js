@@ -6,6 +6,7 @@ const babelLoaderConfiguration = {
   include: [
     path.resolve(__dirname, '../AppWeb.js'),
     path.resolve(__dirname, '../components'),
+    path.resolve(__dirname, '../node_modules/react-native-pie-chart/'),
   ],
   use: {
     loader: 'babel-loader',

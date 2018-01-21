@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from 'react-native';
 
 export default () => (
   <View style={containerStyle}>
-    <Text style={textStyle}>Dallas</Text>
+    <Text style={textStyle}>Dallas on the web</Text>
   </View>
 );
 

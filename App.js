@@ -3,13 +3,9 @@ import { AppLoading } from 'expo';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 
-// helpers
+import Chart from './components/Chart';
 import cacheAssets from './assets/cache';
-
-// navigation
 import AppWithNavState from './navigation/AppWithNavState';
-
-// state
 import Store from './state/store';
 
 class App extends React.Component {
@@ -33,19 +29,9 @@ class App extends React.Component {
   render() {
     if (this.state.appIsReady) {
       return (
-        <Provider store={Store}>
-          <View
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              top: 0,
-              bottom: 0,
-            }}
-          >
-            <AppWithNavState />
-          </View>
-        </Provider>
+        <View style={{ flex: 1 }}>
+          <Chart />
+        </View>
       );
     }
 

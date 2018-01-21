@@ -43,5 +43,8 @@ module.exports = {
     // module implementations should be written in files using the extension
     // `.web.js`.
     extensions: ['.web.js', '.js'],
+    alias: {
+      'react-native-svg': 'react-native-svg-web',
+    },
   },
 };

@@ -6684,6 +6684,20 @@ react-native-scripts@1.8.1:
     rimraf "^2.6.1"
     xdl "47.0.4"
 
+react-native-svg-web@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-svg-web/-/react-native-svg-web-1.0.1.tgz#16e1784077b6e5b6c7ebd9c3829e6684211cba99"
+  dependencies:
+    prop-types "^15.5.10"
+
+react-native-svg@^6.0.1-rc.3:
+  version "6.0.1-rc.3"
+  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-6.0.1-rc.3.tgz#9a54b6f70d350ee5f0169b3023ec6221254177fd"
+  dependencies:
+    color "^2.0.1"
+    lodash "^4.16.6"
+    pegjs "^0.10.0"
+
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
   resolved "https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz#0c6e373dbe63cfcbdd465f5b2965ebe011c8962f"

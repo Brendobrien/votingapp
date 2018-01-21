@@ -2,7 +2,7 @@ import React from 'react';
 import {
   Animated,
   Dimensions,
-  LayoutAnimation,
+  // LayoutAnimation,
   PanResponder,
   UIManager,
   View,
@@ -50,7 +50,7 @@ class Deck extends React.Component {
   componentWillUpdate() {
     UIManager.setLayoutAnimationEnabledExperimental &&
       UIManager.setLayoutAnimationEnabledExperimental(true);
-    LayoutAnimation.spring();
+    // LayoutAnimation.spring();
   }
 
   forceSwipe(direction) {
@@ -96,39 +96,12 @@ class Deck extends React.Component {
 
     return this.props.data
       .map((item, i) => {
-        if (i < this.state.index) {
-          return null;
-        }
-
-        if (i === this.state.index) {
-          return (
-            <Animated.View
-              key={item.id}
-              style={[this.getCardStyle(), cardStyle]}
-              {...this.state.panResponder.panHandlers}
-            >
-              {this.props.renderCard(item)}
-            </Animated.View>
-          );
-        }
-
-        return (
-          <Animated.View
-            key={item.id}
-            style={[cardStyle, { top: 10 * (i - this.state.index) }]}
-          >
-            {this.props.renderCard(item)}
-          </Animated.View>
-        );
+        return <View style={cardStyle}>{this.props.renderCard(item)}</View>;
       })
       .reverse();
   }
   render() {
-    return (
-      <View style={containerStyle}>
-        {this.renderCards()}
-      </View>
-    );
+    return <View style={containerStyle}>{this.renderCards()}</View>;
   }
 }
 
