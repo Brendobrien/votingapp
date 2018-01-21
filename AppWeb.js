@@ -5,7 +5,8 @@ import { AppRegistry } from 'react-native';
 
 import { AppContainer } from 'react-hot-loader';
 
-import App from './components/Chart';
+// import App from './components/Test';
+import App from './App';
 
 const renderApp = () => (
   <AppContainer>

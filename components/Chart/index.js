@@ -1,14 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default ({ percentNo = 0.5, percentSi = 0.5 }) => (
   <View style={{ flex: 1 }}>
-    <View style={[siStyle, { flex: percentSi }]}>
+    <TouchableOpacity style={[siStyle, { flex: percentSi }]}>
       <Text style={textStyle}>Si{`\n${percentNo * 100}`}%</Text>
-    </View>
-    <View style={[noStyle, { flex: percentNo }]}>
+    </TouchableOpacity>
+    <TouchableOpacity style={[noStyle, { flex: percentNo }]}>
       <Text style={textStyle}>No{`\n${percentNo * 100}`}% </Text>
-    </View>
+    </TouchableOpacity>
   </View>
 );
 

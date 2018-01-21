@@ -24,6 +24,7 @@
     "expo": "^25.0.0",
     "firebase": "^3.9.0",
     "lodash": "^4.17.4",
+    "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",

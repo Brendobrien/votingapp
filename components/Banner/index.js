@@ -6,7 +6,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 
 const Banner = () => (
   <View style={styles.banner}>
-    <Text style={styles.title}>React Native Web Fiber Boilerplate</Text>
+    <Text style={styles.title}>Gustar</Text>
   </View>
 );
 
