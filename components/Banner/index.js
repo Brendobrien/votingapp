@@ -18,8 +18,6 @@ const Banner = ({ screenText = 'Menu', color = 'red' }) => (
   </View>
 );
 
-export default Banner;
-
 const {
   headerStyle,
   headerTextStyle,
@@ -50,3 +48,5 @@ const {
     margin: 2,
   },
 });
+
+export default Banner;
