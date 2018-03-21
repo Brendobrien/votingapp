@@ -20,7 +20,7 @@ const devServer = {
 module.exports = {
   // ...the rest of your config
   devServer,
-  entry: [path.resolve(__dirname, '../AppWeb.js')],
+  entry: ['babel-polyfill', path.resolve(__dirname, '../AppWeb.js')],
   module: {
     rules: [babelLoaderConfiguration, imageLoaderConfiguration],
   },
