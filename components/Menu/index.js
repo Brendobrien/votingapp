@@ -2,36 +2,36 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Row from '../Row';
 
-const auth = true;
+const auth = false;
 const buttonFlex = 0.25;
 const rows = [
   {
+    auth: false,
+    backgroundColor: 'blue',
+    flex: buttonFlex,
+    onPress: () => console.log('sign in'),
+    text: 'Sign In',
+  },
+  {
+    auth: true,
     backgroundColor: 'green',
     flex: buttonFlex,
-    text: 'My Polls',
-    auth: true,
     onPress: () => console.log('my polls'),
+    text: 'My Polls',
   },
   {
+    auth: true,
     backgroundColor: 'red',
     flex: buttonFlex,
-    text: 'New Poll',
-    auth: true,
     onPress: () => console.log('new poll'),
+    text: 'New Poll',
   },
   {
-    backgroundColor: 'blue',
-    flex: buttonFlex,
-    text: 'Sign Out',
     auth: true,
-    onPress: () => console.log('sign out'),
-  },
-  {
     backgroundColor: 'blue',
     flex: buttonFlex,
-    text: 'Sign In',
-    auth: false,
-    onPress: () => console.log('sign in'),
+    onPress: () => console.log('sign out'),
+    text: 'Sign Out',
   },
 ];
 
