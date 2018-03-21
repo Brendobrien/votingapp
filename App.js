@@ -6,7 +6,11 @@ import store from './state/store';
 
 class App extends React.Component {
   render() {
-    return <Root />;
+    return (
+      <Provider store={store}>
+        <Root />
+      </Provider>
+    );
   }
 }
 

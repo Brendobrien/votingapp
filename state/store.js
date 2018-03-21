@@ -2,7 +2,7 @@ import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
 // state
-import nav from './nav/reducer';
+// import nav from './nav/reducer';
 import user from './user/reducer';
 
 const appReducer = combineReducers({
