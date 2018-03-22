@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 
 import initFirebase from '../state/firebase/initFirebase';
@@ -9,6 +9,8 @@ import Banner from '../components/Banner';
 import Chart from '../components/Chart';
 import Menu from '../components/Menu';
 
+import WebNavigator from '../navigation/WebNavigator';
+
 class App extends React.Component {
   componentWillMount() {
     initFirebase();
@@ -17,10 +19,14 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        <View style={{ flex: 1 }}>
-          <Banner />
-          <Menu />
-        </View>
+        {Platform.OS === 'web' ? (
+          <WebNavigator />
+        ) : (
+          <View style={{ flex: 1 }}>
+            <Banner />
+            <Menu />
+          </View>
+        )}
       </Provider>
     );
   }

@@ -26,6 +26,7 @@ export default platform => async dispatch => {
   } catch (e) {
     dispatch({
       type: SIGN_IN_FACEBOOK_FAIL,
+      payload: e,
     });
   }
 };

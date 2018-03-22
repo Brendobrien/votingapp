@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform, StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Row from '../Row';
 import signInFacebook from '../../state/user/signInFacebook';
@@ -8,7 +9,7 @@ import signOutFacebook from '../../state/user/signOutFacebook';
 
 const buttonFlex = 0.25;
 
-const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
+const Menu = ({ auth, history, signInFacebook, signOutFacebook }) => {
   const rows = [
     {
       backgroundColor: 'green',
@@ -35,7 +36,7 @@ const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
       <Row
         backgroundColor="orange"
         flex={buttonFlex}
-        onPress={() => console.log('all polls')}
+        onPress={() => history.push('/all-polls')}
         text="All Polls"
       />
       {auth ? (
@@ -59,4 +60,4 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
   signInFacebook,
   signOutFacebook,
-})(Menu);
+})(withRouter(Menu));

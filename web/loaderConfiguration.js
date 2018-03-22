@@ -7,7 +7,7 @@ const babelLoaderConfiguration = {
     path.resolve(__dirname, '../App.js'),
     path.resolve(__dirname, '../AppWeb.js'),
     path.resolve(__dirname, '../components'),
-    path.resolve(__dirname, '../node_modules/react-native-pie-chart/'),
+    path.resolve(__dirname, '../navigation'),
     path.resolve(__dirname, '../state'),
   ],
   use: {

@@ -1,6 +1,5 @@
-/* @flow */
-
 import React from 'react';
+// import { withRouter } from 'react-router-dom';
 
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
