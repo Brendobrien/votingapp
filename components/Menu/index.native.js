@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-
 import Row from '../Row';
 import signInFacebook from '../../state/user/signInFacebook';
 import signOutFacebook from '../../state/user/signOutFacebook';
@@ -12,18 +10,28 @@ const buttonFlex = 0.25;
 const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
   const rows = [
     {
+      auth: false,
+      backgroundColor: 'blue',
+      flex: buttonFlex,
+      onPress: () => signInFacebook('native'),
+      text: 'Sign In',
+    },
+    {
+      auth: true,
       backgroundColor: 'green',
       flex: buttonFlex,
       onPress: () => console.log('my polls'),
       text: 'My Polls',
     },
     {
+      auth: true,
       backgroundColor: 'red',
       flex: buttonFlex,
       onPress: () => console.log('new poll'),
       text: 'New Poll',
     },
     {
+      auth: true,
       backgroundColor: 'blue',
       flex: buttonFlex,
       onPress: () => signOutFacebook(),
@@ -39,23 +47,7 @@ const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
         onPress={() => console.log('all polls')}
         text="All Polls"
       />
-      {auth ? (
-        rows.map(x => <Row {...x} key={x.text} />)
-      ) : (
-        <FacebookLogin
-          appId="1292315704246391"
-          fields="name,email,picture"
-          callback={signInFacebook}
-          render={renderProps => (
-            <Row
-              backgroundColor="blue"
-              flex={buttonFlex}
-              onPress={renderProps.onClick}
-              text="Sign In"
-            />
-          )}
-        />
-      )}
+      {rows.map(x => auth == x.auth && <Row {...x} key={x.text} />)}
     </View>
   );
 };
