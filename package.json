@@ -11,7 +11,7 @@
     "format": "prettier --single-quote --trailing-comma all --write --print-width 80 '{.,assets,components,helpers,navigation,state}/**/*.js'",
     "jest": "node_modules/.bin/jest",
     "flow": "flow .",
-    "web": "webpack-dev-server --config web/webpack.config.js --hot",
+    "web": "webpack-dev-server --https --config web/webpack.config.js --hot",
     "build-web": "webpack --config web/webpack.config.js"
   },
   "lint-staged": {
@@ -27,6 +27,7 @@
     "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-facebook-login": "^4.0.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
     "react-native-svg": "^6.0.1-rc.3",
     "react-native-svg-web": "^1.0.1",
