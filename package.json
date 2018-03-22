@@ -1,18 +1,19 @@
 {
-  "name": "Gustar",
+  "name": "gustar",
   "version": "1.0.0",
   "description": "Si o No",
   "author": "Brendobrien",
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "offline": "exp start -i --offline",
-    "precommit": "lint-staged",
+    "build-web": "webpack --config web/webpack.config.js",
+    "expo": "exp start -i",
+    "flow": "flow .",
     "format": "prettier --single-quote --trailing-comma all --write --print-width 80 '{.,assets,components,helpers,navigation,state}/**/*.js'",
     "jest": "node_modules/.bin/jest",
-    "flow": "flow .",
-    "web": "webpack-dev-server --https --config web/webpack.config.js --hot",
-    "build-web": "webpack --config web/webpack.config.js"
+    "offline": "exp start -i --offline",
+    "precommit": "lint-staged",
+    "web": "webpack-dev-server --https --config web/webpack.config.js --hot"
   },
   "lint-staged": {
     "*.js": [
@@ -22,9 +23,8 @@
   },
   "dependencies": {
     "expo": "^25.0.0",
-    "firebase": "^3.9.0",
+    "firebase": "^4.12.0",
     "lodash": "^4.17.4",
-    "material-ui": "^0.20.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-facebook-login": "^4.0.1",
@@ -46,6 +46,7 @@
     "babel-loader": "^7.1.2",
     "babel-plugin-react-native-web": "^0.3.0-rc.4",
     "babel-preset-react-native": "^4.0.0",
+    "exp": "^50.0.1",
     "flow-bin": "^0.56.0",
     "husky": "^0.13.3",
     "jest-expo": "24.0.0",

@@ -7,6 +7,20 @@ import Row from '../Row';
 import signInFacebook from '../../state/user/signInFacebook';
 import signOutFacebook from '../../state/user/signOutFacebook';
 
+import firebase from 'firebase';
+
+const auth = firebase.auth;
+const provider = new firebase.auth.FacebookAuthProvider();
+
+const login = async () => {
+  const result = await auth().signInWithPopup(provider);
+  console.log(result);
+};
+
+const logout = async () => {
+  await auth().signOut();
+};
+
 const buttonFlex = 0.25;
 
 const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
@@ -42,19 +56,20 @@ const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
       {auth ? (
         rows.map(x => <Row {...x} key={x.text} />)
       ) : (
-        <FacebookLogin
-          appId="1292315704246391"
-          fields="name,email,picture"
-          callback={response => signInFacebook('web', response)}
-          render={renderProps => (
-            <Row
-              backgroundColor="blue"
-              flex={buttonFlex}
-              onPress={renderProps.onClick}
-              text="Sign In"
-            />
-          )}
+        // <FacebookLogin
+        //   appId="1292315704246391"
+        //   fields="name,email,picture"
+        //   callback={response => signInFacebook('web', response)}
+        //   render={renderProps => (
+        <Row
+          backgroundColor="blue"
+          flex={buttonFlex}
+          // onPress={renderProps.onClick}
+          onPress={login}
+          text="Sign In"
         />
+        //   )}
+        // />
       )}
     </View>
   );
