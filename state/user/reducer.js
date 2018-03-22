@@ -5,6 +5,7 @@ const INIT_STATE = {
 };
 
 export default (state = INIT_STATE, action) => {
+  console.log(action.type);
   switch (action.type) {
     case SIGN_IN_FACEBOOK_SUCCESS:
       return { ...state, auth: action.payload };

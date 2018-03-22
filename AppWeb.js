@@ -6,11 +6,15 @@ import { AppRegistry } from 'react-native';
 import { AppContainer } from 'react-hot-loader';
 import 'react-hot-loader/patch';
 
-import App from './App';
+import { BrowserRouter } from 'react-router-dom';
+
+import Root from './components';
 
 const renderApp = () => (
   <AppContainer>
-    <App />
+    <BrowserRouter>
+      <Root />
+    </BrowserRouter>
   </AppContainer>
 );
 
@@ -22,7 +26,9 @@ if (module.hot) {
 
   const renderHotApp = () => (
     <AppContainer>
-      <App />
+      <BrowserRouter>
+        <Root />
+      </BrowserRouter>
     </AppContainer>
   );
 
