@@ -1,4 +1,6 @@
 import firebase from 'firebase';
+
+import { LOADING } from '../../loading/types';
 import {
   SIGN_IN_FACEBOOK_FAIL,
   SIGN_IN_FACEBOOK_PENDING,
@@ -7,6 +9,7 @@ import {
 
 export default () => async dispatch => {
   dispatch({ type: SIGN_IN_FACEBOOK_PENDING });
+  dispatch({ type: LOADING, payload: true });
 
   try {
     const provider = new firebase.auth.FacebookAuthProvider();
@@ -29,10 +32,12 @@ export default () => async dispatch => {
       type: SIGN_IN_FACEBOOK_SUCCESS,
       payload: providerData[0],
     });
+    dispatch({ type: LOADING, payload: false });
   } catch (e) {
     dispatch({
       type: SIGN_IN_FACEBOOK_FAIL,
       payload: e,
     });
+    dispatch({ type: LOADING, payload: false });
   }
 };
