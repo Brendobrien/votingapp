@@ -1,5 +1,5 @@
-import AppNavigator from '../../navigation/AppNavigator';
-import loginState from './loginState';
+import AppNavigator from '../../../navigation/AppNavigator';
+import loginState from '../loginState';
 
 export default (state = loginState, action) => {
   let nextState;

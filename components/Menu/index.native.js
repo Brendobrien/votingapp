@@ -10,7 +10,7 @@ import signOutFacebook from '../../state/user/signOutFacebook';
 
 const buttonFlex = 0.25;
 
-const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
+const Menu = ({ auth, navigation, signInFacebook, signOutFacebook }) => {
   const rows = [
     {
       auth: false,
@@ -47,7 +47,7 @@ const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
       <Row
         backgroundColor="orange"
         flex={auth ? buttonFlex : buttonFlex * 2}
-        onPress={() => console.log('all polls')}
+        onPress={() => navigation.navigate('AllPolls')}
         text="All Polls"
       />
       {rows.map(x => auth == x.auth && <Row {...x} key={x.text} />)}

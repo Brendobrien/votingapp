@@ -5,16 +5,17 @@ import { addNavigationHelpers } from 'react-navigation';
 // navigation
 import AppNavigator from './AppNavigator';
 
-const AppWithNavigationState = ({ dispatch, nav }) =>
+const AppWithNavState = ({ dispatch, nav }) => (
   <AppNavigator
     navigation={addNavigationHelpers({
       dispatch,
       state: nav,
     })}
-  />;
+  />
+);
 
 const mapStateToProps = state => ({
   nav: state.nav,
 });
 
-export default connect(mapStateToProps)(AppWithNavigationState);
+export default connect(mapStateToProps)(AppWithNavState);

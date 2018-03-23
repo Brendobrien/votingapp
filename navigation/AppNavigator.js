@@ -1,11 +1,14 @@
 import { StackNavigator } from 'react-navigation';
 
-// navigation
-import Root from './Root';
+import AllPolls from '../components/AllPolls';
+import Chart from '../components/Chart';
+import Menu from '../components/Menu';
 
 export default StackNavigator(
   {
-    Root: { screen: Root },
+    AllPolls: { screen: AllPolls },
+    Chart: { screen: Chart },
+    Menu: { screen: Menu },
   },
   {
     headerMode: 'none',
