@@ -16,9 +16,9 @@ export default (state = INIT_STATE, action) => {
       return state;
     }
     case SIGN_IN_FACEBOOK_SUCCESS:
-      return { ...state, auth: action.payload };
+      return { ...state, ...action.payload, auth: true };
     case SIGN_OUT_FACEBOOK_SUCCESS:
-      return { ...state, auth: action.payload };
+      return { auth: false };
     default:
       return state;
   }

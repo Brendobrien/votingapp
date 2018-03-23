@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Favicon from 'react-favicon';
@@ -48,7 +48,7 @@ const Menu = ({ auth, history, signInFacebook, signOutFacebook }) => {
         <Row
           backgroundColor="blue"
           flex={buttonFlex * 2}
-          onPress={() => signInFacebook(Platform.OS)}
+          onPress={signInFacebook}
           text="Sign In Facebook"
         />
       )}

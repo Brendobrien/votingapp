@@ -16,7 +16,7 @@ const Menu = ({ auth, navigation, signInFacebook, signOutFacebook }) => {
       auth: false,
       backgroundColor: 'blue',
       flex: buttonFlex * 2,
-      onPress: () => signInFacebook('native'),
+      onPress: () => signInFacebook(),
       text: 'Sign In Facebook',
     },
     {
