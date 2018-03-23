@@ -1,16 +1,43 @@
 import React from 'react';
-
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
+
+import goBack from '../../navigation/goBack';
+import goHome from '../../navigation/goHome';
 
 // TODO: screenText/background in Redux State
-const Header = ({ children, history, screenText = 'Menu', color = 'red' }) => (
+const backgroundColor = '#9F64C0';
+const Header = ({
+  children,
+  color = 'red',
+  goBack,
+  goHome,
+  nav,
+  screenText = 'Menu',
+}) => (
   <View style={{ flex: 1 }}>
     <View>
-      <View style={headerStyle}>
-        <TouchableOpacity onPress={() => console.log('gustar')}>
+      {nav.index !== 0 ? (
+        <View style={headerStyle}>
+          <TouchableOpacity onPress={goBack}>
+            <Text style={headerTextStyle}>{'<'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={goHome}>
+            <Text style={headerTextStyle}>Gustar</Text>
+          </TouchableOpacity>
+          <View>
+            <Text style={[headerTextStyle, { color: backgroundColor }]}>
+              {'<'}
+            </Text>
+          </View>
+        </View>
+      ) : (
+        <View style={headerStyle}>
+          <View />
           <Text style={headerTextStyle}>Gustar</Text>
-        </TouchableOpacity>
-      </View>
+          <View />
+        </View>
+      )}
       <View style={subHeaderStyle}>
         <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
       </View>
@@ -26,9 +53,9 @@ const {
   subHeaderTextStyle,
 } = StyleSheet.create({
   headerStyle: {
-    backgroundColor: '#9F64C0',
+    backgroundColor,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     padding: 16,
   },
   headerTextStyle: {
@@ -50,4 +77,9 @@ const {
   },
 });
 
-export default Header;
+const mapStateToProps = ({ nav }) => ({ nav });
+
+export default connect(mapStateToProps, {
+  goBack,
+  goHome,
+})(Header);

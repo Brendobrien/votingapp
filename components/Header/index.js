@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // TODO: screenText/background in Redux State
+const backgroundColor = '#9F64C0';
 const Header = ({
   children,
   history,
@@ -13,13 +14,28 @@ const Header = ({
 }) => (
   <View style={{ flex: 1 }}>
     <View>
-      <View style={headerStyle}>
-        <TouchableOpacity
-          onPress={() => location.pathname !== '/' && history.push('/')}
-        >
+      {location.pathname !== '/' ? (
+        <View style={headerStyle}>
+          <TouchableOpacity onPress={() => history.goBack()}>
+            <Text style={headerTextStyle}>{'<'}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => history.push('/')}>
+            <Text style={headerTextStyle}>Gustar</Text>
+          </TouchableOpacity>
+          <View>
+            <Text style={[headerTextStyle, { color: backgroundColor }]}>
+              {'<'}
+            </Text>
+          </View>
+        </View>
+      ) : (
+        <View style={headerStyle}>
+          <View />
           <Text style={headerTextStyle}>Gustar</Text>
-        </TouchableOpacity>
-      </View>
+          <View />
+        </View>
+      )}
+
       <View style={subHeaderStyle}>
         <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
       </View>
@@ -35,9 +51,9 @@ const {
   subHeaderTextStyle,
 } = StyleSheet.create({
   headerStyle: {
-    backgroundColor: '#9F64C0',
+    backgroundColor,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     padding: 16,
   },
   headerTextStyle: {

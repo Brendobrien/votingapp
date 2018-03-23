@@ -9,8 +9,8 @@ import {
 } from '../types';
 
 export default () => async dispatch => {
-  dispatch({ type: SIGN_IN_FACEBOOK_PENDING });
   dispatch({ type: LOADING, payload: true });
+  dispatch({ type: SIGN_IN_FACEBOOK_PENDING });
 
   try {
     const { type, token } = await Expo.Facebook.logInWithReadPermissionsAsync(

@@ -16,7 +16,6 @@ const INIT_STATE = {
 };
 
 export default (state = INIT_STATE, action) => {
-  console.log(action.type);
   switch (action.type) {
     case GET_FIREBASE_USER_FAIL:
     case SIGN_IN_FACEBOOK_FAIL:
