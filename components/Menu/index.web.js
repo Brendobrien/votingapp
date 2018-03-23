@@ -1,14 +1,15 @@
 import React from 'react';
-import { Platform, StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import Header from '../Header';
 import Row from '../Row';
+
 import signInFacebook from '../../state/user/signInFacebook';
 import signOutFacebook from '../../state/user/signOutFacebook';
 
 const buttonFlex = 0.25;
-
 const Menu = ({ auth, history, signInFacebook, signOutFacebook }) => {
   const rows = [
     {
@@ -32,10 +33,10 @@ const Menu = ({ auth, history, signInFacebook, signOutFacebook }) => {
   ];
 
   return (
-    <View style={{ flex: 1 }}>
+    <Header>
       <Row
         backgroundColor="orange"
-        flex={buttonFlex}
+        flex={auth ? buttonFlex : buttonFlex * 2}
         onPress={() => history.push('/all-polls')}
         text="All Polls"
       />
@@ -44,12 +45,12 @@ const Menu = ({ auth, history, signInFacebook, signOutFacebook }) => {
       ) : (
         <Row
           backgroundColor="blue"
-          flex={buttonFlex}
+          flex={buttonFlex * 2}
           onPress={() => signInFacebook(Platform.OS)}
           text="Sign In Facebook"
         />
       )}
-    </View>
+    </Header>
   );
 };
 

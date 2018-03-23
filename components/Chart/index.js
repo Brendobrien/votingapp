@@ -1,9 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
+
+import Header from '../Header';
 import Row from '../Row';
 
 export default ({ percentNo = 0.5, percentSi = 0.5 }) => (
-  <View style={{ flex: 1 }}>
+  <Header>
     <Row
       backgroundColor="green"
       flex={percentSi}
@@ -16,5 +18,5 @@ export default ({ percentNo = 0.5, percentSi = 0.5 }) => (
       text={`No\n${percentNo * 100}%`}
       onPress={() => console.log('No')}
     />
-  </View>
+  </Header>
 );

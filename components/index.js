@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import initFirebase from '../state/firebase/initFirebase';
 import store from '../state/store';
 
-import Banner from '../components/Banner';
 import Chart from '../components/Chart';
 import Menu from '../components/Menu';
 
@@ -19,14 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        {Platform.OS === 'web' ? (
-          <WebNavigator />
-        ) : (
-          <View style={{ flex: 1 }}>
-            <Banner />
-            <Menu />
-          </View>
-        )}
+        {Platform.OS === 'web' ? <WebNavigator /> : <Menu />}
       </Provider>
     );
   }

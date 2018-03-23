@@ -1,19 +1,30 @@
 import React from 'react';
-// import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 // TODO: screenText/background in Redux State
-const Banner = ({ screenText = 'Menu', color = 'red' }) => (
-  <View>
-    <View style={headerStyle}>
-      <TouchableOpacity onPress={() => console.log('Gustar')}>
-        <Text style={headerTextStyle}>Gustar</Text>
-      </TouchableOpacity>
+const Header = ({
+  children,
+  history,
+  location,
+  screenText = 'Menu',
+  color = 'red',
+}) => (
+  <View style={{ flex: 1 }}>
+    <View>
+      <View style={headerStyle}>
+        <TouchableOpacity
+          onPress={() => location.pathname !== '/' && history.push('/')}
+        >
+          <Text style={headerTextStyle}>Gustar</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={subHeaderStyle}>
+        <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
+      </View>
     </View>
-    <View style={subHeaderStyle}>
-      <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
-    </View>
+    {children}
   </View>
 );
 
@@ -48,4 +59,4 @@ const {
   },
 });
 
-export default Banner;
+export default withRouter(Header);

@@ -1,10 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
+
+import Header from '../Header';
 import Row from '../Row';
 
 const buttonFlex = 0.25;
 export default props => (
-  <View style={{ flex: 1 }}>
+  <Header>
     <Row
       backgroundColor="red"
       flex={buttonFlex}
@@ -17,5 +18,5 @@ export default props => (
       text="Poll Two"
       onPress={() => console.log('No')}
     />
-  </View>
+  </Header>
 );

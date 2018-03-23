@@ -1,7 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
+
+import Header from '../Header';
 import Row from '../Row';
+
 import signInFacebook from '../../state/user/signInFacebook';
 import signOutFacebook from '../../state/user/signOutFacebook';
 
@@ -12,7 +15,7 @@ const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
     {
       auth: false,
       backgroundColor: 'blue',
-      flex: buttonFlex,
+      flex: buttonFlex * 2,
       onPress: () => signInFacebook('native'),
       text: 'Sign In Facebook',
     },
@@ -40,15 +43,15 @@ const Menu = ({ auth, signInFacebook, signOutFacebook }) => {
   ];
 
   return (
-    <View style={{ flex: 1 }}>
+    <Header>
       <Row
         backgroundColor="orange"
-        flex={buttonFlex}
+        flex={auth ? buttonFlex : buttonFlex * 2}
         onPress={() => console.log('all polls')}
         text="All Polls"
       />
       {rows.map(x => auth == x.auth && <Row {...x} key={x.text} />)}
-    </View>
+    </Header>
   );
 };
 
