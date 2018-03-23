@@ -1,5 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import firebase from 'firebase';
 
 import initFirebase from '../state/firebase/initFirebase';
 import store from '../state/store';
