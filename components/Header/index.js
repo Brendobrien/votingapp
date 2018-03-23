@@ -35,7 +35,7 @@ const {
   subHeaderTextStyle,
 } = StyleSheet.create({
   headerStyle: {
-    backgroundColor: '#673ab7',
+    backgroundColor: '#9F64C0',
     flexDirection: 'row',
     justifyContent: 'space-around',
     padding: 16,

@@ -4,7 +4,6 @@ import React from 'react';
 import { AppRegistry } from 'react-native';
 import { AppContainer } from 'react-hot-loader';
 import 'react-hot-loader/patch';
-import { BrowserRouter } from 'react-router-dom';
 
 import App from './components';
 

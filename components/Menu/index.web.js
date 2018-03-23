@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Favicon from 'react-favicon';
 
 import Header from '../Header';
 import Row from '../Row';
@@ -34,6 +35,7 @@ const Menu = ({ auth, history, signInFacebook, signOutFacebook }) => {
 
   return (
     <Header>
+      <Favicon url="https://content.invisioncic.com/d154966/monthly_2017_11/G.png.cd8f93bbaa6d71c9b62e8217a0f5737f.png" />
       <Row
         backgroundColor="orange"
         flex={auth ? buttonFlex : buttonFlex * 2}
