@@ -16,7 +16,7 @@ export default platform => async dispatch => {
       payload: false,
     });
   } catch (e) {
-    disptach({
+    dispatch({
       type: SIGN_OUT_FACEBOOK_FAIL,
     });
   }

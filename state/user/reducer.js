@@ -1,5 +1,4 @@
 import {
-  SIGN_IN_FACEBOOK_SUCCESS,
   SIGN_IN_FACEBOOK_FAIL,
   SIGN_OUT_FACEBOOK_SUCCESS,
   SIGN_OUT_FACEBOOK_FAIL,
@@ -23,7 +22,7 @@ export default (state = INIT_STATE, action) => {
     case UPDATE_FIREBASE_USER_FAIL:
       console.log(action.payload);
       return state;
-    case SIGN_IN_FACEBOOK_SUCCESS:
+    case GET_FIREBASE_USER_SUCCESS:
       return { ...state, ...action.payload, auth: true };
     case SIGN_OUT_FACEBOOK_SUCCESS:
       return { auth: false };

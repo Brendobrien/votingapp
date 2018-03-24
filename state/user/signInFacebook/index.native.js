@@ -35,10 +35,8 @@ export default () => async dispatch => {
         .database()
         .ref(`/state/${uid}`)
         .update(updates);
-      dispatch({
-        type: SIGN_IN_FACEBOOK_SUCCESS,
-        payload: providerData[0],
-      });
+
+      dispatch({ type: SIGN_IN_FACEBOOK_SUCCESS });
       dispatch({ type: LOADING, payload: false });
     } else {
       dispatch({

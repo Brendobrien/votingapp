@@ -18,7 +18,7 @@ import goHome from '../../navigation/goHome';
 const backgroundColor = '#9F64C0';
 const Header = props => {
   const { children, loading } = props;
-  const color = 'red';
+  const color = '#9F64C0';
   const screenText = 'Menu';
   let rootBool, backFunc, homeFunc;
   if (Platform.OS === 'web') {
