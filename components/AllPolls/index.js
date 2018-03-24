@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Header from '../Header';
-import Row from '../Row';
+import Row from '../Common/Row';
 
 const buttonFlex = 0.25;
 export default props => (

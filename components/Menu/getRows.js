@@ -22,7 +22,7 @@ export default ({
       backgroundColor: 'orange',
       flex: auth ? buttonFlex : buttonFlex * 2,
       onPress: allPollsClick,
-      text: 'All Polls',
+      text: 'Todos Personas',
     },
     {
       auth: false,
@@ -36,14 +36,14 @@ export default ({
       backgroundColor: 'green',
       flex: buttonFlex,
       onPress: () => console.log('my polls'),
-      text: 'My Polls',
+      text: 'Mis Personas',
     },
     {
       auth: true,
       backgroundColor: 'red',
       flex: buttonFlex,
       onPress: newPollClick,
-      text: 'New Poll',
+      text: 'Nueva Persona',
     },
     {
       auth: true,

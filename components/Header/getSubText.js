@@ -11,24 +11,25 @@ export default props => {
     Platform.OS === 'web'
       ? urls[location.pathname]
       : nav.routes[nav.index].routeName;
+
   const info = {
     AllPolls: {
       color: 'orange',
-      text: 'All Polls',
+      text: 'Todos Personas',
     },
     Menu: {
       color: '#9F64C0',
-      text: 'Menu',
+      text: 'Menú',
     },
     NewPoll: {
       color: 'red',
-      text: 'New Poll',
+      text: 'Nueva Persona',
+    },
+    fallback: {
+      color: 'green',
+      text: 'Mis Personas',
     },
   };
-  const fallback = {
-    color: 'green',
-    text: 'My Polls',
-  };
 
-  return info[routeName] || fallback;
+  return info[routeName] || info.fallback;
 };

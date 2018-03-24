@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Favicon from 'react-favicon';
 
 import Header from '../Header';
-import Row from '../Row';
+import Row from '../Common/Row';
 import getRows from './getRows';
 
 import signInFacebook from '../../state/user/signInFacebook';

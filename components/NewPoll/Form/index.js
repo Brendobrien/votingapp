@@ -36,15 +36,13 @@ class Form extends React.Component {
   };
   render() {
     return (
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={containerStyle}>
-          <Name
-            initialValue={this.state.name}
-            invalid={this.state.nameInvalid}
-            onChangeText={this.changeState.bind(null, 'name')}
-          />
-        </View>
-      </TouchableWithoutFeedback>
+      <View style={containerStyle}>
+        <Name
+          initialValue={this.state.name}
+          invalid={this.state.nameInvalid}
+          onChangeText={this.changeState.bind(null, 'name')}
+        />
+      </View>
     );
   }
 }

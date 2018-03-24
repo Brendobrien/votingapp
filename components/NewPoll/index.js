@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Form from './Form';
 import Header from '../Header';
-import Row from '../Row';
+import Row from '../Common/Row';
 
 const buttonFlex = 0.25;
 const NewPoll = ({ auth }) => {
