@@ -11,8 +11,10 @@ export default ({
   let allPollsClick;
   if (Platform.OS === 'web') {
     allPollsClick = () => history.push('/all-polls');
+    newPollClick = () => history.push('/new-poll');
   } else {
     allPollsClick = () => navigation.navigate('AllPolls');
+    newPollClick = () => navigation.navigate('NewPoll');
   }
 
   return [
@@ -40,7 +42,7 @@ export default ({
       auth: true,
       backgroundColor: 'red',
       flex: buttonFlex,
-      onPress: () => console.log('new poll'),
+      onPress: newPollClick,
       text: 'New Poll',
     },
     {

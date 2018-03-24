@@ -3,34 +3,12 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+import getSubText from './getSubText';
+
 const SubHeader = props => {
-  const { loading, location, nav } = props;
-  const urls = {
-    '/': 'Menu',
-    '/all-polls': 'All Polls',
-  };
-  const routeName =
-    Platform.OS === 'web'
-      ? urls[location.pathname]
-      : nav.routes[nav.index].routeName;
-  const info = {
-    Menu: {
-      color: '#9F64C0',
-      text: 'Menu',
-    },
-    AllPolls: {
-      color: 'orange',
-      text: 'All Polls',
-    },
-  };
-  const fallback = {
-    color: 'red',
-    text: 'New Poll',
-  };
+  const { color, text } = getSubText(props);
 
-  const { color, text } = info[routeName] || fallback;
-
-  return loading ? null : (
+  return props.loading ? null : (
     <View style={subHeaderStyle}>
       <Text style={[subHeaderTextStyle, { color }]}>{text}</Text>
     </View>
