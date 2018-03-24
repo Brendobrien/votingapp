@@ -1,16 +1,38 @@
 import React from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-// TODO: screenText/background from Nav
 const SubHeader = props => {
-  const { history, loading, nav } = props;
-  const color = '#9F64C0';
-  const screenText = 'Menu';
+  const { loading, location, nav } = props;
+  const urls = {
+    '/': 'Menu',
+    '/all-polls': 'All Polls',
+  };
+  const routeName =
+    Platform.OS === 'web'
+      ? urls[location.pathname]
+      : nav.routes[nav.index].routeName;
+  const info = {
+    Menu: {
+      color: '#9F64C0',
+      text: 'Menu',
+    },
+    AllPolls: {
+      color: 'orange',
+      text: 'All Polls',
+    },
+  };
+  const fallback = {
+    color: 'red',
+    text: 'New Poll',
+  };
+
+  const { color, text } = info[routeName] || fallback;
 
   return loading ? null : (
     <View style={subHeaderStyle}>
-      <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
+      <Text style={[subHeaderTextStyle, { color }]}>{text}</Text>
     </View>
   );
 };
