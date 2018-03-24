@@ -1,13 +1,16 @@
 import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import Loading from '../Loading';
 
 // TODO: screenText/background in Redux State
 const backgroundColor = '#9F64C0';
 const Header = ({
   children,
   history,
+  loading,
   location,
   screenText = 'Menu',
   color = 'red',
@@ -35,12 +38,13 @@ const Header = ({
           <View />
         </View>
       )}
-
-      <View style={subHeaderStyle}>
-        <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
-      </View>
+      {loading ? null : (
+        <View style={subHeaderStyle}>
+          <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
+        </View>
+      )}
     </View>
-    {children}
+    {loading ? <Loading /> : children}
   </View>
 );
 
@@ -75,4 +79,6 @@ const {
   },
 });
 
-export default withRouter(Header);
+const mapStateToProps = ({ loading }) => ({ loading });
+
+export default connect(mapStateToProps)(withRouter(Header));

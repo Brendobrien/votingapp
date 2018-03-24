@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { connect } from 'react-redux';
 
+import Loading from '../Loading';
+
 import goBack from '../../navigation/goBack';
 import goHome from '../../navigation/goHome';
 
@@ -12,6 +14,7 @@ const Header = ({
   color = 'red',
   goBack,
   goHome,
+  loading,
   nav,
   screenText = 'Menu',
 }) => (
@@ -38,11 +41,13 @@ const Header = ({
           <View />
         </View>
       )}
-      <View style={subHeaderStyle}>
-        <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
-      </View>
+      {loading ? null : (
+        <View style={subHeaderStyle}>
+          <Text style={[subHeaderTextStyle, { color }]}>{screenText}</Text>
+        </View>
+      )}
     </View>
-    {children}
+    {loading ? <Loading /> : children}
   </View>
 );
 
@@ -77,7 +82,7 @@ const {
   },
 });
 
-const mapStateToProps = ({ nav }) => ({ nav });
+const mapStateToProps = ({ loading, nav }) => ({ loading, nav });
 
 export default connect(mapStateToProps, {
   goBack,
