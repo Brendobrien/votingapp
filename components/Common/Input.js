@@ -9,7 +9,7 @@ class Input extends React.Component {
   };
 
   render() {
-    const { invalid, onChangeText, placeholder } = this.props;
+    const { fontSize, invalid, onChangeText, placeholder } = this.props;
 
     return (
       <View style={containerStyle}>
@@ -23,7 +23,7 @@ class Input extends React.Component {
               onChangeText(text);
             }}
             onSubmitEditing={Keyboard.dismiss}
-            style={inputStyle}
+            style={[inputStyle, { fontSize: fontSize || 15 }]}
             placeholder={placeholder}
           />
         </View>

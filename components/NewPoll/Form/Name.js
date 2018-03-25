@@ -3,15 +3,21 @@ import { StyleSheet, View } from 'react-native';
 
 import Input from '../../Common/Input';
 
-import messages from '../../../helpers/messages';
-
-export default ({ eventType, initialValue, invalid, onChangeText }) => (
-  <View style={containerStyle}>
+export default ({
+  backgroundColor,
+  fontSize = 15,
+  initialValue,
+  invalid,
+  onChangeText,
+  placeholder,
+}) => (
+  <View style={[containerStyle, { backgroundColor }]}>
     <Input
+      fontSize={fontSize}
       initialValue={initialValue}
       invalid={invalid}
       onChangeText={onChangeText}
-      placeholder={messages.newPollName}
+      placeholder={placeholder}
     />
   </View>
 );
