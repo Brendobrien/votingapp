@@ -8,6 +8,7 @@ import {
   SIGN_IN_FACEBOOK_SUCCESS,
 } from '../types';
 import goInfo from '../../../navigation/goInfo';
+import updateFirebase from '../../firebase/updateFirebase';
 
 export default (
   dispatch,
@@ -62,11 +63,7 @@ export default (
         `/user/picture`
       ] = photoURL;
       updates[`/user/email`] = email;
-
-      await firebase
-        .database()
-        .ref(`/state/${uid}`)
-        .update(updates);
+      await updateFirebase('', updates);
 
       dispatch({
         type: SIGN_IN_FACEBOOK_SUCCESS,

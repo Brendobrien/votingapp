@@ -1,10 +1,10 @@
 import firebase from 'firebase';
 
-export default async id => {
+export default async (id, userid) => {
   const {
     currentUser,
   } = firebase.auth();
-  const { uid } = currentUser;
+  const uid = userid || currentUser.uid;
 
   const model = await firebase
     .database()

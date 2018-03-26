@@ -1,7 +1,6 @@
 import React from 'react';
 import { YellowBox } from 'react-native';
 import { Provider } from 'react-redux';
-import firebase from 'firebase';
 import _ from 'lodash';
 
 import initFirebase from '../state/firebase/initFirebase';

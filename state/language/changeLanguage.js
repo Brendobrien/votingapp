@@ -4,6 +4,7 @@ import {
   CHANGE_LANGUAGE_SUCCESS,
   CHANGE_LANGUAGE_FAIL,
 } from './types';
+import updateFirebase from '../firebase/updateFirebase';
 
 export default language => async dispatch => {
   dispatch({
@@ -15,11 +16,9 @@ export default language => async dispatch => {
   } = firebase.auth();
   if (currentUser != null) {
     try {
-      const { uid } = currentUser;
-      await firebase
-        .database()
-        .ref(`state/${uid}/language`)
-        .set(language);
+      await updateFirebase('', {
+        language,
+      });
 
       dispatch({
         type: CHANGE_LANGUAGE_SUCCESS,

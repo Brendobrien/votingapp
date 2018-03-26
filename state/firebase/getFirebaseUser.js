@@ -16,19 +16,29 @@ const getUser = () => async dispatch => {
     type: GET_FIREBASE_USER_PENDING,
   });
 
-  let user = {};
   try {
     const value = await onceFirebase(
       '',
     );
-    dispatch({
-      type: GET_FIREBASE_USER_SUCCESS,
-      payload: value,
-    });
-    dispatch({
-      type: LOADING,
-      payload: false,
-    });
+    if (value) {
+      dispatch({
+        type: GET_FIREBASE_USER_SUCCESS,
+        payload: value,
+      });
+      dispatch({
+        type: LOADING,
+        payload: false,
+      });
+    } else {
+      dispatch({
+        type: GET_FIREBASE_USER_FAIL,
+        payload: 'no firebase user',
+      });
+      dispatch({
+        type: LOADING,
+        payload: false,
+      });
+    }
   } catch (e) {
     dispatch({
       type: GET_FIREBASE_USER_FAIL,
