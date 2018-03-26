@@ -26,7 +26,6 @@ export default (
       console.log(payload);
       return state;
     case GET_FIREBASE_USER_SUCCESS:
-      console.log(payload);
       return {
         ...state,
         ...payload.user,

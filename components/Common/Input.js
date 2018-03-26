@@ -81,7 +81,8 @@ const {
     fontSize: 15,
   },
   invalidStyle: {
-    borderColor: colors.red,
+    borderColor: '#9F64C0',
+    borderWidth: 5,
   },
 });
 

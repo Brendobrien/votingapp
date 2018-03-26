@@ -3,11 +3,10 @@ import {
   Dimensions,
   StyleSheet,
   View,
-  ScrollView,
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import Name from './Name';
+import FormRow from './FormRow';
 import Row from '../../Common/Row';
 import messages from '../messages';
 
@@ -15,20 +14,23 @@ class Form extends React.Component {
   state = {
     name: '',
     nameInvalid: false,
-  };
-
-  changeState = (name, value) => {
-    this.setState({ [name]: value });
+    yes: '',
+    yesInvalid: false,
+    no: '',
+    noInvalid: false,
   };
 
   onSubmit = () => {
     const {
       name,
-      nameInvalid,
+      yes,
+      no,
     } = this.state;
 
     const invalidObj = {
-      nameInvalid: name,
+      nameInvalid: !name,
+      yesInvalid: !yes,
+      noInvalid: !no,
     };
     const invalid = Object.values(
       invalidObj,
@@ -36,66 +38,66 @@ class Form extends React.Component {
 
     if (!invalid) {
       console.log('valid');
+      this.setState({ ...invalidObj });
     } else {
       console.log('invalid');
       this.setState({ ...invalidObj });
     }
   };
+
   render() {
+    console.log(this.state);
     const { language } = this.props;
     const {
       NameText,
-      Si,
-      No,
+      YesText,
+      NoText,
       Submit,
     } = messages;
-    let { width } = Dimensions.get(
-      'window',
+    let width = Math.min(
+      Dimensions.get('window').width,
+      700,
     );
-    width = Math.min(width, 700);
 
     return (
       <View style={containerStyle}>
-        <Name
+        <FormRow
           backgroundColor="orange"
           fontSize={width / 375 * 19}
           initialValue={this.state.name}
           invalid={
             this.state.nameInvalid
           }
-          onChangeText={this.changeState.bind(
-            null,
-            'name',
-          )}
+          onChangeText={name =>
+            this.setState({ name })
+          }
           placeholder={
             NameText[language]
           }
         />
-        <Name
+        <FormRow
           backgroundColor="green"
           fontSize={width / 375 * 14}
-          initialValue={this.state.name}
+          initialValue={this.state.yes}
           invalid={
-            this.state.nameInvalid
+            this.state.yesInvalid
           }
-          onChangeText={this.changeState.bind(
-            null,
-            'name',
-          )}
-          placeholder={Si[language]}
+          onChangeText={yes =>
+            this.setState({ yes })
+          }
+          placeholder={
+            YesText[language]
+          }
         />
-        <Name
+        <FormRow
           backgroundColor="red"
           fontSize={width / 375 * 13}
-          initialValue={this.state.name}
-          invalid={
-            this.state.nameInvalid
+          initialValue={this.state.no}
+          invalid={this.state.noInvalid}
+          onChangeText={no =>
+            this.setState({ no })
           }
-          onChangeText={this.changeState.bind(
-            null,
-            'name',
-          )}
-          placeholder={No[language]}
+          placeholder={NoText[language]}
         />
         <Row
           backgroundColor="blue"

@@ -5,13 +5,13 @@ export default {
     Spanish:
       'Cosa Para Gustar o No Gustar',
   },
-  Si: {
+  YesText: {
     English:
       'Reasons To Like It (comma separated)',
     Spanish:
       'Razones Para Gustar (separado por comas)',
   },
-  No: {
+  NoText: {
     English:
       'Reasons Not To Like It (comma separated)',
     Spanish:

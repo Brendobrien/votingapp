@@ -1,6 +1,8 @@
 import React from 'react';
 import {
+  Keyboard,
   Platform,
+  TouchableWithoutFeedback,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -15,13 +17,25 @@ const Header = props => {
   const screenText = 'Menu';
 
   return (
-    <View style={{ flex: 1 }}>
-      <View>
-        <MainHeader />
-        <SubHeader />
+    <TouchableWithoutFeedback
+      onPress={
+        Platform.OS !== 'web'
+          ? Keyboard.dismiss
+          : null
+      }
+    >
+      <View style={{ flex: 1 }}>
+        <View>
+          <MainHeader />
+          <SubHeader />
+        </View>
+        {loading ? (
+          <Loading />
+        ) : (
+          children
+        )}
       </View>
-      {loading ? <Loading /> : children}
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
