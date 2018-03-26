@@ -4,12 +4,12 @@ export default {
     Spanish: 'Persona Para Gustar o No Gustar',
   },
   Si: {
-    English: 'You Like? Why? (comma separated)',
-    Spanish: 'Te Gusta? Porque? (separado por comas)',
+    English: "Reasons To Like 'Em (comma separated)",
+    Spanish: 'Razones Para Gustar (separado por comas)',
   },
   No: {
-    English: "Don't Like? Why? (comma separated)",
-    Spanish: 'No Te Gusta? Porque? (separado por comas)',
+    English: "Reasons Not To Like 'Em (comma separated)",
+    Spanish: 'Razones Para No Gustar (separado por comas)',
   },
   Submit: {
     English: 'SUBMIT',
@@ -17,6 +17,6 @@ export default {
   },
   AuthError: {
     English: 'Only Authenticated Users Can Make Polls',
-    Spanish: 'Solo los usuarios autenticados pueden realizar encuestas',
+    Spanish: 'Solo los usuarios autenticados pueden crear encuestas',
   },
 };

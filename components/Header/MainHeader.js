@@ -11,39 +11,46 @@ import { withRouter } from 'react-router-dom';
 
 import goBack from '../../navigation/goBack';
 import goHome from '../../navigation/goHome';
+import goInfo from '../../navigation/goInfo';
 
 const backgroundColor = '#9F64C0';
-const MainHeader = props => {
-  let rootBool, backFunc, homeFunc;
+const MainHeader = ({ dispatch, history, location, nav }) => {
+  let infoBool, rootBool;
   if (Platform.OS === 'web') {
-    const { history, location } = props;
-    rootBool = location.pathname !== '/';
-    backFunc = () => history.goBack();
-    homeFunc = () => history.push('/');
+    infoBool = location.pathname === '/info';
+    rootBool = location.pathname === '/';
   } else {
-    const { goBack, goHome, nav } = props;
-    rootBool = nav.index !== 0;
-    backFunc = goBack;
-    homeFunc = goHome;
+    infoBool = nav.routes[nav.index].routeName === 'Info';
+    rootBool = nav.index === 0;
   }
 
-  return rootBool ? (
+  return (
     <View style={headerStyle}>
-      <TouchableOpacity onPress={backFunc}>
-        <Text style={headerTextStyle}>{'<'}</Text>
+      <TouchableOpacity
+        disabled={rootBool}
+        onPress={() => goBack(dispatch, history)}
+      >
+        <Text
+          style={[
+            headerTextStyle,
+            { color: rootBool ? backgroundColor : 'white' },
+          ]}
+        >
+          {'<'}
+        </Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={homeFunc}>
+      <TouchableOpacity
+        disabled={rootBool}
+        onPress={() => goHome(dispatch, history)}
+      >
         <Text style={headerTextStyle}>Gustar</Text>
       </TouchableOpacity>
-      <View>
-        <Text style={[headerTextStyle, { color: backgroundColor }]}>{'<'}</Text>
-      </View>
-    </View>
-  ) : (
-    <View style={headerStyle}>
-      <View />
-      <Text style={headerTextStyle}>Gustar</Text>
-      <View />
+      <TouchableOpacity
+        disabled={infoBool}
+        onPress={() => goInfo(dispatch, history)}
+      >
+        <Text style={headerTextStyle}>{'?'}</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -67,7 +74,4 @@ const mapStateToProps = ({ nav }) => ({ nav });
 const MainHeaderComp =
   Platform.OS === 'web' ? withRouter(MainHeader) : MainHeader;
 
-export default connect(mapStateToProps, {
-  goBack,
-  goHome,
-})(MainHeaderComp);
+export default connect(mapStateToProps)(MainHeaderComp);

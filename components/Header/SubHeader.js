@@ -10,7 +10,9 @@ const SubHeader = props => {
 
   return props.loading ? null : (
     <View style={subHeaderStyle}>
-      <Text style={[subHeaderTextStyle, { color }]}>{text}</Text>
+      <Text style={[subHeaderTextStyle, { color }]}>
+        {text[props.language]}
+      </Text>
     </View>
   );
 };
@@ -29,7 +31,11 @@ const { subHeaderStyle, subHeaderTextStyle } = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({ loading, nav }) => ({ loading, nav });
+const mapStateToProps = ({ language, loading, nav }) => ({
+  language,
+  loading,
+  nav,
+});
 const SubHeaderComp = Platform.OS === 'web' ? withRouter(SubHeader) : SubHeader;
 
 export default connect(mapStateToProps)(SubHeaderComp);

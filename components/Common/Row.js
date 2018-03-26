@@ -9,7 +9,10 @@ import {
 
 export default ({ backgroundColor, flex, onPress, text }) => (
   <View style={[buttonStyle, { backgroundColor, flex }]} key={text}>
-    <TouchableOpacity onPress={onPress}>
+    <TouchableOpacity
+      disabled={typeof onPress !== 'function'}
+      onPress={onPress}
+    >
       <Text style={textStyle}>{text}</Text>
     </TouchableOpacity>
   </View>

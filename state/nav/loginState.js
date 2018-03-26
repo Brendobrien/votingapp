@@ -3,8 +3,8 @@ export default {
   routes: [
     {
       index: 0,
-      // routeName: 'Menu',
-      routeName: 'NewPoll',
+      routeName: 'Menu',
+      // routeName: 'NewPoll',
       key: 'Init',
     },
   ],

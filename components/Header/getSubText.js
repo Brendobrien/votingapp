@@ -5,6 +5,7 @@ export default props => {
   const urls = {
     '/': 'Menu',
     '/all-polls': 'AllPolls',
+    '/info': 'Info',
     '/new-poll': 'NewPoll',
   };
   const routeName =
@@ -15,19 +16,38 @@ export default props => {
   const info = {
     AllPolls: {
       color: 'orange',
-      text: 'Todos Personas',
+      text: {
+        English: 'All People',
+        Spanish: 'Todos Personas',
+      },
+    },
+    Info: {
+      color: '#9F64C0',
+      text: {
+        English: 'Info',
+        Spanish: 'Información',
+      },
     },
     Menu: {
       color: '#9F64C0',
-      text: 'Menú',
+      text: {
+        English: 'Menu',
+        Spanish: 'Menú',
+      },
     },
     NewPoll: {
       color: 'red',
-      text: 'Nueva Persona',
+      text: {
+        English: 'New Person',
+        Spanish: 'Nueva Persona',
+      },
     },
     fallback: {
       color: 'green',
-      text: 'Mis Personas',
+      text: {
+        English: 'My People',
+        Spanish: 'Mis Personas',
+      },
     },
   };
 

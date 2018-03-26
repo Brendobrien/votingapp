@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { Dimensions, StyleSheet, View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import Name from './Name';
+import Row from '../../Common/Row';
 import messages from '../messages';
 
 class Form extends React.Component {
@@ -33,12 +34,14 @@ class Form extends React.Component {
   render() {
     const { language } = this.props;
     const { NameText, Si, No, Submit } = messages;
+    let { width } = Dimensions.get('window');
+    width = Math.min(width, 700);
 
     return (
       <View style={containerStyle}>
         <Name
           backgroundColor="orange"
-          fontSize={20}
+          fontSize={width / 375 * 19}
           initialValue={this.state.name}
           invalid={this.state.nameInvalid}
           onChangeText={this.changeState.bind(null, 'name')}
@@ -46,7 +49,7 @@ class Form extends React.Component {
         />
         <Name
           backgroundColor="green"
-          fontSize={16}
+          fontSize={width / 375 * 14}
           initialValue={this.state.name}
           invalid={this.state.nameInvalid}
           onChangeText={this.changeState.bind(null, 'name')}
@@ -54,19 +57,17 @@ class Form extends React.Component {
         />
         <Name
           backgroundColor="red"
-          fontSize={15}
+          fontSize={width / 375 * 13}
           initialValue={this.state.name}
           invalid={this.state.nameInvalid}
           onChangeText={this.changeState.bind(null, 'name')}
           placeholder={No[language]}
         />
-        <Name
+        <Row
           backgroundColor="blue"
-          fontSize={30}
-          initialValue={this.state.name}
-          invalid={this.state.nameInvalid}
-          onChangeText={this.changeState.bind(null, 'name')}
-          placeholder={Submit[language]}
+          flex={0.25}
+          text={messages.Submit[language]}
+          onPress={this.onSubmit}
         />
       </View>
     );
