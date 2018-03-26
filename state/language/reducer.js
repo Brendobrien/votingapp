@@ -2,6 +2,7 @@ import {
   CHANGE_LANGUAGE_FAIL,
   CHANGE_LANGUAGE_SUCCESS,
 } from './types';
+import { GET_FIREBASE_USER_SUCCESS } from '../firebase/types';
 
 const INIT_STATE = 'Spanish';
 export default (
@@ -14,6 +15,8 @@ export default (
       return state;
     case CHANGE_LANGUAGE_SUCCESS:
       return payload;
+    case GET_FIREBASE_USER_SUCCESS:
+      return payload.language;
     default:
       return state;
   }

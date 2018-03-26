@@ -19,7 +19,7 @@ const getUser = () => async dispatch => {
   let user = {};
   try {
     const value = await onceFirebase(
-      'user',
+      '',
     );
     dispatch({
       type: GET_FIREBASE_USER_SUCCESS,
