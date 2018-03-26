@@ -8,14 +8,8 @@ export default dispatch => {
     .auth()
     .onAuthStateChanged(user => {
       if (user != null) {
-        console.log(
-          'We are authenticated now!',
-        );
         dispatch(getFirebaseUser());
       } else {
-        console.log(
-          'Not authenticated',
-        );
         dispatch(setLoading(false));
       }
     });

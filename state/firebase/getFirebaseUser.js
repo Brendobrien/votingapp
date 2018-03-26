@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import onceFirebase from './onceFirebase';
 import { LOADING } from '../loading/types';
 import {
   GET_FIREBASE_USER_FAIL,
@@ -17,27 +18,17 @@ const getUser = () => async dispatch => {
 
   let user = {};
   try {
-    const {
-      currentUser,
-    } = firebase.auth();
-    const { uid } = currentUser;
-    const userRef = firebase
-      .database()
-      .ref(`state/${uid}/user`);
-    await userRef.once(
-      'value',
-      userSnapshot => {
-        const value = userSnapshot.val();
-        dispatch({
-          type: GET_FIREBASE_USER_SUCCESS,
-          payload: value,
-        });
-        dispatch({
-          type: LOADING,
-          payload: false,
-        });
-      },
+    const value = await onceFirebase(
+      'user',
     );
+    dispatch({
+      type: GET_FIREBASE_USER_SUCCESS,
+      payload: value,
+    });
+    dispatch({
+      type: LOADING,
+      payload: false,
+    });
   } catch (e) {
     dispatch({
       type: GET_FIREBASE_USER_FAIL,

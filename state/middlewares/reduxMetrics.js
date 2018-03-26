@@ -2,23 +2,23 @@ import pushDataToFirebase from '../firebase/pushDataToFirebase';
 import { LOADING } from '../loading/types';
 
 const reduxMetrics = () => next => action => {
+  const { payload, type } = action;
   const data = {};
-  switch (action.type) {
+  switch (type) {
     case LOADING: {
     }
     default: {
-      data.type = action.type;
-      const { payload } = action;
+      data.type = type;
       if (
         typeof payload === 'boolean' ||
-        action.payload
+        payload
       ) {
         if (
           typeof payload !== 'object' ||
           typeof payload.getMonth ===
             'function'
         ) {
-          data.payload = action.payload;
+          data.payload = payload;
         } else {
           data.payload = 'Object';
         }

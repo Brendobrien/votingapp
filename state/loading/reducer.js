@@ -3,11 +3,11 @@ import { LOADING } from './types';
 const INIT_STATE = true;
 export default (
   state = INIT_STATE,
-  action,
+  { payload, type },
 ) => {
-  switch (action.type) {
+  switch (type) {
     case LOADING:
-      return action.payload;
+      return payload;
     default:
       return state;
   }

@@ -87,6 +87,10 @@ const {
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: 16,
+    paddingTop:
+      Platform.OS === 'android'
+        ? 36
+        : 16,
   },
   headerTextStyle: {
     fontSize: 30,

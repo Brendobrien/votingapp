@@ -1,13 +1,19 @@
-import { CHANGE_LANGUAGE } from './types';
+import {
+  CHANGE_LANGUAGE_FAIL,
+  CHANGE_LANGUAGE_SUCCESS,
+} from './types';
 
 const INIT_STATE = 'Spanish';
 export default (
   state = INIT_STATE,
-  action,
+  { payload, type },
 ) => {
-  switch (action.type) {
-    case CHANGE_LANGUAGE:
-      return action.payload;
+  switch (type) {
+    case CHANGE_LANGUAGE_FAIL:
+      console.log(payload);
+      return state;
+    case CHANGE_LANGUAGE_SUCCESS:
+      return payload;
     default:
       return state;
   }
