@@ -1,5 +1,10 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View, ScrollView } from 'react-native';
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  ScrollView,
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import Name from './Name';
@@ -17,12 +22,17 @@ class Form extends React.Component {
   };
 
   onSubmit = () => {
-    const { name, nameInvalid } = this.state;
+    const {
+      name,
+      nameInvalid,
+    } = this.state;
 
     const invalidObj = {
       nameInvalid: name,
     };
-    const invalid = Object.values(invalidObj).reduce((a, b) => a || b);
+    const invalid = Object.values(
+      invalidObj,
+    ).reduce((a, b) => a || b);
 
     if (!invalid) {
       console.log('valid');
@@ -33,8 +43,15 @@ class Form extends React.Component {
   };
   render() {
     const { language } = this.props;
-    const { NameText, Si, No, Submit } = messages;
-    let { width } = Dimensions.get('window');
+    const {
+      NameText,
+      Si,
+      No,
+      Submit,
+    } = messages;
+    let { width } = Dimensions.get(
+      'window',
+    );
     width = Math.min(width, 700);
 
     return (
@@ -43,30 +60,49 @@ class Form extends React.Component {
           backgroundColor="orange"
           fontSize={width / 375 * 19}
           initialValue={this.state.name}
-          invalid={this.state.nameInvalid}
-          onChangeText={this.changeState.bind(null, 'name')}
-          placeholder={NameText[language]}
+          invalid={
+            this.state.nameInvalid
+          }
+          onChangeText={this.changeState.bind(
+            null,
+            'name',
+          )}
+          placeholder={
+            NameText[language]
+          }
         />
         <Name
           backgroundColor="green"
           fontSize={width / 375 * 14}
           initialValue={this.state.name}
-          invalid={this.state.nameInvalid}
-          onChangeText={this.changeState.bind(null, 'name')}
+          invalid={
+            this.state.nameInvalid
+          }
+          onChangeText={this.changeState.bind(
+            null,
+            'name',
+          )}
           placeholder={Si[language]}
         />
         <Name
           backgroundColor="red"
           fontSize={width / 375 * 13}
           initialValue={this.state.name}
-          invalid={this.state.nameInvalid}
-          onChangeText={this.changeState.bind(null, 'name')}
+          invalid={
+            this.state.nameInvalid
+          }
+          onChangeText={this.changeState.bind(
+            null,
+            'name',
+          )}
           placeholder={No[language]}
         />
         <Row
           backgroundColor="blue"
           flex={0.25}
-          text={messages.Submit[language]}
+          text={
+            messages.Submit[language]
+          }
           onPress={this.onSubmit}
         />
       </View>
@@ -74,12 +110,18 @@ class Form extends React.Component {
   }
 }
 
-const { containerStyle } = StyleSheet.create({
+const {
+  containerStyle,
+} = StyleSheet.create({
   containerStyle: {
     flex: 1,
   },
 });
 
-const mapStateToProps = ({ language }) => ({ language });
+const mapStateToProps = ({
+  language,
+}) => ({ language });
 
-export default connect(mapStateToProps)(Form);
+export default connect(mapStateToProps)(
+  Form,
+);

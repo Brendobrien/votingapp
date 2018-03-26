@@ -1,5 +1,8 @@
 import React from 'react';
-import { Platform, View } from 'react-native';
+import {
+  Platform,
+  View,
+} from 'react-native';
 import { connect } from 'react-redux';
 
 import Loading from '../Loading';
@@ -22,6 +25,10 @@ const Header = props => {
   );
 };
 
-const mapStateToProps = ({ loading }) => ({ loading });
+const mapStateToProps = ({
+  loading,
+}) => ({ loading });
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(
+  Header,
+);

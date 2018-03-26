@@ -1,23 +1,38 @@
 import React from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import getSubText from './getSubText';
 
 const SubHeader = props => {
-  const { color, text } = getSubText(props);
+  const { color, text } = getSubText(
+    props,
+  );
 
   return props.loading ? null : (
     <View style={subHeaderStyle}>
-      <Text style={[subHeaderTextStyle, { color }]}>
+      <Text
+        style={[
+          subHeaderTextStyle,
+          { color },
+        ]}
+      >
         {text[props.language]}
       </Text>
     </View>
   );
 };
 
-const { subHeaderStyle, subHeaderTextStyle } = StyleSheet.create({
+const {
+  subHeaderStyle,
+  subHeaderTextStyle,
+} = StyleSheet.create({
   subHeaderStyle: {
     backgroundColor: 'white',
     flexDirection: 'row',
@@ -31,11 +46,20 @@ const { subHeaderStyle, subHeaderTextStyle } = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({ language, loading, nav }) => ({
+const mapStateToProps = ({
+  language,
+  loading,
+  nav,
+}) => ({
   language,
   loading,
   nav,
 });
-const SubHeaderComp = Platform.OS === 'web' ? withRouter(SubHeader) : SubHeader;
+const SubHeaderComp =
+  Platform.OS === 'web'
+    ? withRouter(SubHeader)
+    : SubHeader;
 
-export default connect(mapStateToProps)(SubHeaderComp);
+export default connect(mapStateToProps)(
+  SubHeaderComp,
+);

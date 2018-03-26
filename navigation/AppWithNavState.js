@@ -7,22 +7,33 @@ import authStateChange from '../state/firebase/authStateChange';
 
 class AppWithNavState extends React.Component {
   componentWillMount() {
-    authStateChange(this.props.dispatch);
+    authStateChange(
+      this.props.dispatch,
+    );
   }
 
   render() {
-    const { dispatch, nav } = this.props;
+    const {
+      dispatch,
+      nav,
+    } = this.props;
     return (
       <AppNavigator
-        navigation={addNavigationHelpers({
-          dispatch,
-          state: nav,
-        })}
+        navigation={addNavigationHelpers(
+          {
+            dispatch,
+            state: nav,
+          },
+        )}
       />
     );
   }
 }
 
-const mapStateToProps = ({ nav }) => ({ nav });
+const mapStateToProps = ({ nav }) => ({
+  nav,
+});
 
-export default connect(mapStateToProps)(AppWithNavState);
+export default connect(mapStateToProps)(
+  AppWithNavState,
+);

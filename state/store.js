@@ -1,5 +1,10 @@
 import { Platform } from 'react-native';
-import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
+import {
+  applyMiddleware,
+  combineReducers,
+  createStore,
+  compose,
+} from 'redux';
 import reduxThunk from 'redux-thunk';
 
 import reduxMetrics from './middlewares/reduxMetrics';
@@ -16,12 +21,18 @@ const appReducer = combineReducers({
   user,
 });
 
-const rootReducer = (state, action) => appReducer(state, action);
+const rootReducer = (state, action) =>
+  appReducer(state, action);
 
 const store = createStore(
   rootReducer,
   {},
-  compose(applyMiddleware(reduxThunk, reduxMetrics)),
+  compose(
+    applyMiddleware(
+      reduxThunk,
+      reduxMetrics,
+    ),
+  ),
 );
 
 export default store;

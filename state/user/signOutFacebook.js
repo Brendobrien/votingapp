@@ -6,7 +6,9 @@ import {
 } from './types';
 
 export default platform => async dispatch => {
-  dispatch({ type: SIGN_OUT_FACEBOOK_PENDING });
+  dispatch({
+    type: SIGN_OUT_FACEBOOK_PENDING,
+  });
 
   try {
     await firebase.auth().signOut();

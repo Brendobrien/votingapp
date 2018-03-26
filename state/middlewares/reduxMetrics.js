@@ -9,10 +9,14 @@ const reduxMetrics = () => next => action => {
     default: {
       data.type = action.type;
       const { payload } = action;
-      if (typeof payload === 'boolean' || action.payload) {
+      if (
+        typeof payload === 'boolean' ||
+        action.payload
+      ) {
         if (
           typeof payload !== 'object' ||
-          typeof payload.getMonth === 'function'
+          typeof payload.getMonth ===
+            'function'
         ) {
           data.payload = action.payload;
         } else {

@@ -11,13 +11,20 @@ const updateUser = newUserData => async dispatch => {
     type: UPDATE_FIREBASE_USER_PENDING,
   });
   try {
-    const { currentUser } = firebase.auth();
+    const {
+      currentUser,
+    } = firebase.auth();
     const { uid } = currentUser;
-    const userRef = firebase.database().ref(`state/${uid}/user`);
+    const userRef = firebase
+      .database()
+      .ref(`state/${uid}/user`);
     const updates = {};
-    forOwn(newUserData, (value, key) => {
-      updates[`/${key}`] = value;
-    });
+    forOwn(
+      newUserData,
+      (value, key) => {
+        updates[`/${key}`] = value;
+      },
+    );
     await userRef.update(updates);
     dispatch({
       type: UPDATE_FIREBASE_USER_SUCCESS,

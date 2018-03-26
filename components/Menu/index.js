@@ -21,7 +21,11 @@ const Menu = props => {
         <Favicon url="https://content.invisioncic.com/d154966/monthly_2017_11/G.png.cd8f93bbaa6d71c9b62e8217a0f5737f.png" />
       ) : null}
       {rows.map(
-        (x, i) => (i === 0 || auth == x.auth) && <Row {...x} key={x.text} />,
+        (x, i) =>
+          (i === 0 ||
+            auth == x.auth) && (
+            <Row {...x} key={x.text} />
+          ),
       )}
     </Header>
   );
@@ -31,9 +35,15 @@ const mapStateToProps = state => ({
   auth: state.user.auth,
 });
 
-const MenuComponent = Platform.OS === 'web' ? withRouter(Menu) : Menu;
+const MenuComponent =
+  Platform.OS === 'web'
+    ? withRouter(Menu)
+    : Menu;
 
-export default connect(mapStateToProps, {
-  signInFacebook,
-  signOutFacebook,
-})(MenuComponent);
+export default connect(
+  mapStateToProps,
+  {
+    signInFacebook,
+    signOutFacebook,
+  },
+)(MenuComponent);

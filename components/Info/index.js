@@ -7,7 +7,10 @@ import messages from './messages';
 import changeLanguage from '../../state/language/changeLanguage';
 
 const buttonFlex = 0.25;
-const Info = ({ changeLanguage, language }) => (
+const Info = ({
+  changeLanguage,
+  language,
+}) => (
   <Header>
     <Row
       backgroundColor="orange"
@@ -29,13 +32,22 @@ const Info = ({ changeLanguage, language }) => (
       flex={buttonFlex}
       text={messages.Line4[language]}
       onPress={() =>
-        changeLanguage(language === 'English' ? 'Spanish' : 'English')
+        changeLanguage(
+          language === 'English'
+            ? 'Spanish'
+            : 'English',
+        )
       }
     />
   </Header>
 );
 
-const mapStateToProps = ({ language }) => ({ language });
-export default connect(mapStateToProps, {
-  changeLanguage,
-})(Info);
+const mapStateToProps = ({
+  language,
+}) => ({ language });
+export default connect(
+  mapStateToProps,
+  {
+    changeLanguage,
+  },
+)(Info);

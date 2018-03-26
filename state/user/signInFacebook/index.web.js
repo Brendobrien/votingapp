@@ -8,16 +8,27 @@ import {
 } from '../types';
 
 export default () => async dispatch => {
-  dispatch({ type: LOADING, payload: true });
-  dispatch({ type: SIGN_IN_FACEBOOK_PENDING });
+  dispatch({
+    type: LOADING,
+    payload: true,
+  });
+  dispatch({
+    type: SIGN_IN_FACEBOOK_PENDING,
+  });
 
   try {
     const provider = new firebase.auth.FacebookAuthProvider();
     const {
       user: { providerData, uid },
-    } = await firebase.auth().signInWithPopup(provider);
+    } = await firebase
+      .auth()
+      .signInWithPopup(provider);
 
-    const { displayName, photoURL, email } = providerData[0];
+    const {
+      displayName,
+      photoURL,
+      email,
+    } = providerData[0];
 
     const updates = {};
     updates[`/user/name`] = displayName;
@@ -29,13 +40,21 @@ export default () => async dispatch => {
       .ref(`/state/${uid}`)
       .update(updates);
 
-    dispatch({ type: SIGN_IN_FACEBOOK_SUCCESS });
-    dispatch({ type: LOADING, payload: false });
+    dispatch({
+      type: SIGN_IN_FACEBOOK_SUCCESS,
+    });
+    dispatch({
+      type: LOADING,
+      payload: false,
+    });
   } catch (e) {
     dispatch({
       type: SIGN_IN_FACEBOOK_FAIL,
       payload: e,
     });
-    dispatch({ type: LOADING, payload: false });
+    dispatch({
+      type: LOADING,
+      payload: false,
+    });
   }
 };

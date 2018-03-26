@@ -10,17 +10,23 @@ export default ({
 }) => {
   let allPollsClick;
   if (Platform.OS === 'web') {
-    allPollsClick = () => history.push('/all-polls');
-    newPollClick = () => history.push('/new-poll');
+    allPollsClick = () =>
+      history.push('/all-polls');
+    newPollClick = () =>
+      history.push('/new-poll');
   } else {
-    allPollsClick = () => navigation.navigate('AllPolls');
-    newPollClick = () => navigation.navigate('NewPoll');
+    allPollsClick = () =>
+      navigation.navigate('AllPolls');
+    newPollClick = () =>
+      navigation.navigate('NewPoll');
   }
 
   return [
     {
       backgroundColor: 'orange',
-      flex: auth ? buttonFlex : buttonFlex * 2,
+      flex: auth
+        ? buttonFlex
+        : buttonFlex * 2,
       onPress: allPollsClick,
       text: 'Todos Personas',
     },
@@ -35,7 +41,8 @@ export default ({
       auth: true,
       backgroundColor: 'green',
       flex: buttonFlex,
-      onPress: () => console.log('my polls'),
+      onPress: () =>
+        console.log('my polls'),
       text: 'Mis Personas',
     },
     {

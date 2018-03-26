@@ -1,5 +1,8 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import {
+  StyleSheet,
+  View,
+} from 'react-native';
 
 import Input from '../../Common/Input';
 
@@ -11,7 +14,12 @@ export default ({
   onChangeText,
   placeholder,
 }) => (
-  <View style={[containerStyle, { backgroundColor }]}>
+  <View
+    style={[
+      containerStyle,
+      { backgroundColor },
+    ]}
+  >
     <Input
       fontSize={fontSize}
       initialValue={initialValue}
@@ -22,7 +30,9 @@ export default ({
   </View>
 );
 
-const { containerStyle } = StyleSheet.create({
+const {
+  containerStyle,
+} = StyleSheet.create({
   containerStyle: {
     backgroundColor: 'orange',
     alignItems: 'center',

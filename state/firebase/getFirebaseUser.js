@@ -7,30 +7,46 @@ import {
 } from './types';
 
 const getUser = () => async dispatch => {
-  dispatch({ type: LOADING, payload: true });
+  dispatch({
+    type: LOADING,
+    payload: true,
+  });
   dispatch({
     type: GET_FIREBASE_USER_PENDING,
   });
 
   let user = {};
   try {
-    const { currentUser } = firebase.auth();
+    const {
+      currentUser,
+    } = firebase.auth();
     const { uid } = currentUser;
-    const userRef = firebase.database().ref(`state/${uid}/user`);
-    await userRef.once('value', userSnapshot => {
-      const value = userSnapshot.val();
-      dispatch({
-        type: GET_FIREBASE_USER_SUCCESS,
-        payload: value,
-      });
-      dispatch({ type: LOADING, payload: false });
-    });
+    const userRef = firebase
+      .database()
+      .ref(`state/${uid}/user`);
+    await userRef.once(
+      'value',
+      userSnapshot => {
+        const value = userSnapshot.val();
+        dispatch({
+          type: GET_FIREBASE_USER_SUCCESS,
+          payload: value,
+        });
+        dispatch({
+          type: LOADING,
+          payload: false,
+        });
+      },
+    );
   } catch (e) {
     dispatch({
       type: GET_FIREBASE_USER_FAIL,
       payload: e,
     });
-    dispatch({ type: LOADING, payload: false });
+    dispatch({
+      type: LOADING,
+      payload: false,
+    });
   }
 };
 

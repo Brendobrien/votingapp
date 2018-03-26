@@ -14,7 +14,10 @@ const INIT_STATE = {
   auth: false,
 };
 
-export default (state = INIT_STATE, action) => {
+export default (
+  state = INIT_STATE,
+  action,
+) => {
   switch (action.type) {
     case GET_FIREBASE_USER_FAIL:
     case SIGN_IN_FACEBOOK_FAIL:
@@ -23,7 +26,11 @@ export default (state = INIT_STATE, action) => {
       console.log(action.payload);
       return state;
     case GET_FIREBASE_USER_SUCCESS:
-      return { ...state, ...action.payload, auth: true };
+      return {
+        ...state,
+        ...action.payload,
+        auth: true,
+      };
     case SIGN_OUT_FACEBOOK_SUCCESS:
       return { auth: false };
     default:

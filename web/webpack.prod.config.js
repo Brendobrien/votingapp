@@ -10,9 +10,17 @@ const {
 module.exports = {
   // ...the rest of your config
 
-  entry: [path.resolve(__dirname, '../AppWeb.js')],
+  entry: [
+    path.resolve(
+      __dirname,
+      '../AppWeb.js',
+    ),
+  ],
   module: {
-    rules: [babelLoaderConfiguration, imageLoaderConfiguration],
+    rules: [
+      babelLoaderConfiguration,
+      imageLoaderConfiguration,
+    ],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -24,13 +32,17 @@ module.exports = {
     // builds to eliminate development checks and reduce build size. You may
     // wish to include additional optimizations.
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production'),
+      'process.env.NODE_ENV': JSON.stringify(
+        'production',
+      ),
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
+    new webpack.optimize.UglifyJsPlugin(
+      {
+        compress: {
+          warnings: false,
+        },
       },
-    }),
+    ),
   ],
 
   resolve: {

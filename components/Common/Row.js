@@ -7,18 +7,36 @@ import {
   View,
 } from 'react-native';
 
-export default ({ backgroundColor, flex, onPress, text }) => (
-  <View style={[buttonStyle, { backgroundColor, flex }]} key={text}>
+export default ({
+  backgroundColor,
+  flex,
+  onPress,
+  text,
+}) => (
+  <View
+    style={[
+      buttonStyle,
+      { backgroundColor, flex },
+    ]}
+    key={text}
+  >
     <TouchableOpacity
-      disabled={typeof onPress !== 'function'}
+      disabled={
+        typeof onPress !== 'function'
+      }
       onPress={onPress}
     >
-      <Text style={textStyle}>{text}</Text>
+      <Text style={textStyle}>
+        {text}
+      </Text>
     </TouchableOpacity>
   </View>
 );
 
-const { buttonStyle, textStyle } = StyleSheet.create({
+const {
+  buttonStyle,
+  textStyle,
+} = StyleSheet.create({
   buttonStyle: {
     alignItems: 'center',
     justifyContent: 'center',

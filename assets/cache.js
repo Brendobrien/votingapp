@@ -6,5 +6,7 @@ import fonts from './fonts';
 export default () =>
   Promise.all([
     // _.values(images).map(x => Asset.fromModule(x).downloadAsync()),
-    ...fonts.map(x => Font.loadAsync(x)),
+    ...fonts.map(x =>
+      Font.loadAsync(x),
+    ),
   ]);

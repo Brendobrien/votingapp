@@ -4,10 +4,22 @@ const babelLoaderConfiguration = {
   test: /\.js$/,
   // Add every directory that needs to be compiled by Babel during the build
   include: [
-    path.resolve(__dirname, '../App.js'),
-    path.resolve(__dirname, '../AppWeb.js'),
-    path.resolve(__dirname, '../components'),
-    path.resolve(__dirname, '../navigation'),
+    path.resolve(
+      __dirname,
+      '../App.js',
+    ),
+    path.resolve(
+      __dirname,
+      '../AppWeb.js',
+    ),
+    path.resolve(
+      __dirname,
+      '../components',
+    ),
+    path.resolve(
+      __dirname,
+      '../navigation',
+    ),
     path.resolve(__dirname, '../state'),
   ],
   use: {

@@ -1,5 +1,10 @@
 import React from 'react';
-import { StyleSheet, TextInput, View, Keyboard } from 'react-native';
+import {
+  StyleSheet,
+  TextInput,
+  View,
+  Keyboard,
+} from 'react-native';
 
 import colors from '../../helpers/colors';
 
@@ -9,11 +14,21 @@ class Input extends React.Component {
   };
 
   render() {
-    const { fontSize, invalid, onChangeText, placeholder } = this.props;
+    const {
+      fontSize,
+      invalid,
+      onChangeText,
+      placeholder,
+    } = this.props;
 
     return (
       <View style={containerStyle}>
-        <View style={[inputConStyle, invalid && invalidStyle]}>
+        <View
+          style={[
+            inputConStyle,
+            invalid && invalidStyle,
+          ]}
+        >
           <TextInput
             underlineColorAndroid="transparent"
             value={this.state.text}
@@ -22,8 +37,16 @@ class Input extends React.Component {
               this.setState({ text });
               onChangeText(text);
             }}
-            onSubmitEditing={Keyboard.dismiss}
-            style={[inputStyle, { fontSize: fontSize || 15 }]}
+            onSubmitEditing={
+              Keyboard.dismiss
+            }
+            style={[
+              inputStyle,
+              {
+                fontSize:
+                  fontSize || 15,
+              },
+            ]}
             placeholder={placeholder}
           />
         </View>

@@ -7,7 +7,10 @@ const {
 } = require('./loaderConfiguration');
 
 const devServer = {
-  contentBase: path.join(__dirname, 'dist'),
+  contentBase: path.join(
+    __dirname,
+    'dist',
+  ),
   // enable HMR
   hot: true,
   // embed the webpack-dev-server runtime into the bundle
@@ -19,9 +22,18 @@ const devServer = {
 module.exports = {
   // ...the rest of your config
   devServer,
-  entry: ['babel-polyfill', path.resolve(__dirname, '../AppWeb.js')],
+  entry: [
+    'babel-polyfill',
+    path.resolve(
+      __dirname,
+      '../AppWeb.js',
+    ),
+  ],
   module: {
-    rules: [babelLoaderConfiguration, imageLoaderConfiguration],
+    rules: [
+      babelLoaderConfiguration,
+      imageLoaderConfiguration,
+    ],
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -33,7 +45,9 @@ module.exports = {
     // builds to eliminate development checks and reduce build size. You may
     // wish to include additional optimizations.
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development'),
+      'process.env.NODE_ENV': JSON.stringify(
+        'development',
+      ),
     }),
   ],
 
@@ -43,7 +57,8 @@ module.exports = {
     // `.web.js`.
     extensions: ['.web.js', '.js'],
     alias: {
-      'react-native-svg': 'react-native-svg-web',
+      'react-native-svg':
+        'react-native-svg-web',
     },
   },
 };

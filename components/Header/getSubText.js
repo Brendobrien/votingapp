@@ -1,7 +1,11 @@
 import { Platform } from 'react-native';
 
 export default props => {
-  const { loading, location, nav } = props;
+  const {
+    loading,
+    location,
+    nav,
+  } = props;
   const urls = {
     '/': 'Menu',
     '/all-polls': 'AllPolls',
@@ -51,5 +55,7 @@ export default props => {
     },
   };
 
-  return info[routeName] || info.fallback;
+  return (
+    info[routeName] || info.fallback
+  );
 };
