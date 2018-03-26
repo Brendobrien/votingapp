@@ -3,7 +3,7 @@ import { StyleSheet, View, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import Name from './Name';
-import messages from '../../../helpers/messages';
+import messages from '../messages';
 
 class Form extends React.Component {
   state = {
@@ -31,6 +31,9 @@ class Form extends React.Component {
     }
   };
   render() {
+    const { language } = this.props;
+    const { NameText, Si, No, Submit } = messages;
+
     return (
       <View style={containerStyle}>
         <Name
@@ -39,7 +42,7 @@ class Form extends React.Component {
           initialValue={this.state.name}
           invalid={this.state.nameInvalid}
           onChangeText={this.changeState.bind(null, 'name')}
-          placeholder={messages.newPollName}
+          placeholder={NameText[language]}
         />
         <Name
           backgroundColor="green"
@@ -47,7 +50,7 @@ class Form extends React.Component {
           initialValue={this.state.name}
           invalid={this.state.nameInvalid}
           onChangeText={this.changeState.bind(null, 'name')}
-          placeholder={messages.newPollSi}
+          placeholder={Si[language]}
         />
         <Name
           backgroundColor="red"
@@ -55,7 +58,7 @@ class Form extends React.Component {
           initialValue={this.state.name}
           invalid={this.state.nameInvalid}
           onChangeText={this.changeState.bind(null, 'name')}
-          placeholder={messages.newPollNo}
+          placeholder={No[language]}
         />
         <Name
           backgroundColor="blue"
@@ -63,7 +66,7 @@ class Form extends React.Component {
           initialValue={this.state.name}
           invalid={this.state.nameInvalid}
           onChangeText={this.changeState.bind(null, 'name')}
-          placeholder="SUBMIT"
+          placeholder={Submit[language]}
         />
       </View>
     );
@@ -76,4 +79,6 @@ const { containerStyle } = StyleSheet.create({
   },
 });
 
-export default connect()(Form);
+const mapStateToProps = ({ language }) => ({ language });
+
+export default connect(mapStateToProps)(Form);
