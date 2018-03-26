@@ -21,8 +21,8 @@ export default props => {
     AllPolls: {
       color: 'orange',
       text: {
-        English: 'All People',
-        Spanish: 'Todos Personas',
+        English: 'All Polls',
+        Spanish: 'Todas Encuestas',
       },
     },
     Info: {
@@ -42,15 +42,15 @@ export default props => {
     NewPoll: {
       color: 'red',
       text: {
-        English: 'New Person',
-        Spanish: 'Nueva Persona',
+        English: 'New Poll',
+        Spanish: 'Nueva Encuesta',
       },
     },
     fallback: {
       color: 'green',
       text: {
-        English: 'My People',
-        Spanish: 'Mis Personas',
+        English: 'My Polls',
+        Spanish: 'Mis Encuestas',
       },
     },
   };

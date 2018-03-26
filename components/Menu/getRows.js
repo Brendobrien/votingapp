@@ -1,9 +1,11 @@
 import { Platform } from 'react-native';
+import messages from './messages';
 
 const buttonFlex = 0.25;
 export default ({
   auth,
   history,
+  language,
   navigation,
   signInFacebook,
   signOutFacebook,
@@ -28,14 +30,14 @@ export default ({
         ? buttonFlex
         : buttonFlex * 2,
       onPress: allPollsClick,
-      text: 'Todos Personas',
+      text: messages.AllPolls[language],
     },
     {
       auth: false,
       backgroundColor: 'blue',
       flex: buttonFlex * 2,
       onPress: signInFacebook,
-      text: 'Sign In Facebook',
+      text: messages.SignIn[language],
     },
     {
       auth: true,
@@ -43,21 +45,21 @@ export default ({
       flex: buttonFlex,
       onPress: () =>
         console.log('my polls'),
-      text: 'Mis Personas',
+      text: messages.MyPolls[language],
     },
     {
       auth: true,
       backgroundColor: 'red',
       flex: buttonFlex,
       onPress: newPollClick,
-      text: 'Nueva Persona',
+      text: messages.NewPoll[language],
     },
     {
       auth: true,
       backgroundColor: 'blue',
       flex: buttonFlex,
       onPress: signOutFacebook,
-      text: 'Sign Out',
+      text: messages.SignOut[language],
     },
   ];
 };

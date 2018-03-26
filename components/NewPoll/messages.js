@@ -18,8 +18,8 @@ export default {
       'Razones Para No Gustar (separado por comas)',
   },
   Submit: {
-    English: 'SUBMIT',
-    Spanish: 'ENVIAR',
+    English: 'Submit Poll',
+    Spanish: 'Enviar Encuesta',
   },
   AuthError: {
     English:

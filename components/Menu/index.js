@@ -33,6 +33,7 @@ const Menu = props => {
 
 const mapStateToProps = state => ({
   auth: state.user.auth,
+  language: state.language,
 });
 
 const MenuComponent =

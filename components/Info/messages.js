@@ -1,25 +1,25 @@
 export default {
-  Line1: {
+  Like: {
     English:
       'To Like or Not To Like\nThat is The Question',
     Spanish:
       'Gustar o No Gustar\nEsto es La Pregunta',
   },
-  Line2: {
+  Polls: {
     English: 'Create Polls\nFor People',
     Spanish:
       'Cree Encuestas\nPara Personas',
   },
-  Line3: {
+  Why: {
     English:
       "Like 'em (Yes/No)?\nFor What Reasons?",
     Spanish:
       '¿Te Gusta (Si/No)?\n¿Por Qué?',
   },
-  Line4: {
+  Change: {
     English:
-      'Click Here\nTo Change To Spanish',
+      'Cambiar A Español\nHaga Clic Aqui',
     Spanish:
-      'Haga Clic Aqui\nPara Cambiar A Ingles',
+      'Change To English\nClick Here',
   },
 };

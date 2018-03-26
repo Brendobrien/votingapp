@@ -15,22 +15,22 @@ const Info = ({
     <Row
       backgroundColor="orange"
       flex={buttonFlex}
-      text={messages.Line1[language]}
+      text={messages.Like[language]}
     />
     <Row
       backgroundColor="green"
       flex={buttonFlex}
-      text={messages.Line2[language]}
+      text={messages.Polls[language]}
     />
     <Row
       backgroundColor="red"
       flex={buttonFlex}
-      text={messages.Line3[language]}
+      text={messages.Why[language]}
     />
     <Row
       backgroundColor="blue"
       flex={buttonFlex}
-      text={messages.Line4[language]}
+      text={messages.Change[language]}
       onPress={() =>
         changeLanguage(
           language === 'English'
