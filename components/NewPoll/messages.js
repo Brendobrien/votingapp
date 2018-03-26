@@ -1,19 +1,19 @@
 export default {
   NameText: {
     English:
-      'Person To Like or Not To Like',
+      'Thing To Like or Not To Like',
     Spanish:
-      'Persona Para Gustar o No Gustar',
+      'Cosa Para Gustar o No Gustar',
   },
   Si: {
     English:
-      "Reasons To Like 'Em (comma separated)",
+      'Reasons To Like It (comma separated)',
     Spanish:
       'Razones Para Gustar (separado por comas)',
   },
   No: {
     English:
-      "Reasons Not To Like 'Em (comma separated)",
+      'Reasons Not To Like It (comma separated)',
     Spanish:
       'Razones Para No Gustar (separado por comas)',
   },

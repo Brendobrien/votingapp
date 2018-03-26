@@ -7,8 +7,12 @@ import {
   SIGN_IN_FACEBOOK_PENDING,
   SIGN_IN_FACEBOOK_SUCCESS,
 } from '../types';
+import goInfo from '../../../navigation/goInfo';
 
-export default () => async dispatch => {
+export default (
+  dispatch,
+  history,
+) => async dispatch => {
   dispatch({
     type: LOADING,
     payload: true,
@@ -67,6 +71,7 @@ export default () => async dispatch => {
       dispatch({
         type: SIGN_IN_FACEBOOK_SUCCESS,
       });
+      goInfo(dispatch, history);
       dispatch({
         type: LOADING,
         payload: false,

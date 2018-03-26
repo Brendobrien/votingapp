@@ -8,11 +8,7 @@ import Header from '../Header';
 import Row from '../Common/Row';
 import getRows from './getRows';
 
-import signInFacebook from '../../state/user/signInFacebook';
-import signOutFacebook from '../../state/user/signOutFacebook';
-
 const Menu = props => {
-  const { auth } = props;
   const rows = getRows(props);
 
   return (
@@ -23,7 +19,7 @@ const Menu = props => {
       {rows.map(
         (x, i) =>
           (i === 0 ||
-            auth == x.auth) && (
+            props.auth == x.auth) && (
             <Row {...x} key={x.text} />
           ),
       )}
@@ -41,10 +37,6 @@ const MenuComponent =
     ? withRouter(Menu)
     : Menu;
 
-export default connect(
-  mapStateToProps,
-  {
-    signInFacebook,
-    signOutFacebook,
-  },
-)(MenuComponent);
+export default connect(mapStateToProps)(
+  MenuComponent,
+);

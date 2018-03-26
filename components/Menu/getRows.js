@@ -1,14 +1,16 @@
 import { Platform } from 'react-native';
 import messages from './messages';
 
+import signInFacebook from '../../state/user/signInFacebook';
+import signOutFacebook from '../../state/user/signOutFacebook';
+
 const buttonFlex = 0.25;
 export default ({
   auth,
+  dispatch,
   history,
   language,
   navigation,
-  signInFacebook,
-  signOutFacebook,
 }) => {
   let allPollsClick;
   if (Platform.OS === 'web') {
@@ -36,7 +38,13 @@ export default ({
       auth: false,
       backgroundColor: 'blue',
       flex: buttonFlex * 2,
-      onPress: signInFacebook,
+      onPress: () =>
+        dispatch(
+          signInFacebook(
+            dispatch,
+            history,
+          ),
+        ),
       text: messages.SignIn[language],
     },
     {
@@ -58,7 +66,8 @@ export default ({
       auth: true,
       backgroundColor: 'blue',
       flex: buttonFlex,
-      onPress: signOutFacebook,
+      onPress: () =>
+        dispatch(signOutFacebook()),
       text: messages.SignOut[language],
     },
   ];

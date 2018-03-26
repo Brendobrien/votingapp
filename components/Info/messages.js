@@ -6,13 +6,13 @@ export default {
       'Gustar o No Gustar\nEsto es La Pregunta',
   },
   Polls: {
-    English: 'Create Polls\nFor People',
+    English: 'Create Polls\nFor Things',
     Spanish:
-      'Cree Encuestas\nPara Personas',
+      'Cree Encuestas\nPara Cosas',
   },
   Why: {
     English:
-      "Like 'em (Yes/No)?\nFor What Reasons?",
+      "Like 'Em (Yes/No)?\nFor What Reasons?",
     Spanish:
       '¿Te Gusta (Si/No)?\n¿Por Qué?',
   },
