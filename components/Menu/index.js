@@ -8,24 +8,20 @@ import Header from '../Header';
 import Row from '../Common/Row';
 import getRows from './getRows';
 
-const Menu = props => {
-  const rows = getRows(props);
-
-  return (
-    <Header>
-      {Platform.OS === 'web' ? (
-        <Favicon url="https://content.invisioncic.com/d154966/monthly_2017_11/G.png.cd8f93bbaa6d71c9b62e8217a0f5737f.png" />
-      ) : null}
-      {rows.map(
-        (x, i) =>
-          (i === 0 ||
-            props.auth == x.auth) && (
-            <Row {...x} key={x.text} />
-          ),
-      )}
-    </Header>
-  );
-};
+const Menu = props => (
+  <Header>
+    {Platform.OS === 'web' ? (
+      <Favicon url="https://content.invisioncic.com/d154966/monthly_2017_11/G.png.cd8f93bbaa6d71c9b62e8217a0f5737f.png" />
+    ) : null}
+    {getRows(props).map(
+      (x, i) =>
+        (i === 0 ||
+          props.auth == x.auth) && (
+          <Row {...x} key={x.text} />
+        ),
+    )}
+  </Header>
+);
 
 const mapStateToProps = state => ({
   auth: state.user.auth,

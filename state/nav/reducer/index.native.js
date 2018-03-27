@@ -1,8 +1,19 @@
 import AppNavigator from '../../../navigation/AppNavigator';
-import loginState from '../loginState';
+
+const INIT_STATE = {
+  index: 0,
+  routes: [
+    {
+      index: 0,
+      routeName: 'Menu',
+      routeName: 'NewPoll',
+      key: 'Init',
+    },
+  ],
+};
 
 export default (
-  state = loginState,
+  state = INIT_STATE,
   action,
 ) => {
   let nextState;

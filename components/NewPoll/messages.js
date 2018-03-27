@@ -1,17 +1,17 @@
 export default {
-  NameText: {
+  nameText: {
     English:
       'Thing To Like or Not To Like',
     Spanish:
       'Cosa Para Gustar o No Gustar',
   },
-  YesText: {
+  yesText: {
     English:
       'Reasons To Like It (comma separated)',
     Spanish:
       'Razones Para Gustar (separado por comas)',
   },
-  NoText: {
+  noText: {
     English:
       'Reasons Not To Like It (comma separated)',
     Spanish:

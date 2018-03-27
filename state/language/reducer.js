@@ -16,7 +16,7 @@ export default (
     case CHANGE_LANGUAGE_SUCCESS:
       return payload;
     case GET_FIREBASE_USER_SUCCESS:
-      return payload.language;
+      return payload.language || state;
     default:
       return state;
   }
