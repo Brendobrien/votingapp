@@ -5,38 +5,35 @@ import {
 } from './types';
 import updateFirebase from '../firebase/updateFirebase';
 
-const defaultPoll = {
-  x9iq1a0F3GOUjz5VpmPlmCnKAXV2_0: {
-    name: 'ye',
-    yes: 'a, b, c',
-    no: 'e, d, f',
-  },
-};
+export default (valid, poll) =>
+  valid
+    ? {
+        type: SUBMIT_POLL_FAIL,
+        payload: 'invalid',
+      }
+    : async dispatch => {
+        dispatch({
+          type: SUBMIT_POLL_PENDING,
+        });
 
-export default (
-  poll = defaultPoll,
-) => async dispatch => {
-  dispatch({
-    type: SUBMIT_POLL_PENDING,
-  });
+        // const uid = Object.keys(
+        //   poll,
+        // )[0].split('_')[0];
 
-  const uid = Object.keys(
-    poll,
-  )[0].split('_')[0];
-  try {
-    await updateFirebase(
-      'polls',
-      poll,
-      uid,
-    );
-    dispatch({
-      type: SUBMIT_POLL_SUCCESS,
-      payload: poll,
-    });
-  } catch (e) {
-    dispatch({
-      type: SUBMIT_POLL_FAIL,
-      payload: e,
-    });
-  }
-};
+        try {
+          // await updateFirebase(
+          //   'polls',
+          //   poll,
+          //   uid,
+          // );
+          dispatch({
+            type: SUBMIT_POLL_SUCCESS,
+            payload: poll,
+          });
+        } catch (e) {
+          dispatch({
+            type: SUBMIT_POLL_FAIL,
+            payload: e,
+          });
+        }
+      };

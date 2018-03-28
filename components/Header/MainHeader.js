@@ -71,7 +71,7 @@ const MainHeader = ({
         }
       >
         <Text style={headerTextStyle}>
-          {'?'}
+          {'? '}
         </Text>
       </TouchableOpacity>
     </View>

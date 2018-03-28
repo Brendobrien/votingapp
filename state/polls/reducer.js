@@ -1,10 +1,17 @@
 import {
   SUBMIT_POLL_FAIL,
   SUBMIT_POLL_SUCCESS,
-} from './types;';
+} from './types';
 
+const INIT_STATE = {
+  x9iq1a0F3GOUjz5VpmPlmCnKAXV2_0: {
+    name: 'ye',
+    yes: 'a, b, c',
+    no: 'e, d, f',
+  },
+};
 export default (
-  state = {},
+  state = INIT_STATE,
   { payload, type },
 ) => {
   switch (type) {

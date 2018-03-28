@@ -10,6 +10,7 @@ import FormRow from './FormRow';
 import Row from '../../Common/Row';
 import messages from '../messages';
 import getFormRows from './getFormRows';
+import submitPoll from '../../../state/polls/submitPoll';
 
 class Form extends React.Component {
   state = {
@@ -36,6 +37,8 @@ class Form extends React.Component {
     const valid = Object.values(
       invalidObj,
     ).reduce((a, b) => a || b);
+
+    this.props.submitPoll(valid);
   };
 
   render() {
@@ -85,8 +88,12 @@ const {
 
 const mapStateToProps = ({
   language,
-}) => ({ language });
+  polls,
+}) => ({ language, polls });
 
-export default connect(mapStateToProps)(
-  Form,
-);
+export default connect(
+  mapStateToProps,
+  {
+    submitPoll,
+  },
+)(Form);

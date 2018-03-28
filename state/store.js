@@ -12,12 +12,14 @@ import reduxMetrics from './middlewares/reduxMetrics';
 import language from './language/reducer';
 import loading from './loading/reducer';
 import nav from './nav/reducer';
+import polls from './polls/reducer';
 import user from './user/reducer';
 
 const appReducer = combineReducers({
   language,
   loading,
   nav,
+  polls,
   user,
 });
 
