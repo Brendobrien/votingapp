@@ -17,9 +17,12 @@ const getUser = () => async dispatch => {
   });
 
   try {
+    console.log('ye');
     const value = await onceFirebase(
       '',
     );
+    console.log('nah');
+
     if (value) {
       dispatch({
         type: GET_FIREBASE_USER_SUCCESS,

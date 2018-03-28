@@ -10,6 +10,7 @@ import AllPolls from '../components/AllPolls';
 import Chart from '../components/Chart';
 import Info from '../components/Info';
 import Menu from '../components/Menu';
+import MyPolls from '../components/MyPolls';
 import NewPoll from '../components/NewPoll';
 
 import authStateChange from '../state/firebase/authStateChange';
@@ -41,6 +42,10 @@ class WebNavigator extends React.Component {
           <Route
             path="/info"
             component={Info}
+          />
+          <Route
+            path="/my-polls"
+            component={MyPolls}
           />
           <Route
             path="/new-poll"

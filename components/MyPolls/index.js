@@ -12,7 +12,7 @@ const colors = [
   'red',
   'blue',
 ];
-const AllPolls = ({ polls }) => (
+const MyPolls = ({ polls }) => (
   <Header>
     <ScrollView
       contentContainerStyle={{
@@ -27,6 +27,7 @@ const AllPolls = ({ polls }) => (
             }
             flex={buttonFlex}
             key={i}
+            minHeight={100}
             text={polls[x].name}
             onPress={() =>
               console.log(x)
@@ -43,5 +44,5 @@ const mapStateToProps = ({
 }) => ({ polls });
 
 export default connect(mapStateToProps)(
-  AllPolls,
+  MyPolls,
 );

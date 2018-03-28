@@ -10,13 +10,18 @@ import {
 export default ({
   backgroundColor,
   flex,
+  minHeight,
   onPress,
   text,
 }) => (
   <View
     style={[
       buttonStyle,
-      { backgroundColor, flex },
+      {
+        backgroundColor,
+        flex,
+        minHeight,
+      },
     ]}
     key={text}
   >

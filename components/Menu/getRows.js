@@ -12,17 +12,20 @@ export default ({
   language,
   navigation,
 }) => {
-  let allPollsClick;
   if (Platform.OS === 'web') {
     allPollsClick = () =>
       history.push('/all-polls');
     newPollClick = () =>
       history.push('/new-poll');
+    myPollsClick = () =>
+      history.push('/my-polls');
   } else {
     allPollsClick = () =>
       navigation.navigate('AllPolls');
     newPollClick = () =>
       navigation.navigate('NewPoll');
+    myPollsClick = () =>
+      navigation.navigate('MyPolls');
   }
 
   return [
@@ -51,8 +54,7 @@ export default ({
       auth: true,
       backgroundColor: 'green',
       flex: buttonFlex,
-      onPress: () =>
-        console.log('my polls'),
+      onPress: myPollsClick,
       text: messages.MyPolls[language],
     },
     {

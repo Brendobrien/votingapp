@@ -4,15 +4,20 @@ export default async (id, userid) => {
   const {
     currentUser,
   } = firebase.auth();
-  const uid = userid || currentUser.uid;
+  if (currentUser) {
+    const uid =
+      userid || currentUser.uid;
 
-  const model = await firebase
-    .database()
-    .ref(`/state/${uid}/${id}`);
+    const model = await firebase
+      .database()
+      .ref(`/state/${uid}/${id}`);
 
-  const snapshot = await model.once(
-    'value',
-  );
+    const snapshot = await model.once(
+      'value',
+    );
 
-  return snapshot.val();
+    return snapshot.val();
+  } else {
+    return false;
+  }
 };

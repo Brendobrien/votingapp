@@ -11,6 +11,7 @@ export default props => {
     '/all-polls': 'AllPolls',
     '/info': 'Info',
     '/new-poll': 'NewPoll',
+    '/my-polls': 'MyPolls',
   };
   const routeName =
     Platform.OS === 'web'
@@ -46,11 +47,18 @@ export default props => {
         Spanish: 'Nueva Encuesta',
       },
     },
-    fallback: {
+    MyPolls: {
       color: 'green',
       text: {
         English: 'My Polls',
         Spanish: 'Mis Encuestas',
+      },
+    },
+    fallback: {
+      color: 'blue',
+      text: {
+        English: '404',
+        Spanish: '404',
       },
     },
   };
