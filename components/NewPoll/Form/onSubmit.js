@@ -2,7 +2,7 @@ import submitPoll from '../../../state/polls/submitPoll';
 
 export default (
   changeState,
-  { dispatch, polls },
+  { dispatch, history },
   { name, yes, no },
 ) => {
   const invalidObj = {
@@ -22,7 +22,8 @@ export default (
     submitPoll(
       valid,
       { name, yes, no },
-      polls,
+      dispatch,
+      history,
     ),
   );
 };

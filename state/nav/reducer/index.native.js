@@ -6,7 +6,7 @@ const INIT_STATE = {
     {
       index: 0,
       routeName: 'Menu',
-      routeName: 'NewPoll',
+      // routeName: 'NewPoll',
       key: 'Init',
     },
   ],

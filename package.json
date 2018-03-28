@@ -38,7 +38,8 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.6.0",
     "redux-persist": "^4.8.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "uuid": "^3.2.1"
   },
   "jest": {
     "preset": "jest-expo"

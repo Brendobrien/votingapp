@@ -1,12 +1,20 @@
 import firebase from 'firebase';
+import uuidv4 from 'uuid/v4';
 import {
   SUBMIT_POLL_FAIL,
   SUBMIT_POLL_PENDING,
   SUBMIT_POLL_SUCCESS,
 } from './types';
+import onceFirebase from '../firebase/onceFirebase';
 import updateFirebase from '../firebase/updateFirebase';
+import goBack from '../../navigation/goBack';
 
-export default (valid, poll, polls) =>
+export default (
+  valid,
+  poll,
+  dispatch,
+  history,
+) =>
   valid
     ? {
         type: SUBMIT_POLL_FAIL,
@@ -18,13 +26,12 @@ export default (valid, poll, polls) =>
         });
 
         const {
-          uid,
-        } = firebase.auth().currentUser;
-        const id = `${uid}_${
-          Object.keys(polls).length
-        }`;
+          currentUser: { uid },
+        } = firebase.auth();
         const update = {};
-        update[id] = poll;
+        update[
+          `${uid}___${uuidv4()}`
+        ] = poll;
 
         try {
           await updateFirebase(
@@ -35,6 +42,7 @@ export default (valid, poll, polls) =>
             type: SUBMIT_POLL_SUCCESS,
             payload: update,
           });
+          goBack(dispatch, history);
         } catch (e) {
           dispatch({
             type: SUBMIT_POLL_FAIL,

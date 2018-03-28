@@ -1,9 +1,11 @@
 import React from 'react';
 import {
   Dimensions,
+  Platform,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import FormRow from './FormRow';
 import Row from '../../Common/Row';
@@ -64,9 +66,12 @@ class Form extends React.Component {
 
 const mapStateToProps = ({
   language,
-  polls,
-}) => ({ language, polls });
+}) => ({ language });
+const FormComp =
+  Platform.OS === 'web'
+    ? withRouter(Form)
+    : Form;
 
 export default connect(mapStateToProps)(
-  Form,
+  FormComp,
 );
