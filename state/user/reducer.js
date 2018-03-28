@@ -27,7 +27,6 @@ export default (
       return state;
     case GET_FIREBASE_USER_SUCCESS:
       return {
-        ...state,
         ...payload.user,
         auth: true,
       };

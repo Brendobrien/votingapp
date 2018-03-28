@@ -2,19 +2,16 @@ import {
   SUBMIT_POLL_FAIL,
   SUBMIT_POLL_SUCCESS,
 } from './types';
+import { GET_FIREBASE_USER_SUCCESS } from '../firebase/types';
 
-const INIT_STATE = {
-  x9iq1a0F3GOUjz5VpmPlmCnKAXV2_0: {
-    name: 'ye',
-    yes: 'a, b, c',
-    no: 'e, d, f',
-  },
-};
+const INIT_STATE = {};
 export default (
   state = INIT_STATE,
   { payload, type },
 ) => {
   switch (type) {
+    case GET_FIREBASE_USER_SUCCESS:
+      return payload.polls || state;
     case SUBMIT_POLL_FAIL:
       console.log(payload);
       return state;

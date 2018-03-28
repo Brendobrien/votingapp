@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   Dimensions,
-  StyleSheet,
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
@@ -10,7 +9,7 @@ import FormRow from './FormRow';
 import Row from '../../Common/Row';
 import messages from '../messages';
 import getFormRows from './getFormRows';
-import submitPoll from '../../../state/polls/submitPoll';
+import onSubmit from './onSubmit';
 
 class Form extends React.Component {
   state = {
@@ -26,36 +25,15 @@ class Form extends React.Component {
     this.setState({ [name]: value });
   }
 
-  onSubmit = () => {
-    const invalidObj = {
-      nameInvalid: !this.state.name,
-      yesInvalid: !this.state.yes,
-      noInvalid: !this.state.no,
-    };
-    this.setState({ ...invalidObj });
-
-    const valid = Object.values(
-      invalidObj,
-    ).reduce((a, b) => a || b);
-
-    this.props.submitPoll(valid);
-  };
-
   render() {
     const {
       changeState,
-      onSubmit,
       props,
       state,
     } = this;
-    const rows = getFormRows(
-      changeState.bind(this),
-      props,
-      state,
-    );
 
     return (
-      <View style={containerStyle}>
+      <View style={{ flex: 1 }}>
         {getFormRows(
           changeState.bind(this),
           props,
@@ -71,29 +49,24 @@ class Form extends React.Component {
               props.language
             ]
           }
-          onPress={onSubmit}
+          onPress={() =>
+            onSubmit(
+              changeState.bind(this),
+              props,
+              state,
+            )
+          }
         />
       </View>
     );
   }
 }
 
-const {
-  containerStyle,
-} = StyleSheet.create({
-  containerStyle: {
-    flex: 1,
-  },
-});
-
 const mapStateToProps = ({
   language,
   polls,
 }) => ({ language, polls });
 
-export default connect(
-  mapStateToProps,
-  {
-    submitPoll,
-  },
-)(Form);
+export default connect(mapStateToProps)(
+  Form,
+);
