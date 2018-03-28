@@ -2,9 +2,7 @@ import React from 'react';
 import {
   StyleSheet,
   Text,
-  TouchableHighlight,
   TouchableOpacity,
-  View,
 } from 'react-native';
 
 export default ({
@@ -14,7 +12,11 @@ export default ({
   onPress,
   text,
 }) => (
-  <View
+  <TouchableOpacity
+    disabled={
+      typeof onPress !== 'function'
+    }
+    onPress={onPress}
     style={[
       buttonStyle,
       {
@@ -25,17 +27,10 @@ export default ({
     ]}
     key={text}
   >
-    <TouchableOpacity
-      disabled={
-        typeof onPress !== 'function'
-      }
-      onPress={onPress}
-    >
-      <Text style={textStyle}>
-        {text}
-      </Text>
-    </TouchableOpacity>
-  </View>
+    <Text style={textStyle}>
+      {text}
+    </Text>
+  </TouchableOpacity>
 );
 
 const {

@@ -66,6 +66,86 @@ const INIT_STATE = {
     yes: 'b',
     no: 'b',
   },
+  da: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  db: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
+  dc: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  dd: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
+  aaa: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  aab: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
+  aac: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  aad: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
+  aba: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  abb: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
+  abc: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  abd: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
+  aca: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  acb: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
+  acc: {
+    name: 'a',
+    yes: 'a',
+    no: 'a',
+  },
+  acd: {
+    name: 'b',
+    yes: 'b',
+    no: 'b',
+  },
 };
 export default (
   state = INIT_STATE,

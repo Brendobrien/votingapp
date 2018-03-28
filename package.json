@@ -8,12 +8,13 @@
   "scripts": {
     "build-web": "webpack --config web/webpack.config.js",
     "expo": "exp start -i",
+    "expo-offline": "exp start -i --offline",
     "flow": "flow .",
     "format": "prettier --single-quote --trailing-comma all --write --print-width 40 '{.,assets,components,helpers,navigation,state}/**/*.js'",
     "jest": "node_modules/.bin/jest",
-    "offline": "exp start -i --offline",
     "precommit": "lint-staged",
-    "web": "webpack-dev-server --https --config web/webpack.config.js --hot"
+    "web": "webpack-dev-server --https --config web/webpack.config.js --hot",
+    "web-offline": "webpack-dev-server --config web/webpack.config.js --hot"
   },
   "lint-staged": {
     "*.js": [

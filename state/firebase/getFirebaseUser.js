@@ -17,11 +17,9 @@ const getUser = () => async dispatch => {
   });
 
   try {
-    console.log('ye');
     const value = await onceFirebase(
       '',
     );
-    console.log('nah');
 
     if (value) {
       dispatch({

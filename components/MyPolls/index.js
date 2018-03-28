@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 
 import Header from '../Header';
-import Row from '../Common/Row';
+import MyRow from './MyRow';
 
 const buttonFlex = 0.25;
 const colors = [
@@ -21,7 +21,7 @@ const MyPolls = ({ polls }) => (
     >
       {Object.keys(polls).map(
         (x, i) => (
-          <Row
+          <MyRow
             backgroundColor={
               colors[i % 4]
             }
