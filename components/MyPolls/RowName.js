@@ -6,24 +6,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import goToRoute from '../../navigation/goToRoute';
 
-const RowName = ({
+export default ({
   backgroundColor,
-  dispatch,
-  history,
+  onPress,
   text,
 }) => (
   <TouchableOpacity
-    onPress={() =>
-      goToRoute(
-        dispatch,
-        history,
-        'PollYesNo',
-      )
-    }
+    onPress={onPress}
     style={[
       buttonStyle,
       { backgroundColor },
@@ -49,10 +39,3 @@ const {
     textAlign: 'center',
   },
 });
-
-const RowNameComp =
-  Platform.OS === 'web'
-    ? withRouter(RowName)
-    : RowName;
-
-export default connect()(RowNameComp);

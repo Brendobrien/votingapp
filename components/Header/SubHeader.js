@@ -50,10 +50,12 @@ const mapStateToProps = ({
   language,
   loading,
   nav,
+  polls,
 }) => ({
   language,
   loading,
   nav,
+  polls,
 });
 const SubHeaderComp =
   Platform.OS === 'web'

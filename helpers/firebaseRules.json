@@ -1,0 +1,42 @@
+{
+  "rules": {
+    "data": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid"
+      } 
+    },
+    "state": {
+      "$uid": {
+        ".read": "$uid === auth.uid",
+        ".write": "$uid === auth.uid",
+        "polls": {
+          ".read": true,
+        	".write": "$uid === auth.uid",
+          "$pollId": {
+            "yes" : {
+              ".read": true,
+              ".write": true
+            },
+            "no": {
+              ".read": true,
+              ".write": true
+            }
+          }
+        },
+        "votes": {
+          ".read": true,
+        	".write": "$uid === auth.uid"
+        }
+      } 
+    },
+    "unAuth": {
+      "$ip" : {
+        "votes": {
+          ".read": true,
+        	".write": true
+        }
+      }
+    }
+  }
+}

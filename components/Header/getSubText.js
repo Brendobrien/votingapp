@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+import queryString from 'query-string';
 import { routes } from '../../navigation/mapRoutes';
 
 export default props => {
@@ -6,13 +7,22 @@ export default props => {
     loading,
     location,
     nav,
+    polls,
   } = props;
-  const routeName =
+  const [routeName, params] =
     Platform.OS === 'web'
-      ? routes[location.pathname]
-      : nav.routes[nav.index].routeName;
+      ? [
+          routes[location.pathname],
+          queryString.parse(
+            location.search,
+          ),
+        ]
+      : [
+          nav.routes[nav.index]
+            .routeName,
+          nav.routes[nav.index].params,
+        ];
 
-  console.log(routeName);
   const info = {
     AllPolls: {
       color: 'orange',
@@ -47,6 +57,23 @@ export default props => {
       text: {
         English: 'My Polls',
         Spanish: 'Mis Encuestas',
+      },
+    },
+    PollYesNo: {
+      color: 'blue',
+      text: {
+        English:
+          params && params.pollId
+            ? polls[
+                params.pollId
+              ].name.substring(0, 25)
+            : 'Poll: Yes or No',
+        Spanish:
+          params && params.pollId
+            ? polls[
+                params.pollId
+              ].name.substring(0, 25)
+            : 'Encuesta: Si o No',
       },
     },
     fallback: {

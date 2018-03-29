@@ -1,18 +1,26 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import {
+  Platform,
+  ScrollView,
+} from 'react-native';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import Header from '../Header';
 import MyRow from './MyRow';
+import goToRoute from '../../navigation/goToRoute';
 
-const buttonFlex = 0.25;
 const colors = [
   'orange',
   'green',
   'red',
   'blue',
 ];
-const MyPolls = ({ polls }) => (
+const MyPolls = ({
+  dispatch,
+  history,
+  polls,
+}) => (
   <Header>
     <ScrollView
       contentContainerStyle={{
@@ -25,12 +33,15 @@ const MyPolls = ({ polls }) => (
             backgroundColor={
               colors[i % 4]
             }
-            flex={buttonFlex}
             key={i}
-            minHeight={100}
             text={polls[x].name}
             onPress={() =>
-              console.log(x)
+              goToRoute(
+                dispatch,
+                history,
+                'PollYesNo',
+                x,
+              )
             }
           />
         ),
@@ -39,10 +50,15 @@ const MyPolls = ({ polls }) => (
   </Header>
 );
 
+const MyPollsComp =
+  Platform.OS === 'web'
+    ? withRouter(MyPolls)
+    : MyPolls;
+
 const mapStateToProps = ({
   polls,
 }) => ({ polls });
 
 export default connect(mapStateToProps)(
-  MyPolls,
+  MyPollsComp,
 );
