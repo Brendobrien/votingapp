@@ -1,4 +1,5 @@
 import { Platform } from 'react-native';
+import { routes } from '../../navigation/mapRoutes';
 
 export default props => {
   const {
@@ -6,18 +7,12 @@ export default props => {
     location,
     nav,
   } = props;
-  const urls = {
-    '/': 'Menu',
-    '/all-polls': 'AllPolls',
-    '/info': 'Info',
-    '/new-poll': 'NewPoll',
-    '/my-polls': 'MyPolls',
-  };
   const routeName =
     Platform.OS === 'web'
-      ? urls[location.pathname]
+      ? routes[location.pathname]
       : nav.routes[nav.index].routeName;
 
+  console.log(routeName);
   const info = {
     AllPolls: {
       color: 'orange',

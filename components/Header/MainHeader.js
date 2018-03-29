@@ -11,7 +11,7 @@ import { withRouter } from 'react-router-dom';
 
 import goBack from '../../navigation/goBack';
 import goHome from '../../navigation/goHome';
-import goInfo from '../../navigation/goInfo';
+import goToRoute from '../../navigation/goToRoute';
 
 const backgroundColor = '#9F64C0';
 const MainHeader = ({
@@ -38,7 +38,11 @@ const MainHeader = ({
       <TouchableOpacity
         disabled={rootBool}
         onPress={() =>
-          goBack(dispatch, history)
+          goBack(
+            dispatch,
+            history,
+            'Info',
+          )
         }
       >
         <Text
@@ -67,7 +71,11 @@ const MainHeader = ({
       <TouchableOpacity
         disabled={infoBool}
         onPress={() =>
-          goInfo(dispatch, history)
+          goToRoute(
+            dispatch,
+            history,
+            'Info',
+          )
         }
       >
         <Text style={headerTextStyle}>

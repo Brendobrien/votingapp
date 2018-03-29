@@ -24,6 +24,11 @@ class App extends React.Component {
       }
     };
     initFirebase();
+    fetch(
+      'https://api.ipify.org?format=json',
+    )
+      .then(x => x.json())
+      .then(x => console.log(x));
   }
 
   render() {

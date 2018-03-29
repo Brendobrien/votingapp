@@ -7,7 +7,7 @@ import {
   SIGN_IN_FACEBOOK_PENDING,
   SIGN_IN_FACEBOOK_SUCCESS,
 } from '../types';
-import goInfo from '../../../navigation/goInfo';
+import goToRoute from '../../../navigation/goToRoute';
 import updateFirebase from '../../firebase/updateFirebase';
 
 export default (
@@ -68,7 +68,11 @@ export default (
       dispatch({
         type: SIGN_IN_FACEBOOK_SUCCESS,
       });
-      goInfo(dispatch, history);
+      goToRoute(
+        dispatch,
+        history,
+        'Info',
+      );
       dispatch({
         type: LOADING,
         payload: false,
