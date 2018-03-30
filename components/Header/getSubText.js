@@ -1,6 +1,7 @@
 import { Platform } from 'react-native';
 import queryString from 'query-string';
 import { routes } from '../../navigation/mapRoutes';
+import getPollText from './getPollText';
 
 export default props => {
   const {
@@ -23,7 +24,13 @@ export default props => {
           nav.routes[nav.index].params,
         ];
 
-  const info = {
+  const pollText = getPollText(
+    params,
+    polls,
+    routeName,
+  );
+
+  const subText = {
     AllPolls: {
       color: 'orange',
       text: {
@@ -59,26 +66,8 @@ export default props => {
         Spanish: 'Mis Encuestas',
       },
     },
-    PollYesNo: {
-      color: 'blue',
-      text:
-        params &&
-        params.pollId &&
-        polls[params.pollId]
-          ? {
-              English: polls[
-                params.pollId
-              ].name.substring(0, 25),
-              Spanish: polls[
-                params.pollId
-              ].name.substring(0, 25),
-            }
-          : {
-              English: '404',
-              Spanish: '404',
-            },
-    },
-    fallback: {
+    ...pollText,
+    Four04: {
       color: 'blue',
       text: {
         English: '404',
@@ -88,6 +77,6 @@ export default props => {
   };
 
   return (
-    info[routeName] || info.fallback
+    subText[routeName] || subText.Four04
   );
 };

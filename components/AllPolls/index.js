@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Header from '../Header';
 import Row from '../Common/Row';
 
-const buttonFlex = 0.25;
 const colors = [
   'orange',
   'green',
@@ -25,7 +24,7 @@ const AllPolls = ({ polls }) => (
             backgroundColor={
               colors[i % 4]
             }
-            flex={buttonFlex}
+            flex={1}
             key={i}
             text={polls[x].name}
             onPress={() =>

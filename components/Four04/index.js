@@ -8,7 +8,11 @@ export default connect(
   ({ language }) => ({ language }),
 )(({ language }) => (
   <View
-    style={{ flex: 1, padding: 50 }}
+    style={{
+      backgroundColor: 'white',
+      flex: 1,
+      padding: 50,
+    }}
   >
     <Row
       backgroundColor="white"

@@ -36,10 +36,11 @@ const {
     justifyContent: 'space-around',
   },
   subHeaderTextStyle: {
+    color: 'white',
     fontSize: 20,
     fontWeight: '900',
-    color: 'white',
     margin: 2,
+    textAlign: 'center',
   },
 });
 

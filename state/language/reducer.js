@@ -4,7 +4,7 @@ import {
 } from './types';
 import { GET_FIREBASE_USER_SUCCESS } from '../firebase/types';
 
-const INIT_STATE = 'Spanish';
+const INIT_STATE = 'English';
 export default (
   state = INIT_STATE,
   { payload, type },

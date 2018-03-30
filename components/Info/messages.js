@@ -3,7 +3,7 @@ export default {
     English:
       'To Like or Not To Like\nThat is The Question',
     Spanish:
-      'Gustar o No Gustar\nEsto es La Pregunta',
+      'Gustar o No Gustar\nEsa es La Pregunta',
   },
   Polls: {
     English: 'Create Polls\nFor Things',

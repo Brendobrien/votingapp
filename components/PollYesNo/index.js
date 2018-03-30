@@ -24,22 +24,20 @@ const PollYesNo = ({
         )
       : nav.routes[nav.index].params;
 
-  // location && !location.search && console.log(location.search);
-  // if (typeof params === 'undefined' || !params.pollId) {
-  //   goToHome(dispatch, history)
-  // }
-
   return (
     <Header>
       <Row
         backgroundColor="green"
         flex={percentSi}
-        text={`Si\n${percentSi * 100}%`}
+        text={`Yes\n${percentSi *
+          100}%`}
         onPress={() =>
           goToRoute(
             dispatch,
             history,
             'PollWhy',
+            params.pollId,
+            'Yes',
           )
         }
       />
@@ -52,6 +50,8 @@ const PollYesNo = ({
             dispatch,
             history,
             'PollWhy',
+            params.pollId,
+            'No',
           )
         }
       />
