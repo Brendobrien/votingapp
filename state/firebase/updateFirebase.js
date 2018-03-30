@@ -4,6 +4,7 @@ export default async (
   id,
   obj,
   userid,
+  root = 'state',
 ) => {
   const {
     currentUser,
@@ -12,7 +13,7 @@ export default async (
 
   const model = await firebase
     .database()
-    .ref(`/state/${uid}/${id}`);
+    .ref(`/${root}/${uid}/${id}`);
 
   await model.update(obj);
 };

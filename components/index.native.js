@@ -9,7 +9,7 @@ import store from '../state/store';
 import AppWithNavState from '../navigation/AppWithNavState';
 
 class App extends React.Component {
-  componentWillMount() {
+  async componentWillMount() {
     YellowBox.ignoreWarnings([
       'Setting a timer',
     ]);
@@ -24,11 +24,6 @@ class App extends React.Component {
       }
     };
     initFirebase();
-    fetch(
-      'https://api.ipify.org?format=json',
-    )
-      .then(x => x.json())
-      .then(x => console.log(x));
   }
 
   render() {
