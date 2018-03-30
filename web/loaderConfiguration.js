@@ -18,6 +18,10 @@ const babelLoaderConfiguration = {
     ),
     path.resolve(
       __dirname,
+      '../helpers',
+    ),
+    path.resolve(
+      __dirname,
       '../navigation',
     ),
     path.resolve(__dirname, '../state'),

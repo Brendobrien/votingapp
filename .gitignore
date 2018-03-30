@@ -4,3 +4,5 @@ npm-debug.*
 .DS_Store
 .idea/*
 state/firebase/initFirebase.js
+web/dist/*.js
+web/dist/*.js.map

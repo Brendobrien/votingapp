@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Clipboard,
   Platform,
   StyleSheet,
   Text,
@@ -9,26 +10,36 @@ import {
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import goToRoute from '../../navigation/goToRoute';
+import { firebaseUrl } from '../../helpers/constants';
 
-const EditButton = ({
+const ShareButton = ({
   dispatch,
   history,
   language,
+  pollId,
 }) => (
   <TouchableOpacity
     onPress={() =>
-      goToRoute(
-        dispatch,
-        history,
-        'Info',
+      console.log(
+        `${firebaseUrl}/poll-yes-no?pollId=${pollId}`,
       )
     }
     style={buttonStyle}
   >
-    <Text style={textStyle}>
+    <Text
+      style={[
+        textStyle,
+        {
+          fontSize:
+            language === 'English'
+              ? 30
+              : 20,
+        },
+      ]}
+    >
       {language === 'English'
-        ? 'Edit'
-        : 'Editar'}
+        ? 'Share'
+        : 'Compartir'}
     </Text>
   </TouchableOpacity>
 );
@@ -45,16 +56,16 @@ const {
   },
   textStyle: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 20,
     textAlign: 'center',
   },
 });
 
-const EditButtonComp =
+const ShareButtonComp =
   Platform.OS === 'web'
-    ? withRouter(EditButton)
-    : EditButton;
+    ? withRouter(ShareButton)
+    : ShareButton;
 
 export default connect(
   ({ language }) => ({ language }),
-)(EditButtonComp);
+)(ShareButtonComp);

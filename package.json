@@ -7,11 +7,10 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "build-web": "webpack --config web/webpack.config.js",
+    "deploy-web": "yarn run build-web && firebase deploy",
     "expo": "exp start -i",
     "expo-offline": "exp start -i --offline",
-    "flow": "flow .",
     "format": "prettier --single-quote --trailing-comma all --write --print-width 40 '{.,assets,components,helpers,navigation,state}/**/*.js'",
-    "jest": "node_modules/.bin/jest",
     "precommit": "lint-staged",
     "web": "webpack-dev-server --https --config web/webpack.config.js --hot",
     "web-offline": "webpack-dev-server --config web/webpack.config.js --hot"
@@ -29,29 +28,22 @@
     "query-string": "^6.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-facebook-login": "^4.0.1",
     "react-favicon": "^0.0.13",
     "react-native": "https://github.com/expo/react-native/archive/sdk-25.0.0.tar.gz",
-    "react-native-svg": "^6.0.1-rc.3",
-    "react-native-svg-web": "^1.0.1",
     "react-native-web": "^0.3.2",
     "react-navigation": "^1.0.0-beta.11",
     "react-redux": "^5.0.4",
     "react-router-dom": "^4.2.2",
     "redux": "^3.6.0",
-    "redux-persist": "^4.8.0",
     "redux-thunk": "^2.2.0",
     "uuid": "^3.2.1"
-  },
-  "jest": {
-    "preset": "jest-expo"
   },
   "devDependencies": {
     "babel-eslint": "^8.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-react-native-web": "^0.3.0-rc.4",
     "babel-preset-react-native": "^4.0.0",
-    "exp": "^50.0.1",
+    "exp": "^51.1.0",
     "flow-bin": "^0.56.0",
     "husky": "^0.13.3",
     "jest-expo": "24.0.0",

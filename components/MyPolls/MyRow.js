@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import RowName from './RowName';
 import DeleteButton from './DeleteButton';
-import EditButton from './EditButton';
+import ShareButton from './ShareButton';
 
 export default props => (
   <View
@@ -14,7 +14,9 @@ export default props => (
   >
     <RowName {...props} />
     <View style={{ flex: 0.3 }}>
-      <EditButton />
+      <ShareButton
+        pollId={props.pollId}
+      />
       <DeleteButton />
     </View>
   </View>

@@ -11,7 +11,7 @@ import {
 } from '../firebase/types';
 
 const INIT_STATE = {
-  auth: true,
+  auth: false,
 };
 
 export default (

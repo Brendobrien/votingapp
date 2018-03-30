@@ -33,7 +33,8 @@ const MyPolls = ({
             backgroundColor={
               colors[i % 4]
             }
-            key={i}
+            key={x}
+            pollId={x}
             text={polls[x].name}
             onPress={() =>
               goToRoute(

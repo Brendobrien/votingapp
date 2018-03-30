@@ -173,13 +173,13 @@
   dependencies:
     cross-spawn "^5.1.0"
 
-"@expo/traveling-fastlane-darwin@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@expo/traveling-fastlane-darwin/-/traveling-fastlane-darwin-1.4.6.tgz#471c408850de4f4bc67af28877f685d26d89f786"
+"@expo/traveling-fastlane-darwin@1.4.7":
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/@expo/traveling-fastlane-darwin/-/traveling-fastlane-darwin-1.4.7.tgz#f18fce83159ee6f554cd0dcb4cda2fb324887478"
 
-"@expo/traveling-fastlane-linux@1.4.6":
-  version "1.4.6"
-  resolved "https://registry.yarnpkg.com/@expo/traveling-fastlane-linux/-/traveling-fastlane-linux-1.4.6.tgz#fb8b7044d451fb3a4ae318a3f8e529f0e37452e8"
+"@expo/traveling-fastlane-linux@1.4.7":
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/@expo/traveling-fastlane-linux/-/traveling-fastlane-linux-1.4.7.tgz#c5ea23ff36789e8b3c72e9eb381235a703dc1717"
 
 "@expo/vector-icons@^6.2.0":
   version "6.2.2"
@@ -3198,9 +3198,9 @@ exit-hook@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/exit-hook/-/exit-hook-1.1.1.tgz#f05ca233b48c05d54fff07765df8507e95c02ff8"
 
-exp@^50.0.1:
-  version "50.0.1"
-  resolved "https://registry.yarnpkg.com/exp/-/exp-50.0.1.tgz#7556cecb9bd7632d75c29fe3a219c345333dee9e"
+exp@^51.1.0:
+  version "51.1.0"
+  resolved "https://registry.yarnpkg.com/exp/-/exp-51.1.0.tgz#6576fc1bd316193cfddc0838aa5e672c50069cb6"
   dependencies:
     "@expo/bunyan" "^1.8.10"
     "@expo/json-file" "^5.2.0"
@@ -3218,6 +3218,7 @@ exp@^50.0.1:
     inquirer "^5.0.1"
     lodash "^4.17.4"
     match-require "^2.1.0"
+    mkdirp "^0.5.1"
     mz "^2.6.0"
     ora "^1.3.0"
     progress "^2.0.0"
@@ -3226,10 +3227,10 @@ exp@^50.0.1:
     slash "^1.0.0"
     source-map-support "^0.4.1"
     untildify "^3.0.2"
-    xdl "48.0.6"
+    xdl "48.1.4"
   optionalDependencies:
-    "@expo/traveling-fastlane-darwin" "1.4.6"
-    "@expo/traveling-fastlane-linux" "1.4.6"
+    "@expo/traveling-fastlane-darwin" "1.4.7"
+    "@expo/traveling-fastlane-linux" "1.4.7"
 
 expand-brackets@^0.1.4:
   version "0.1.5"
@@ -5197,7 +5198,7 @@ json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
+json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -5451,7 +5452,7 @@ lock@^0.1.2, lock@~0.1.2:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/lock/-/lock-0.1.4.tgz#fec7deaef17e7c3a0a55e1da042803e25d91745d"
 
-lodash-es@^4.17.4, lodash-es@^4.2.0, lodash-es@^4.2.1:
+lodash-es@^4.2.0, lodash-es@^4.2.1:
   version "4.17.4"
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.4.tgz#dcc1d7552e150a0640073ba9cb31d70f032950e7"
 
@@ -7068,10 +7069,6 @@ react-dom@^16.2.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-facebook-login@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/react-facebook-login/-/react-facebook-login-4.0.1.tgz#7d43672ee86e3f2cd9e8758de1e61eb66a212611"
-
 react-favicon@^0.0.13:
   version "0.0.13"
   resolved "https://registry.yarnpkg.com/react-favicon/-/react-favicon-0.0.13.tgz#5fec4f3f2a7cdb39eb253d8bb2d0ceb6194a00bf"
@@ -7143,20 +7140,6 @@ react-native-scripts@1.8.1:
     qrcode-terminal "^0.11.0"
     rimraf "^2.6.1"
     xdl "47.0.4"
-
-react-native-svg-web@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-native-svg-web/-/react-native-svg-web-1.0.1.tgz#16e1784077b6e5b6c7ebd9c3829e6684211cba99"
-  dependencies:
-    prop-types "^15.5.10"
-
-react-native-svg@^6.0.1-rc.3:
-  version "6.0.1-rc.3"
-  resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-6.0.1-rc.3.tgz#9a54b6f70d350ee5f0169b3023ec6221254177fd"
-  dependencies:
-    color "^2.0.1"
-    lodash "^4.16.6"
-    pegjs "^0.10.0"
 
 "react-native-svg@https://github.com/expo/react-native-svg/archive/5.5.1-exp.1.tar.gz":
   version "5.5.1"
@@ -7452,14 +7435,6 @@ redux-logger@^2.7.4:
   resolved "https://registry.yarnpkg.com/redux-logger/-/redux-logger-2.10.2.tgz#3c5a5f0a6f32577c1deadf6655f257f82c6c3937"
   dependencies:
     deep-diff "0.3.4"
-
-redux-persist@^4.8.0:
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.8.0.tgz#17fd998949bdeef9275e4cf60ad5bbe1c73675fc"
-  dependencies:
-    json-stringify-safe "^5.0.1"
-    lodash "^4.17.4"
-    lodash-es "^4.17.4"
 
 redux-thunk@^2.2.0:
   version "2.2.0"
@@ -9381,9 +9356,9 @@ xdl@47.0.4:
     xmldom "^0.1.27"
     yesno "^0.0.1"
 
-xdl@48.0.6:
-  version "48.0.6"
-  resolved "https://registry.yarnpkg.com/xdl/-/xdl-48.0.6.tgz#9d7f45b2e538eac3cb689e2085292ba2f77e9997"
+xdl@48.1.4:
+  version "48.1.4"
+  resolved "https://registry.yarnpkg.com/xdl/-/xdl-48.1.4.tgz#95e75ab3537034508e5d0e1cb476c8c661df43b4"
   dependencies:
     "@expo/bunyan" "^1.8.10"
     "@expo/json-file" "^5.3.0"
