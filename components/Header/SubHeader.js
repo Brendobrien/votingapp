@@ -6,16 +6,14 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
-import getSubText from './getSubText';
-
-const SubHeader = props => {
-  const { color, text } = getSubText(
-    props,
-  );
-
-  return props.loading ? null : (
+const SubHeader = ({
+  color,
+  language,
+  loading,
+  text,
+}) =>
+  loading ? null : (
     <View style={subHeaderStyle}>
       <Text
         style={[
@@ -23,11 +21,10 @@ const SubHeader = props => {
           { color },
         ]}
       >
-        {text[props.language]}
+        {text[language]}
       </Text>
     </View>
   );
-};
 
 const {
   subHeaderStyle,
@@ -49,19 +46,11 @@ const {
 const mapStateToProps = ({
   language,
   loading,
-  nav,
-  polls,
 }) => ({
   language,
   loading,
-  nav,
-  polls,
 });
-const SubHeaderComp =
-  Platform.OS === 'web'
-    ? withRouter(SubHeader)
-    : SubHeader;
 
 export default connect(mapStateToProps)(
-  SubHeaderComp,
+  SubHeader,
 );

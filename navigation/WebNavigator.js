@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import AllPolls from '../components/AllPolls';
-import Chart from '../components/Chart';
+import Four04 from '../components/Four04';
 import Info from '../components/Info';
 import Menu from '../components/Menu';
 import MyPolls from '../components/MyPolls';
@@ -38,10 +38,6 @@ class WebNavigator extends React.Component {
             component={AllPolls}
           />
           <Route
-            path="/chart"
-            component={Chart}
-          />
-          <Route
             path="/info"
             component={Info}
           />
@@ -61,6 +57,7 @@ class WebNavigator extends React.Component {
             path="/poll-why"
             component={PollWhy}
           />
+          <Route component={Four04} />
         </Switch>
       </BrowserRouter>
     );

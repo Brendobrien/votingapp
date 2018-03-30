@@ -61,20 +61,22 @@ export default props => {
     },
     PollYesNo: {
       color: 'blue',
-      text: {
-        English:
-          params && params.pollId
-            ? polls[
+      text:
+        params &&
+        params.pollId &&
+        polls[params.pollId]
+          ? {
+              English: polls[
                 params.pollId
-              ].name.substring(0, 25)
-            : 'Poll: Yes or No',
-        Spanish:
-          params && params.pollId
-            ? polls[
+              ].name.substring(0, 25),
+              Spanish: polls[
                 params.pollId
-              ].name.substring(0, 25)
-            : 'Encuesta: Si o No',
-      },
+              ].name.substring(0, 25),
+            }
+          : {
+              English: '404',
+              Spanish: '404',
+            },
     },
     fallback: {
       color: 'blue',
