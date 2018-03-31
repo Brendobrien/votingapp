@@ -1,19 +1,20 @@
 import firebase from 'firebase';
 
 export default async (
-  id,
   obj,
-  userid,
-  root = 'state',
+  root = 'state/',
+  userid = true,
 ) => {
   const {
     currentUser,
   } = firebase.auth();
-  const uid = userid || currentUser.uid;
+  const uid = userid
+    ? `${currentUser.uid}/`
+    : '';
 
-  const model = await firebase
+  const model = firebase
     .database()
-    .ref(`/${root}/${uid}/${id}`);
+    .ref(`/${root}${uid}`);
 
   await model.update(obj);
 };

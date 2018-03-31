@@ -5,7 +5,6 @@ import {
   SUBMIT_POLL_PENDING,
   SUBMIT_POLL_SUCCESS,
 } from './types';
-import onceFirebase from '../firebase/onceFirebase';
 import updateFirebase from '../firebase/updateFirebase';
 import goBack from '../../navigation/goBack';
 
@@ -35,8 +34,9 @@ export default (
 
         try {
           await updateFirebase(
-            'polls',
             update,
+            'polls/',
+            false,
           );
           dispatch({
             type: SUBMIT_POLL_SUCCESS,

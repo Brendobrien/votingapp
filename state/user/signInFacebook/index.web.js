@@ -39,7 +39,7 @@ export default (
     updates[`/user/name`] = displayName;
     updates[`/user/picture`] = photoURL;
     updates[`/user/email`] = email;
-    await updateFirebase('', updates);
+    await updateFirebase(updates);
 
     dispatch({
       type: SIGN_IN_FACEBOOK_SUCCESS,

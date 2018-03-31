@@ -33,6 +33,7 @@ const {
     alignItems: 'center',
     flex: 0.7,
     justifyContent: 'center',
+    minHeight: 100,
   },
   textStyle: {
     fontSize: 30,

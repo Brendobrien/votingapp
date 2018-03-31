@@ -8,7 +8,6 @@ import {
 export default ({
   backgroundColor,
   flex,
-  minHeight,
   onPress,
   text,
 }) => (
@@ -22,7 +21,6 @@ export default ({
       {
         backgroundColor,
         flex,
-        minHeight,
       },
     ]}
     key={text}
@@ -40,6 +38,7 @@ const {
   buttonStyle: {
     alignItems: 'center',
     justifyContent: 'center',
+    minHeight: 100,
   },
   textStyle: {
     fontSize: 30,

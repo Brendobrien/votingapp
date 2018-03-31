@@ -17,9 +17,7 @@ export default () => async dispatch => {
   });
 
   try {
-    const value = await onceFirebase(
-      '',
-    );
+    const value = await onceFirebase();
 
     if (value) {
       dispatch({

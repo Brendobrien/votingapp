@@ -1,14 +1,19 @@
 import firebase from 'firebase';
 
-export default async (id, userid) => {
+export default async (
+  root = 'state/',
+  userid = true,
+) => {
   const {
     currentUser,
   } = firebase.auth();
-  const uid = userid || currentUser.uid;
+  const uid = userid
+    ? `${currentUser.uid}/`
+    : '';
 
-  const model = await firebase
+  const model = firebase
     .database()
-    .ref(`/state/${uid}/${id}`);
+    .ref(`/${root}${uid}`);
 
   const snapshot = await model.once(
     'value',

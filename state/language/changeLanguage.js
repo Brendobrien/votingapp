@@ -16,7 +16,7 @@ export default language => async dispatch => {
   } = firebase.auth();
   if (currentUser != null) {
     try {
-      await updateFirebase('', {
+      await updateFirebase({
         language,
       });
 
