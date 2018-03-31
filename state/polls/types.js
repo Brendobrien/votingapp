@@ -1,3 +1,10 @@
+export const GET_POLLS_FAIL =
+  'GET_POLLS_FAIL';
+export const GET_POLLS_PENDING =
+  'GET_POLLS_PENDING';
+export const GET_POLLS_SUCCESS =
+  'GET_POLLS_SUCCESS';
+
 export const SHARE_POLL = 'SHARE_POLL';
 
 export const SUBMIT_POLL_FAIL =
