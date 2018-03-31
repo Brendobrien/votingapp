@@ -8,22 +8,20 @@ import {
   View,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import goToRoute from '../../navigation/goToRoute';
 import { firebaseUrl } from '../../helpers/constants';
+import sharePoll from '../../state/polls/sharePoll';
 
 const ShareButton = ({
-  dispatch,
-  history,
   language,
   pollId,
+  sharePoll,
 }) => (
   <TouchableOpacity
-    onPress={() =>
-      console.log(
-        `${firebaseUrl}/poll-yes-no?pollId=${pollId}`,
-      )
-    }
+    onPress={() => {
+      const url = `${firebaseUrl}/poll-yes-no?pollId=${pollId}`;
+      Clipboard.setString(url);
+      sharePoll(url);
+    }}
     style={buttonStyle}
   >
     <Text
@@ -61,11 +59,7 @@ const {
   },
 });
 
-const ShareButtonComp =
-  Platform.OS === 'web'
-    ? withRouter(ShareButton)
-    : ShareButton;
-
 export default connect(
   ({ language }) => ({ language }),
-)(ShareButtonComp);
+  { sharePoll },
+)(ShareButton);

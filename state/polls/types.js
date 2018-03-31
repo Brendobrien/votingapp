@@ -1,3 +1,5 @@
+export const SHARE_POLL = 'SHARE_POLL';
+
 export const SUBMIT_POLL_FAIL =
   'SUBMIT_POLL_FAIL';
 export const SUBMIT_POLL_PENDING =
