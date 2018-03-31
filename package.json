@@ -7,6 +7,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "build-web": "webpack --config web/webpack.config.js",
+    "deploy-database": "firebase deploy --only database",
     "deploy-web": "yarn run build-web && firebase deploy",
     "expo": "exp start -i",
     "expo-offline": "exp start -i --offline",

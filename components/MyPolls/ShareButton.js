@@ -24,21 +24,25 @@ const ShareButton = ({
     }}
     style={buttonStyle}
   >
-    <Text
-      style={[
-        textStyle,
-        {
-          fontSize:
-            language === 'English'
-              ? 30
-              : 20,
-        },
-      ]}
-    >
-      {language === 'English'
-        ? 'Share'
-        : 'Compartir'}
-    </Text>
+    {language === 'English' ? (
+      <Text
+        style={[
+          textStyle,
+          { fontSize: 30 },
+        ]}
+      >
+        Share
+      </Text>
+    ) : (
+      <Text
+        style={[
+          textStyle,
+          { fontSize: 20 },
+        ]}
+      >
+        Compartir
+      </Text>
+    )}
   </TouchableOpacity>
 );
 

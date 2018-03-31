@@ -7,7 +7,7 @@ import {
   GET_FIREBASE_USER_SUCCESS,
 } from './types';
 
-const getUser = () => async dispatch => {
+export default () => async dispatch => {
   dispatch({
     type: LOADING,
     payload: true,
@@ -51,5 +51,3 @@ const getUser = () => async dispatch => {
     });
   }
 };
-
-export default getUser;
