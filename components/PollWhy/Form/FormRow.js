@@ -21,6 +21,10 @@ export default ({
     ]}
   >
     <Input
+      containerStyle={{
+        paddingHorizontal: 0,
+        height: 50,
+      }}
       fontSize={fontSize}
       initialValue={initialValue}
       invalid={invalid}
@@ -39,7 +43,7 @@ const {
     flex: 0.7,
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingBottom: 20,
-    paddingTop: 20,
+    // paddingVertical: 10
+    padding: 10,
   },
 });

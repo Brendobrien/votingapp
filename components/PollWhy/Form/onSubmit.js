@@ -18,7 +18,7 @@ export default (
 
   dispatch(
     submitReason(
-      true,
+      invalid,
       polls,
       params.pollId,
       reason,

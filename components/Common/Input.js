@@ -15,6 +15,7 @@ class Input extends React.Component {
 
   render() {
     const {
+      containerStyle,
       fontSize,
       invalid,
       onChangeText,
@@ -22,7 +23,12 @@ class Input extends React.Component {
     } = this.props;
 
     return (
-      <View style={containerStyle}>
+      <View
+        style={[
+          mainContainerStyle,
+          containerStyle,
+        ]}
+      >
         <View
           style={[
             inputConStyle,
@@ -56,12 +62,12 @@ class Input extends React.Component {
 }
 
 const {
-  containerStyle,
+  mainContainerStyle,
   inputConStyle,
   inputStyle,
   invalidStyle,
 } = StyleSheet.create({
-  containerStyle: {
+  mainContainerStyle: {
     flex: 1,
     flexDirection: 'row',
     paddingHorizontal: 20,

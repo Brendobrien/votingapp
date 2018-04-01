@@ -1,5 +1,8 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import {
+  Platform,
+  View,
+} from 'react-native';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
@@ -47,35 +50,46 @@ const PollWhy = ({
 
     return (
       <Header>
-        {whys.map((x, i) => (
-          <Row
-            backgroundColor={
-              colors[i % 4]
-            }
-            rowStyle={
-              i == 0 && {
-                borderWidth: Math.max(
-                  20 / whys.length,
-                  10,
-                ),
-                borderColor: '#9F64C0',
-              }
-            }
-            flex={0}
-            key={i}
-            minHeight={20}
-            onPress={() =>
-              dispatch(
-                submitVote(pollId, {
-                  type,
-                  why: i,
-                }),
-              )
-            }
-            text={x}
-          />
-        ))}
-        <Form params={params} />
+        <View
+          style={{
+            flex: 1,
+            justifyContent:
+              'space-between',
+          }}
+        >
+          <View style={{ flex: 1 }}>
+            {whys.map((x, i) => (
+              <Row
+                backgroundColor={
+                  colors[i % 4]
+                }
+                rowStyle={
+                  i == 0 && {
+                    borderWidth: Math.max(
+                      20 / whys.length,
+                      10,
+                    ),
+                    borderColor:
+                      '#9F64C0',
+                  }
+                }
+                flex={0}
+                key={i}
+                minHeight={20}
+                onPress={() =>
+                  dispatch(
+                    submitVote(pollId, {
+                      type,
+                      why: i,
+                    }),
+                  )
+                }
+                text={x}
+              />
+            ))}
+          </View>
+          <Form params={params} />
+        </View>
       </Header>
     );
   }

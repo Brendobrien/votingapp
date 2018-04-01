@@ -51,10 +51,20 @@ class Form extends React.Component {
               : 'Nueva Razón (Sin Comas)'
           }
         />
-        <View style={{ flex: 0.3 }}>
+        <View
+          style={{
+            backgroundColor: 'white',
+            flex: 0.3,
+            justifyContent: 'center',
+          }}
+        >
           <Row
             backgroundColor="white"
             flex={1}
+            rowStyle={{
+              borderColor: 'black',
+              borderWidth: 1,
+            }}
             textStyle={{
               color: 'blue',
               fontSize: 20,
@@ -65,6 +75,7 @@ class Form extends React.Component {
                 ? 'Submit'
                 : 'Enviar'
             }
+            minHeight={70}
             onPress={() =>
               onSubmit(
                 changeState.bind(this),
