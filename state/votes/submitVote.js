@@ -1,8 +1,8 @@
 import firebase from 'firebase';
 import {
+  SUBMIT_VOTE_FAIL,
   SUBMIT_VOTE_PENDING,
   SUBMIT_VOTE_SUCCESS,
-  SUBMIT_VOTE_FAIL,
 } from './types';
 import updateFirebase from '../firebase/updateFirebase';
 
@@ -11,22 +11,23 @@ export default vote => async dispatch => {
     type: SUBMIT_VOTE_PENDING,
   });
 
-  // const [uid, id] = Object.keys(vote)[0].split('___')
   const {
     currentUser,
   } = firebase.auth();
   try {
+    const payload = {};
     if (currentUser != null) {
       const { uid } = currentUser;
       await updateFirebase(
-        'votes',
         vote,
-        uid,
+        'votes/',
+        true,
       );
 
+      payload[uid] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,
-        payload: vote,
+        payload,
       });
     } else {
       dispatch({
@@ -34,20 +35,20 @@ export default vote => async dispatch => {
         payload: 'currentUser is null',
       });
 
-      const ip = await fetch(
+      let { ip } = await fetch(
         'https://api.ipify.org?format=json',
       ).then(x => x.json());
-      console.log(data);
+      ip = ip.replace(/\./g, '_');
       await updateFirebase(
-        'votes',
         vote,
-        uid,
-        'unAuth',
+        `votes/${ip}`,
+        false,
       );
 
+      payload[ip] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,
-        payload: vote,
+        payload,
       });
     }
   } catch (err) {

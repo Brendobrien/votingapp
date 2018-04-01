@@ -14,6 +14,7 @@ import loading from './loading/reducer';
 import nav from './nav/reducer';
 import polls from './polls/reducer';
 import user from './user/reducer';
+import votes from './votes/reducer';
 
 const appReducer = combineReducers({
   language,
@@ -21,6 +22,7 @@ const appReducer = combineReducers({
   nav,
   polls,
   user,
+  votes,
 });
 
 const rootReducer = (state, action) =>

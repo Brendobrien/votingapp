@@ -6,6 +6,7 @@ import queryString from 'query-string';
 
 import Header from '../Header';
 import Row from '../Common/Row';
+import submitVote from '../../state/votes/submitVote';
 
 const colors = [
   'orange',
@@ -20,20 +21,16 @@ const PollWhy = ({
   nav,
   polls,
 }) => {
-  const params =
+  const { pollId, type } =
     Platform.OS === 'web'
       ? queryString.parse(
           location.search,
         )
       : nav.routes[nav.index].params;
 
-  if (
-    params &&
-    params.type &&
-    polls[params.pollId]
-  ) {
-    const whys = polls[params.pollId][
-      params.type
+  if (type && polls[pollId]) {
+    const whys = polls[pollId][
+      type
     ].split(',');
     // let whys = ['c', 'd', 'e', 'f', 'g'];
     // whys = [...whys, ...whys];
@@ -59,7 +56,13 @@ const PollWhy = ({
             key={i}
             minHeight={20}
             onPress={() =>
-              console.log('submitVote')
+              // console.log({ type, why: i })
+              dispatch(
+                submitVote({
+                  type,
+                  why: i,
+                }),
+              )
             }
             text={x}
           />

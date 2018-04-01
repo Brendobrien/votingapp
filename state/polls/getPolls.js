@@ -18,7 +18,6 @@ export default () => async dispatch => {
       'polls/',
       false,
     );
-    console.log(polls);
     dispatch({
       type: GET_POLLS_SUCCESS,
       payload: polls,
