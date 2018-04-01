@@ -3,14 +3,11 @@ import {
   GET_POLLS_PENDING,
   GET_POLLS_SUCCESS,
 } from './types';
-import { LOADING } from '../loading/types';
 import onceFirebase from '../firebase/onceFirebase';
+import setLoading from '../loading/setLoading';
 
 export default () => async dispatch => {
-  dispatch({
-    type: LOADING,
-    payload: true,
-  });
+  dispatch(setLoading(true));
   dispatch({ type: GET_POLLS_PENDING });
 
   try {
@@ -22,18 +19,12 @@ export default () => async dispatch => {
       type: GET_POLLS_SUCCESS,
       payload: polls,
     });
-    dispatch({
-      type: LOADING,
-      payload: false,
-    });
+    dispatch(setLoading(false));
   } catch (e) {
     dispatch({
       type: GET_POLLS_FAIL,
       payload: e,
     });
-    dispatch({
-      type: LOADING,
-      payload: false,
-    });
+    dispatch(setLoading(false));
   }
 };

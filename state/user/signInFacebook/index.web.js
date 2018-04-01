@@ -1,22 +1,19 @@
 import firebase from 'firebase';
 
-import { LOADING } from '../../loading/types';
 import {
   SIGN_IN_FACEBOOK_FAIL,
   SIGN_IN_FACEBOOK_PENDING,
   SIGN_IN_FACEBOOK_SUCCESS,
 } from '../types';
 import goToRoute from '../../../navigation/goToRoute';
+import setLoading from '../../loading/setLoading';
 import updateFirebase from '../../firebase/updateFirebase';
 
 export default (
   dispatch,
   history,
 ) => async dispatch => {
-  dispatch({
-    type: LOADING,
-    payload: true,
-  });
+  dispatch(setLoading(true));
   dispatch({
     type: SIGN_IN_FACEBOOK_PENDING,
   });
@@ -50,18 +47,12 @@ export default (
       history,
       'Info',
     );
-    dispatch({
-      type: LOADING,
-      payload: false,
-    });
+    dispatch(setLoading(false));
   } catch (e) {
     dispatch({
       type: SIGN_IN_FACEBOOK_FAIL,
       payload: e,
     });
-    dispatch({
-      type: LOADING,
-      payload: false,
-    });
+    dispatch(setLoading(false));
   }
 };

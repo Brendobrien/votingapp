@@ -4,6 +4,7 @@ import {
   SUBMIT_VOTE_PENDING,
   SUBMIT_VOTE_SUCCESS,
 } from './types';
+import setLoading from '../loading/setLoading';
 import updateFirebase from '../firebase/updateFirebase';
 
 export default (
@@ -11,6 +12,7 @@ export default (
   pollId,
   vote,
 ) => async dispatch => {
+  dispatch(setLoading(true));
   dispatch({
     type: SUBMIT_VOTE_PENDING,
   });
@@ -34,6 +36,7 @@ export default (
         type: SUBMIT_VOTE_SUCCESS,
         payload,
       });
+      dispatch(setLoading(false));
     } else {
       dispatch({
         type: SUBMIT_VOTE_FAIL,
@@ -52,11 +55,13 @@ export default (
         type: SUBMIT_VOTE_SUCCESS,
         payload,
       });
+      dispatch(setLoading(false));
     }
   } catch (err) {
     dispatch({
       type: SUBMIT_VOTE_FAIL,
       payload: err,
     });
+    dispatch(setLoading(true));
   }
 };

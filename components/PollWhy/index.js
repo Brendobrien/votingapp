@@ -6,6 +6,7 @@ import {
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
+import _ from 'lodash';
 
 import Form from './Form';
 import Header from '../Header';
@@ -42,11 +43,17 @@ const PollWhy = ({
     polls[params.pollId][params.type]
   ) {
     const { pollId, type } = params;
-    const whys = polls[pollId][type]
+    const myVote =
+      votes[pollId][auth ? uid : ip];
+    console.log(polls[pollId][type]);
+    console.log(myVote);
+    let whys = polls[pollId][type]
       .split(',')
-      .map(x => x.trim());
-
-    // const myVote = votes[pollId][auth ? uid : ip]
+      .map((x, i) => ({
+        flex: 0,
+        myVote: myVote.why === x.trim(),
+        name: x.trim(),
+      }));
 
     return (
       <Header>
@@ -64,7 +71,7 @@ const PollWhy = ({
                   colors[i % 4]
                 }
                 rowStyle={
-                  i == 0 && {
+                  x.myVote && {
                     borderWidth: Math.max(
                       20 / whys.length,
                       10,
@@ -73,6 +80,7 @@ const PollWhy = ({
                       '#9F64C0',
                   }
                 }
+                // flex={x.flex}
                 flex={0}
                 key={i}
                 minHeight={20}
@@ -83,12 +91,18 @@ const PollWhy = ({
                       pollId,
                       {
                         type,
-                        why: i,
+                        why: x.name,
                       },
                     ),
                   )
                 }
-                text={x}
+                text={`${x.name}${
+                  x.flex
+                    ? `\n${x.flex /
+                        allVotes.length *
+                        100}%`
+                    : ''
+                }`}
               />
             ))}
           </View>

@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 import onceFirebase from './onceFirebase';
-import { LOADING } from '../loading/types';
+import setLoading from '../loading/setLoading';
 import {
   GET_FIREBASE_USER_FAIL,
   GET_FIREBASE_USER_PENDING,
@@ -8,10 +8,7 @@ import {
 } from './types';
 
 export default () => async dispatch => {
-  dispatch({
-    type: LOADING,
-    payload: true,
-  });
+  dispatch(setLoading(true));
   dispatch({
     type: GET_FIREBASE_USER_PENDING,
   });
@@ -24,28 +21,19 @@ export default () => async dispatch => {
         type: GET_FIREBASE_USER_SUCCESS,
         payload: value,
       });
-      dispatch({
-        type: LOADING,
-        payload: false,
-      });
+      dispatch(setLoading(false));
     } else {
       dispatch({
         type: GET_FIREBASE_USER_FAIL,
         payload: 'no firebase user',
       });
-      dispatch({
-        type: LOADING,
-        payload: false,
-      });
+      dispatch(setLoading(false));
     }
   } catch (e) {
     dispatch({
       type: GET_FIREBASE_USER_FAIL,
       payload: e,
     });
-    dispatch({
-      type: LOADING,
-      payload: false,
-    });
+    dispatch(setLoading(false));
   }
 };
