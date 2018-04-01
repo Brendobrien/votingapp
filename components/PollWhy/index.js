@@ -42,18 +42,38 @@ const PollWhy = ({
     polls[params.pollId] &&
     polls[params.pollId][params.type]
   ) {
+    let whys = {};
+    let myVote = false;
+    let allVotes = [];
     const { pollId, type } = params;
-    const myVote =
-      votes[pollId][auth ? uid : ip];
-    console.log(polls[pollId][type]);
-    console.log(myVote);
-    let whys = polls[pollId][type]
+    if (votes[pollId]) {
+      myVote =
+        votes[pollId][auth ? uid : ip];
+      allVotes = Object.values(
+        votes[pollId],
+      ).filter(x => x.type === type);
+    }
+    polls[pollId][type]
       .split(',')
-      .map((x, i) => ({
-        flex: 0,
-        myVote: myVote.why === x.trim(),
-        name: x.trim(),
-      }));
+      .map(x => x.trim())
+      .forEach(x => {
+        whys[x] = {
+          flex: 0,
+          myVote:
+            myVote &&
+            myVote.type === type &&
+            myVote.why === x,
+          name: x,
+        };
+      });
+
+    allVotes &&
+      allVotes.forEach(x => {
+        whys[x.why].flex++;
+      });
+    whys = Object.values(whys).sort(
+      (a, b) => b.flex - a.flex,
+    );
 
     return (
       <Header>
@@ -80,8 +100,7 @@ const PollWhy = ({
                       '#9F64C0',
                   }
                 }
-                // flex={x.flex}
-                flex={0}
+                flex={x.flex}
                 key={i}
                 minHeight={20}
                 onPress={() =>
@@ -93,14 +112,17 @@ const PollWhy = ({
                         type,
                         why: x.name,
                       },
+                      votes,
                     ),
                   )
                 }
                 text={`${x.name}${
                   x.flex
-                    ? `\n${x.flex /
-                        allVotes.length *
-                        100}%`
+                    ? `\n${Math.round(
+                        x.flex /
+                          allVotes.length *
+                          100,
+                      )}%`
                     : ''
                 }`}
               />

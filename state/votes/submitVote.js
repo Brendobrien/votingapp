@@ -11,6 +11,7 @@ export default (
   ip,
   pollId,
   vote,
+  votes,
 ) => async dispatch => {
   dispatch(setLoading(true));
   dispatch({
@@ -21,7 +22,10 @@ export default (
     currentUser,
   } = firebase.auth();
   try {
-    const payload = {};
+    const payload = votes;
+    if (!payload[pollId]) {
+      payload[pollId] = {};
+    }
     if (currentUser != null) {
       const { uid } = currentUser;
       await updateFirebase(
@@ -30,7 +34,6 @@ export default (
         true,
       );
 
-      payload[pollId] = {};
       payload[pollId][uid] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,
@@ -49,7 +52,6 @@ export default (
         false,
       );
 
-      payload[pollId] = {};
       payload[pollId][ip] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,

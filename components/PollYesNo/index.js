@@ -12,10 +12,10 @@ import goToRoute from '../../navigation/goToRoute';
 const PollYesNo = ({
   dispatch,
   history,
+  language,
   location,
   nav,
-  percentNo = 0.5,
-  percentSi = 0.5,
+  votes,
 }) => {
   const params =
     Platform.OS === 'web'
@@ -24,13 +24,37 @@ const PollYesNo = ({
         )
       : nav.routes[nav.index].params;
 
+  let yes = 0;
+  let no = 0;
+  if (
+    params &&
+    params.pollId &&
+    votes[params.pollId]
+  ) {
+    Object.values(
+      votes[params.pollId],
+    ).forEach(x => {
+      x.type === 'yes' ? yes++ : no++;
+    });
+  }
+
   return (
     <Header>
       <Row
         backgroundColor="green"
-        flex={percentSi}
-        text={`Yes\n${percentSi *
-          100}%`}
+        flex={yes}
+        text={`${
+          language === 'English'
+            ? 'Yes'
+            : 'Si'
+        }${
+          yes
+            ? `\n${Math.round(
+                yes / (yes + no) * 100,
+              )}%`
+            : ''
+        }`}
+        minHeight={20}
         onPress={() =>
           goToRoute(
             dispatch,
@@ -43,8 +67,15 @@ const PollYesNo = ({
       />
       <Row
         backgroundColor="red"
-        flex={percentNo}
-        text={`No\n${percentNo * 100}%`}
+        flex={no}
+        text={`No${
+          no
+            ? `\n${Math.round(
+                no / (yes + no) * 100,
+              )}%`
+            : ''
+        }`}
+        minHeight={20}
         onPress={() =>
           goToRoute(
             dispatch,
@@ -63,6 +94,10 @@ const PollYesNoComp =
   Platform.OS === 'web'
     ? withRouter(PollYesNo)
     : PollYesNo;
-export default connect(({ nav }) => ({
-  nav,
-}))(PollYesNoComp);
+export default connect(
+  ({ language, nav, votes }) => ({
+    language,
+    nav,
+    votes,
+  }),
+)(PollYesNoComp);
