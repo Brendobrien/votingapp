@@ -5,8 +5,16 @@ export default (
   { dispatch, history, params, polls },
   { reason },
 ) => {
+  reason = reason.trim();
+  const reasons = polls[params.pollId][
+    params.type
+  ]
+    .split(',')
+    .map(x => x.trim());
   const invalidObj = {
-    reasonInvalid: !reason,
+    reasonInvalid:
+      !reason ||
+      reasons.includes(reason),
   };
   Object.keys(invalidObj).map(x =>
     changeState(x, invalidObj[x]),

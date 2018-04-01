@@ -1,3 +1,11 @@
+// getUserIP.js
+export const GET_USER_IP_FAIL =
+  'GET_USER_IP_FAIL';
+export const GET_USER_IP_PENDING =
+  'GET_USER_IP_PENDING';
+export const GET_USER_IP_SUCCESS =
+  'GET_USER_IP_SUCCESS';
+
 // signInFacebook.js
 export const SIGN_IN_FACEBOOK_FAIL =
   'SIGN_IN_FACEBOOK_FAIL';

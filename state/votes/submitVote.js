@@ -7,6 +7,7 @@ import {
 import updateFirebase from '../firebase/updateFirebase';
 
 export default (
+  ip,
   pollId,
   vote,
 ) => async dispatch => {
@@ -39,10 +40,6 @@ export default (
         payload: 'currentUser is null',
       });
 
-      let { ip } = await fetch(
-        'https://api.ipify.org?format=json',
-      ).then(x => x.json());
-      ip = ip.replace(/\./g, '_');
       await updateFirebase(
         vote,
         `votes/${pollId}/${ip}`,

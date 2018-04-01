@@ -24,6 +24,7 @@ const PollWhy = ({
   location,
   nav,
   polls,
+  user: { auth, ip, uid },
   votes,
 }) => {
   const params =
@@ -41,12 +42,11 @@ const PollWhy = ({
     polls[params.pollId][params.type]
   ) {
     const { pollId, type } = params;
-    const whys = polls[pollId][
-      type
-    ].split(',');
-    // let whys = ['c', 'd', 'e', 'f', 'g'];
-    // whys = [...whys, ...whys];
-    // flex = votes;
+    const whys = polls[pollId][type]
+      .split(',')
+      .map(x => x.trim());
+
+    // const myVote = votes[pollId][auth ? uid : ip]
 
     return (
       <Header>
@@ -78,10 +78,14 @@ const PollWhy = ({
                 minHeight={20}
                 onPress={() =>
                   dispatch(
-                    submitVote(pollId, {
-                      type,
-                      why: i,
-                    }),
+                    submitVote(
+                      ip,
+                      pollId,
+                      {
+                        type,
+                        why: i,
+                      },
+                    ),
                   )
                 }
                 text={x}
@@ -102,9 +106,10 @@ const PollWhyComp =
     ? withRouter(PollWhy)
     : PollWhy;
 export default connect(
-  ({ nav, polls, votes }) => ({
+  ({ nav, polls, user, votes }) => ({
     nav,
     polls,
+    user,
     votes,
   }),
 )(PollWhyComp);

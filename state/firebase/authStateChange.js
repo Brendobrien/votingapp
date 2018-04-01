@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import getFirebaseUser from '../firebase/getFirebaseUser';
 import getPolls from '../polls/getPolls';
+import getUserIP from '../user/getUserIP';
 import getVotes from '../votes/getVotes';
 
 export default dispatch => {
@@ -8,6 +9,7 @@ export default dispatch => {
   firebase
     .auth()
     .onAuthStateChanged(user => {
+      dispatch(getUserIP());
       if (user != null) {
         dispatch(getFirebaseUser());
       }

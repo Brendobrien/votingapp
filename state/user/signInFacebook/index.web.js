@@ -39,6 +39,7 @@ export default (
     updates[`/user/name`] = displayName;
     updates[`/user/picture`] = photoURL;
     updates[`/user/email`] = email;
+    updates[`/user/uid`] = uid;
     await updateFirebase(updates);
 
     dispatch({
