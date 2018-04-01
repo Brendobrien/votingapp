@@ -8,27 +8,25 @@ import Input from '../../Common/Input';
 
 export default ({
   backgroundColor,
-  fontSize = 15,
+  fontSize = 12,
   initialValue,
   invalid,
   onChangeText,
   placeholder,
 }) => (
-  <View style={{ flex: 1 }}>
-    <View
-      style={[
-        containerStyle,
-        { backgroundColor },
-      ]}
-    >
-      <Input
-        fontSize={fontSize}
-        initialValue={initialValue}
-        invalid={invalid}
-        onChangeText={onChangeText}
-        placeholder={placeholder}
-      />
-    </View>
+  <View
+    style={[
+      containerStyle,
+      { backgroundColor },
+    ]}
+  >
+    <Input
+      fontSize={fontSize}
+      initialValue={initialValue}
+      invalid={invalid}
+      onChangeText={onChangeText}
+      placeholder={placeholder}
+    />
   </View>
 );
 
@@ -38,8 +36,10 @@ const {
   containerStyle: {
     backgroundColor: 'orange',
     alignItems: 'center',
-    flex: 1,
+    flex: 0.7,
     flexDirection: 'row',
     justifyContent: 'center',
+    paddingBottom: 20,
+    paddingTop: 20,
   },
 });

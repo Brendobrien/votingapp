@@ -14,13 +14,13 @@ export default (
     changeState(x, invalidObj[x]),
   );
 
-  const valid = Object.values(
+  const invalid = Object.values(
     invalidObj,
   ).reduce((a, b) => a || b);
 
   dispatch(
     submitPoll(
-      valid,
+      invalid,
       { name, yes, no },
       dispatch,
       history,

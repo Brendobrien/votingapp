@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import queryString from 'query-string';
 
+import Form from './Form';
 import Header from '../Header';
 import Row from '../Common/Row';
 import submitVote from '../../state/votes/submitVote';
@@ -20,15 +21,23 @@ const PollWhy = ({
   location,
   nav,
   polls,
+  votes,
 }) => {
-  const { pollId, type } =
+  const params =
     Platform.OS === 'web'
       ? queryString.parse(
           location.search,
         )
       : nav.routes[nav.index].params;
 
-  if (type && polls[pollId]) {
+  if (
+    params &&
+    params.type &&
+    params.pollId &&
+    polls[params.pollId] &&
+    polls[params.pollId][params.type]
+  ) {
+    const { pollId, type } = params;
     const whys = polls[pollId][
       type
     ].split(',');
@@ -56,9 +65,8 @@ const PollWhy = ({
             key={i}
             minHeight={20}
             onPress={() =>
-              // console.log({ type, why: i })
               dispatch(
-                submitVote({
+                submitVote(pollId, {
                   type,
                   why: i,
                 }),
@@ -67,6 +75,7 @@ const PollWhy = ({
             text={x}
           />
         ))}
+        <Form params={params} />
       </Header>
     );
   }
@@ -79,8 +88,9 @@ const PollWhyComp =
     ? withRouter(PollWhy)
     : PollWhy;
 export default connect(
-  ({ nav, polls }) => ({
+  ({ nav, polls, votes }) => ({
     nav,
     polls,
+    votes,
   }),
 )(PollWhyComp);

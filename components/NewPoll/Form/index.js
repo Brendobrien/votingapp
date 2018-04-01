@@ -45,7 +45,7 @@ class Form extends React.Component {
         ))}
         <Row
           backgroundColor="blue"
-          flex={0.25}
+          flex={1}
           text={
             messages.Submit[
               props.language

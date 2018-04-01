@@ -18,7 +18,6 @@ export default () => async dispatch => {
       'votes/',
       false,
     );
-    console.log(votes);
     dispatch({
       type: GET_VOTES_SUCCESS,
       payload: votes,

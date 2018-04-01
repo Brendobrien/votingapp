@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import getFirebaseUser from '../firebase/getFirebaseUser';
-import setLoading from '../loading/setLoading';
+import getPolls from '../polls/getPolls';
+import getVotes from '../votes/getVotes';
 
 export default dispatch => {
   // Listen for authentication state to change.
@@ -9,8 +10,8 @@ export default dispatch => {
     .onAuthStateChanged(user => {
       if (user != null) {
         dispatch(getFirebaseUser());
-      } else {
-        dispatch(setLoading(false));
       }
+      dispatch(getPolls());
+      dispatch(getVotes());
     });
 };

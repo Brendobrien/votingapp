@@ -17,50 +17,40 @@ const colors = [
   'red',
   'blue',
 ];
-class AllPolls extends React.Component {
-  componentWillMount() {
-    this.props.dispatch(getPolls());
-  }
-
-  render() {
-    const {
-      dispatch,
-      history,
-      polls,
-    } = this.props;
-
-    return (
-      <Header>
-        <ScrollView
-          contentContainerStyle={{
-            flexGrow: 1,
-          }}
-        >
-          {Object.keys(polls).map(
-            (x, i) => (
-              <Row
-                backgroundColor={
-                  colors[i % 4]
-                }
-                flex={1}
-                key={i}
-                text={polls[x].name}
-                onPress={() =>
-                  goToRoute(
-                    dispatch,
-                    history,
-                    'PollYesNo',
-                    x,
-                  )
-                }
-              />
-            ),
-          )}
-        </ScrollView>
-      </Header>
-    );
-  }
-}
+const AllPolls = ({
+  dispatch,
+  history,
+  polls,
+}) => (
+  <Header>
+    <ScrollView
+      contentContainerStyle={{
+        flexGrow: 1,
+      }}
+    >
+      {Object.keys(polls).map(
+        (x, i) => (
+          <Row
+            backgroundColor={
+              colors[i % 4]
+            }
+            flex={1}
+            key={i}
+            text={polls[x].name}
+            onPress={() =>
+              goToRoute(
+                dispatch,
+                history,
+                'PollYesNo',
+                x,
+              )
+            }
+          />
+        ),
+      )}
+    </ScrollView>
+  </Header>
+);
 
 const AllPollsComp =
   Platform.OS === 'web'

@@ -6,7 +6,10 @@ import {
 } from './types';
 import updateFirebase from '../firebase/updateFirebase';
 
-export default vote => async dispatch => {
+export default (
+  pollId,
+  vote,
+) => async dispatch => {
   dispatch({
     type: SUBMIT_VOTE_PENDING,
   });
@@ -20,11 +23,12 @@ export default vote => async dispatch => {
       const { uid } = currentUser;
       await updateFirebase(
         vote,
-        'votes/',
+        `votes/${pollId}/`,
         true,
       );
 
-      payload[uid] = vote;
+      payload[pollId] = {};
+      payload[pollId][uid] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,
         payload,
@@ -41,11 +45,12 @@ export default vote => async dispatch => {
       ip = ip.replace(/\./g, '_');
       await updateFirebase(
         vote,
-        `votes/${ip}`,
+        `votes/${pollId}/${ip}`,
         false,
       );
 
-      payload[ip] = vote;
+      payload[pollId] = {};
+      payload[pollId][ip] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,
         payload,

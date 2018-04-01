@@ -12,6 +12,7 @@ export default ({
   minHeight = 100,
   rowStyle,
   text,
+  textStyle,
 }) => (
   <TouchableOpacity
     disabled={
@@ -19,7 +20,7 @@ export default ({
     }
     onPress={onPress}
     style={[
-      buttonStyle,
+      containerStyle,
       rowStyle,
       {
         backgroundColor,
@@ -29,21 +30,23 @@ export default ({
     ]}
     key={text}
   >
-    <Text style={textStyle}>
+    <Text
+      style={[mainTextStyle, textStyle]}
+    >
       {text}
     </Text>
   </TouchableOpacity>
 );
 
 const {
-  buttonStyle,
-  textStyle,
+  containerStyle,
+  mainTextStyle,
 } = StyleSheet.create({
-  buttonStyle: {
+  containerStyle: {
     alignItems: 'center',
     justifyContent: 'center',
   },
-  textStyle: {
+  mainTextStyle: {
     fontSize: 30,
     textAlign: 'center',
   },

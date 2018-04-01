@@ -9,12 +9,12 @@ import updateFirebase from '../firebase/updateFirebase';
 import goBack from '../../navigation/goBack';
 
 export default (
-  valid,
+  invalid,
   poll,
   dispatch,
   history,
 ) =>
-  valid
+  invalid
     ? {
         type: SUBMIT_POLL_FAIL,
         payload: 'invalid',
@@ -27,20 +27,20 @@ export default (
         const {
           currentUser: { uid },
         } = firebase.auth();
-        const update = {};
-        update[
+        const payload = {};
+        payload[
           `${uid}___${uuidv4()}`
         ] = poll;
 
         try {
           await updateFirebase(
-            update,
+            payload,
             'polls/',
             false,
           );
           dispatch({
             type: SUBMIT_POLL_SUCCESS,
-            payload: update,
+            payload,
           });
           goBack(dispatch, history);
         } catch (e) {
