@@ -21,7 +21,7 @@ const colors = [
 ];
 class MyPolls extends React.Component {
   componentWillMount() {
-    this.props.getPolls();
+    this.props.dispatch(getPolls());
   }
 
   render() {
@@ -80,7 +80,6 @@ const MyPollsComp =
     ? withRouter(MyPolls)
     : MyPolls;
 
-export default connect(
-  ({ polls }) => ({ polls }),
-  { getPolls },
-)(MyPollsComp);
+export default connect(({ polls }) => ({
+  polls,
+}))(MyPollsComp);

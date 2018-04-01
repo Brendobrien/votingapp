@@ -25,7 +25,7 @@ export default (
     ];
 
     if (routeName === 'PollWhy') {
-      if (params.type === 'Yes') {
+      if (params.type === 'yes') {
         subText.PollWhy = {
           color: 'green',
           text: {
@@ -33,7 +33,7 @@ export default (
             Spanish: `${name}\n¿Por Qué?`,
           },
         };
-      } else if (params.type === 'No') {
+      } else if (params.type === 'no') {
         subText.PollWhy = {
           color: 'red',
           text: {

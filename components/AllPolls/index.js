@@ -1,10 +1,15 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
+import {
+  Platform,
+  ScrollView,
+} from 'react-native';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import getPolls from '../../state/polls/getPolls';
 import Header from '../Header';
 import Row from '../Common/Row';
+import goToRoute from '../../navigation/goToRoute';
 
 const colors = [
   'orange',
@@ -14,11 +19,15 @@ const colors = [
 ];
 class AllPolls extends React.Component {
   componentWillMount() {
-    this.props.getPolls();
+    this.props.dispatch(getPolls());
   }
 
   render() {
-    const { polls } = this.props;
+    const {
+      dispatch,
+      history,
+      polls,
+    } = this.props;
 
     return (
       <Header>
@@ -37,7 +46,12 @@ class AllPolls extends React.Component {
                 key={i}
                 text={polls[x].name}
                 onPress={() =>
-                  console.log(x)
+                  goToRoute(
+                    dispatch,
+                    history,
+                    'PollYesNo',
+                    x,
+                  )
                 }
               />
             ),
@@ -48,7 +62,11 @@ class AllPolls extends React.Component {
   }
 }
 
-export default connect(
-  ({ polls }) => ({ polls }),
-  { getPolls },
-)(AllPolls);
+const AllPollsComp =
+  Platform.OS === 'web'
+    ? withRouter(AllPolls)
+    : AllPolls;
+
+export default connect(({ polls }) => ({
+  polls,
+}))(AllPollsComp);

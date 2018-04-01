@@ -37,7 +37,7 @@ const PollYesNo = ({
             history,
             'PollWhy',
             params.pollId,
-            'Yes',
+            'yes',
           )
         }
       />
@@ -51,7 +51,7 @@ const PollYesNo = ({
             history,
             'PollWhy',
             params.pollId,
-            'No',
+            'no',
           )
         }
       />

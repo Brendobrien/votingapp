@@ -9,6 +9,8 @@ export default ({
   backgroundColor,
   flex,
   onPress,
+  minHeight = 100,
+  rowStyle,
   text,
 }) => (
   <TouchableOpacity
@@ -18,9 +20,11 @@ export default ({
     onPress={onPress}
     style={[
       buttonStyle,
+      rowStyle,
       {
         backgroundColor,
         flex,
+        minHeight,
       },
     ]}
     key={text}
@@ -38,7 +42,6 @@ const {
   buttonStyle: {
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 100,
   },
   textStyle: {
     fontSize: 30,
