@@ -1,6 +1,7 @@
 import {
   GET_USER_IP_FAIL,
   GET_USER_IP_SUCCESS,
+  SIGN_IN_FACEBOOK_SUCCESS,
   SIGN_IN_FACEBOOK_FAIL,
   SIGN_OUT_FACEBOOK_SUCCESS,
   SIGN_OUT_FACEBOOK_FAIL,
@@ -36,6 +37,11 @@ export default (
     case GET_FIREBASE_USER_SUCCESS:
       return {
         ...payload.user,
+        auth: true,
+      };
+    case SIGN_IN_FACEBOOK_SUCCESS:
+      return {
+        ...state,
         auth: true,
       };
     case SIGN_OUT_FACEBOOK_SUCCESS:

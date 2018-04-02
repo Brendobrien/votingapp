@@ -5,8 +5,10 @@ import {
   SUBMIT_POLL_PENDING,
   SUBMIT_POLL_SUCCESS,
 } from './types';
-import updateFirebase from '../firebase/updateFirebase';
 import goBack from '../../navigation/goBack';
+import getPolls from './getPolls';
+import getVotes from '../votes/getVotes';
+import updateFirebase from '../firebase/updateFirebase';
 
 export default (
   invalid,
@@ -40,8 +42,9 @@ export default (
           );
           dispatch({
             type: SUBMIT_POLL_SUCCESS,
-            payload,
           });
+          dispatch(getPolls());
+          dispatch(getVotes());
           goBack(dispatch, history);
         } catch (e) {
           dispatch({

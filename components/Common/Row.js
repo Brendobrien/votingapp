@@ -48,6 +48,7 @@ const {
   },
   mainTextStyle: {
     fontSize: 30,
+    paddingHorizontal: 10,
     textAlign: 'center',
   },
 });

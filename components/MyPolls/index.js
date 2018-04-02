@@ -8,10 +8,11 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import _ from 'lodash';
 
-import Header from '../Header';
-import MyRow from './MyRow';
 import getPolls from '../../state/polls/getPolls';
 import goToRoute from '../../navigation/goToRoute';
+import Header from '../Header';
+import MyRow from './MyRow';
+import Row from '../Common/Row';
 
 const colors = [
   'orange',
@@ -22,6 +23,7 @@ const colors = [
 const MyPolls = ({
   dispatch,
   history,
+  language,
   polls,
 }) => {
   let myPolls = _.pickBy(
@@ -44,25 +46,44 @@ const MyPolls = ({
           flexGrow: 1,
         }}
       >
-        {Object.keys(myPolls).map(
-          (x, i) => (
-            <MyRow
-              backgroundColor={
-                colors[i % 4]
-              }
-              key={x}
-              pollId={x}
-              text={myPolls[x].name}
-              onPress={() =>
-                goToRoute(
-                  dispatch,
-                  history,
-                  'PollYesNo',
-                  x,
-                )
-              }
-            />
-          ),
+        {_.size(myPolls) ? (
+          Object.keys(myPolls).map(
+            (x, i) => (
+              <MyRow
+                backgroundColor={
+                  colors[i % 4]
+                }
+                key={x}
+                pollId={x}
+                text={myPolls[x].name}
+                onPress={() =>
+                  goToRoute(
+                    dispatch,
+                    history,
+                    'PollYesNo',
+                    x,
+                  )
+                }
+              />
+            ),
+          )
+        ) : (
+          <Row
+            backgroundColor="red"
+            flex={1}
+            text={
+              language === 'English'
+                ? 'New Poll'
+                : 'Nueva Encuesta'
+            }
+            onPress={() =>
+              goToRoute(
+                dispatch,
+                history,
+                'NewPoll',
+              )
+            }
+          />
         )}
       </ScrollView>
     </Header>
@@ -74,6 +95,9 @@ const MyPollsComp =
     ? withRouter(MyPolls)
     : MyPolls;
 
-export default connect(({ polls }) => ({
-  polls,
-}))(MyPollsComp);
+export default connect(
+  ({ language, polls }) => ({
+    language,
+    polls,
+  }),
+)(MyPollsComp);

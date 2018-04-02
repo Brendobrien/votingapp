@@ -2,7 +2,6 @@ import {
   GET_VOTES_FAIL,
   GET_VOTES_SUCCESS,
   SUBMIT_VOTE_FAIL,
-  SUBMIT_VOTE_SUCCESS,
 } from './types';
 
 export default (
@@ -15,8 +14,7 @@ export default (
       console.log(payload);
       return state;
     case GET_VOTES_SUCCESS:
-    case SUBMIT_VOTE_SUCCESS:
-      return { ...state, ...payload };
+      return payload;
     default:
       return state;
   }

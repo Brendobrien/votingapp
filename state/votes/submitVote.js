@@ -4,6 +4,8 @@ import {
   SUBMIT_VOTE_PENDING,
   SUBMIT_VOTE_SUCCESS,
 } from './types';
+import getPolls from '../polls/getPolls';
+import getVotes from './getVotes';
 import setLoading from '../loading/setLoading';
 import updateFirebase from '../firebase/updateFirebase';
 
@@ -37,9 +39,9 @@ export default (
       payload[pollId][uid] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,
-        payload,
       });
-      dispatch(setLoading(false));
+      dispatch(getPolls());
+      dispatch(getVotes());
     } else {
       dispatch({
         type: SUBMIT_VOTE_FAIL,
@@ -55,9 +57,9 @@ export default (
       payload[pollId][ip] = vote;
       dispatch({
         type: SUBMIT_VOTE_SUCCESS,
-        payload,
       });
-      dispatch(setLoading(false));
+      dispatch(getPolls());
+      dispatch(getVotes());
     }
   } catch (err) {
     dispatch({

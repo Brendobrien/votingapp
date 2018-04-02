@@ -3,6 +3,8 @@ import {
   SUBMIT_REASON_PENDING,
   SUBMIT_REASON_SUCCESS,
 } from './types';
+import getPolls from './getPolls';
+import getVotes from '../votes/getVotes';
 import updateFirebase from '../firebase/updateFirebase';
 
 export default (
@@ -35,8 +37,9 @@ export default (
 
           dispatch({
             type: SUBMIT_REASON_SUCCESS,
-            payload,
           });
+          dispatch(getPolls());
+          dispatch(getVotes());
         } catch (e) {
           dispatch({
             type: SUBMIT_REASON_FAIL,

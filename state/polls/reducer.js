@@ -4,8 +4,6 @@ import {
   GET_POLLS_SUCCESS,
   SUBMIT_REASON_FAIL,
   SUBMIT_POLL_FAIL,
-  SUBMIT_POLL_SUCCESS,
-  SUBMIT_REASON_SUCCESS,
 } from './types';
 import { GET_FIREBASE_USER_SUCCESS } from '../firebase/types';
 
@@ -25,9 +23,6 @@ export default (
     case SUBMIT_REASON_FAIL:
       console.log(payload);
       return state;
-    case SUBMIT_POLL_SUCCESS:
-    case SUBMIT_REASON_SUCCESS:
-      return { ...state, ...payload };
     default:
       return state;
   }
