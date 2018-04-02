@@ -65,14 +65,14 @@ class Form extends React.Component {
   }
 }
 
-const mapStateToProps = ({
-  language,
-}) => ({ language });
 const FormComp =
   Platform.OS === 'web'
     ? withRouter(Form)
     : Form;
 
-export default connect(mapStateToProps)(
-  FormComp,
-);
+export default connect(
+  ({ language, polls }) => ({
+    language,
+    polls,
+  }),
+)(FormComp);

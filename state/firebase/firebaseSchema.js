@@ -23,7 +23,7 @@ const schema = {
     uid_id: {
       'uid||ip': {
         type: 'yes',
-        why: 0,
+        why: 'b',
       },
     },
   },

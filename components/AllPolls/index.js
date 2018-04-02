@@ -28,26 +28,28 @@ const AllPolls = ({
         flexGrow: 1,
       }}
     >
-      {Object.keys(polls).map(
-        (x, i) => (
-          <Row
-            backgroundColor={
-              colors[i % 4]
-            }
-            flex={1}
-            key={i}
-            text={polls[x].name}
-            onPress={() =>
-              goToRoute(
-                dispatch,
-                history,
-                'PollYesNo',
-                x,
-              )
-            }
-          />
-        ),
-      )}
+      {polls
+        ? Object.keys(polls).map(
+            (x, i) => (
+              <Row
+                backgroundColor={
+                  colors[i % 4]
+                }
+                flex={1}
+                key={i}
+                text={polls[x].name}
+                onPress={() =>
+                  goToRoute(
+                    dispatch,
+                    history,
+                    'PollYesNo',
+                    x,
+                  )
+                }
+              />
+            ),
+          )
+        : null}
     </ScrollView>
   </Header>
 );
