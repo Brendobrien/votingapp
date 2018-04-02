@@ -36,7 +36,7 @@ class Form extends React.Component {
         }}
       >
         <FormRow
-          backgroundColor={'blue'}
+          backgroundColor="#9F64C0"
           initialValue={state.reason}
           invalid={state.reasonInvalid}
           onChangeText={x =>
@@ -62,11 +62,11 @@ class Form extends React.Component {
             backgroundColor="white"
             flex={1}
             rowStyle={{
-              borderColor: 'black',
+              borderColor: '#9F64C0',
               borderWidth: 1,
             }}
             textStyle={{
-              color: 'blue',
+              color: '#9F64C0',
               fontSize: 20,
             }}
             text={

@@ -87,7 +87,7 @@ const {
     fontSize: 15,
   },
   invalidStyle: {
-    borderColor: '#9F64C0',
+    borderColor: 'blue',
     borderWidth: 5,
   },
 });

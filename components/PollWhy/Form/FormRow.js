@@ -43,7 +43,6 @@ const {
     flex: 0.7,
     flexDirection: 'row',
     justifyContent: 'center',
-    // paddingVertical: 10
     padding: 10,
   },
 });

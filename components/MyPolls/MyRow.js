@@ -17,7 +17,9 @@ export default props => (
       <ShareButton
         pollId={props.pollId}
       />
-      <DeleteButton />
+      <DeleteButton
+        pollId={props.pollId}
+      />
     </View>
   </View>
 );

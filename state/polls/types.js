@@ -1,3 +1,10 @@
+export const DELETE_POLL_FAIL =
+  'DELETE_POLL_FAIL';
+export const DELETE_POLL_PENDING =
+  'DELETE_POLL_PENDING';
+export const DELETE_POLL_SUCCESS =
+  'DELETE_POLL_SUCCESS';
+
 export const GET_POLLS_FAIL =
   'GET_POLLS_FAIL';
 export const GET_POLLS_PENDING =

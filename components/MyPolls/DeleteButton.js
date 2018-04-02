@@ -8,11 +8,15 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-const DeleteButton = ({ language }) => (
+import deletePoll from '../../state/polls/deletePoll';
+
+const DeleteButton = ({
+  deletePoll,
+  language,
+  pollId,
+}) => (
   <TouchableOpacity
-    onPress={() =>
-      console.log('dispatch delete')
-    }
+    onPress={() => deletePoll(pollId)}
     style={buttonStyle}
   >
     <Text style={textStyle}>
@@ -42,4 +46,5 @@ const {
 
 export default connect(
   ({ language }) => ({ language }),
+  { deletePoll },
 )(DeleteButton);
