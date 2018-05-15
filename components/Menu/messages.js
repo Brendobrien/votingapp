@@ -1,6 +1,6 @@
 export default {
   AllPolls: {
-    English: 'All Polls',
+    English: 'All Pollz',
     Spanish: 'Todas Encuestas',
   },
   SignIn: {
